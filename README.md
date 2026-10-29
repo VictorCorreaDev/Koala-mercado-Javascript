@@ -17,8 +17,8 @@ Site institucional desenvolvido como projeto escolar para a disciplina de **Dese
 
 ## 🛒 SITE NOVO — Loja Koala (prints)
 
-Fizemos um site novo em formato de **loja virtual**, na pasta [loja-koala/](loja-koala/), inspirado no layout do Supermercados Guanabara, com a marca Koala em azul claro.
-Ele tem lista de compras funcional, tema claro e escuro, página de catálogo de componentes (`tokens.css` e `AGENTS.md`) e **fotos reais**.
+Fizemos um site novo em formato de **loja virtual**, na pasta [loja-koala/](loja-koala/), inspirado no layout do Supermercados Guanabara, com a marca Koala em **verde escuro**, bordas arredondadas e carrossel de destaques na página inicial.
+Ele tem carrossel, lista de compras funcional, tema claro e escuro, página de catálogo de componentes (`tokens.css` e `AGENTS.md`) e **fotos reais**.
 Explicação completa: [loja-koala/README.md](loja-koala/README.md).
 
 **Como abrir:** baixe o projeto e abra `loja-koala/index.html` no navegador. Endereço hospedado (quando o GitHub Pages estiver ativo): https://veronisky.github.io/Koala-mercado-Javascript/loja-koala/

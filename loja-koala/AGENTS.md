@@ -16,7 +16,7 @@
 
 ## Marca e geometria
 - A marca é **Koala** (com K). Logo em `img/logo.svg`.
-- Geometria própria: raio quase reto (2px), escala de espaço 4px, escala tipográfica 1.25.
+- Geometria própria: bordas arredondadas (raio 12px), escala de espaço 4px, escala tipográfica 1.25.
 - Tema claro e escuro: trocar só variáveis em `tokens.css` (`[data-tema="escuro"]`).
 
 ## Estrutura

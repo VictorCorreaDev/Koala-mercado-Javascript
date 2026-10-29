@@ -15,6 +15,27 @@
 
 <main id="main">
   <div class="container">
+    <section class="carrossel" aria-roledescription="carrossel" aria-label="Destaques da Koala">
+      <div class="carrossel__faixa">
+      <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="1 de 4">
+        <img src="img/fotos/loja.jpg" alt="Corredor de um supermercado com prateleiras abastecidas">
+        <div class="carrossel__texto"><h2>Tudo pra você, todos os dias</h2><p>Hortifrúti, açougue, padaria e mais de mil produtos para a sua lista.</p><a class="botao" href="promocoes.html">Ver promoções</a></div>
+      </div>
+      <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="2 de 4">
+        <img src="img/fotos/acougue.jpg" alt="Cortes de carne frescos no balcão" loading="lazy">
+        <div class="carrossel__texto"><h2>Açougue com cortes frescos</h2><p>Carnes selecionadas para o churrasco e para o dia a dia.</p><a class="botao" href="produtos.html?cat=acougue">Ver o açougue</a></div>
+      </div>
+      <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="3 de 4">
+        <img src="img/fotos/bebidas.jpg" alt="Variedade de bebidas" loading="lazy">
+        <div class="carrossel__texto"><h2>Bebidas para toda ocasião</h2><p>Sucos, refrigerantes e muito mais, sempre geladinhos.</p><a class="botao" href="produtos.html?cat=bebidas">Ver bebidas</a></div>
+      </div>
+      <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="4 de 4">
+        <img src="img/fotos/matinais.jpg" alt="Itens para o café da manhã" loading="lazy">
+        <div class="carrossel__texto"><h2>Café da manhã completo</h2><p>Pães, cereais e matinais para começar bem o dia.</p><a class="botao" href="produtos.html?cat=matinais">Ver matinais</a></div>
+      </div>
+      </div>
+    </section>
+
     <h1 class="sobre-fundo">Nossos produtos</h1>
     <div class="grade" id="cats"></div>
 
@@ -73,6 +94,38 @@
     b[0].textContent = pad(Math.floor(s / 3600)); b[1].textContent = pad(Math.floor(s % 3600 / 60)); b[2].textContent = pad(s % 60);
   }
   tick(); setInterval(tick, 1000);
+
+  // carrossel de destaques: troca sozinho (5 s), setas, bolinhas, teclado e toque
+  (() => {
+    const raiz = $(".carrossel"), faixa = $(".carrossel__faixa"), slides = [...document.querySelectorAll(".carrossel__slide")];
+    let atual = 0, timer = null;
+    const reduzir = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const botao = (cls, rotulo, txt) => { const b = document.createElement("button"); b.type = "button"; b.className = cls; b.setAttribute("aria-label", rotulo); b.textContent = txt; return b; };
+    const ant = botao("carrossel__seta carrossel__seta--ant", "Slide anterior", "‹");
+    const prox = botao("carrossel__seta carrossel__seta--prox", "Próximo slide", "›");
+    const pontos = document.createElement("div"); pontos.className = "carrossel__pontos";
+    const bolas = slides.map((_, i) => { const b = botao("", `Ir para o slide ${i + 1}`, ""); b.addEventListener("click", () => { ir(i); reiniciar(); }); pontos.appendChild(b); return b; });
+    raiz.append(ant, pontos, prox);
+    function ir(i) {
+      atual = (i + slides.length) % slides.length;
+      faixa.style.transform = `translateX(-${atual * 100}%)`;
+      slides.forEach((s, n) => { s.setAttribute("aria-hidden", n !== atual); s.querySelectorAll("a").forEach(a => { a.tabIndex = n === atual ? 0 : -1; }); });
+      bolas.forEach((b, n) => b.setAttribute("aria-current", n === atual));
+    }
+    const parar = () => { clearInterval(timer); timer = null; };
+    const iniciar = () => { if (!reduzir && !timer) timer = setInterval(() => ir(atual + 1), 5000); };
+    const reiniciar = () => { parar(); iniciar(); };
+    ant.addEventListener("click", () => { ir(atual - 1); reiniciar(); });
+    prox.addEventListener("click", () => { ir(atual + 1); reiniciar(); });
+    raiz.addEventListener("mouseenter", parar); raiz.addEventListener("mouseleave", iniciar);
+    raiz.addEventListener("focusin", parar); raiz.addEventListener("focusout", iniciar);
+    raiz.tabIndex = 0;
+    raiz.addEventListener("keydown", e => { if (e.key === "ArrowLeft") { ir(atual - 1); reiniciar(); } if (e.key === "ArrowRight") { ir(atual + 1); reiniciar(); } });
+    let x0 = null;
+    raiz.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+    raiz.addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { ir(atual + (dx < 0 ? 1 : -1)); reiniciar(); } x0 = null; });
+    ir(0); iniciar();
+  })();
 
   $("#news").addEventListener("submit", e => {
     e.preventDefault();

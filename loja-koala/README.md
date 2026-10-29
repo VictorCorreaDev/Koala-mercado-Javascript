@@ -2,7 +2,7 @@
 
 Trabalho de front-end: um site de supermercado fictício chamado **Koala**, feito com HTML, CSS e JavaScript puro, sem nenhuma biblioteca.
 
-Usei como referência o site do Supermercados Guanabara (só o **layout**: a barra do topo, a grade de categorias, a lista de compras e o rodapé). A marca, o logo e as fotos são da Koala. As cores ficaram mais claras, em azul-céu.
+Usei como referência o site do Supermercados Guanabara (só o **layout**: a barra do topo, a grade de categorias, a lista de compras e o rodapé). A marca, o logo e as fotos são da Koala. A cor principal é o **verde escuro** (cor de mercado, passa confiança e frescor), com tema claro e escuro.
 
 Repositório: https://github.com/veronisky/Koala-mercado-Javascript (este site fica na pasta `loja-koala/`)
 
@@ -25,6 +25,13 @@ Não precisa instalar nada.
 2. Entre na pasta `loja-koala/` e abra o arquivo `index.html` no navegador, com dois cliques.
 
 ---
+
+## Ajustes da última revisão
+
+- **Carrossel de destaques** na página inicial: 4 slides com foto real, troca automática a cada 5 s, setas, bolinhas, teclado (← →) e toque no celular. Pausa quando o mouse ou o foco está em cima e respeita `prefers-reduced-motion`.
+- **Bordas arredondadas:** o raio passou de 2 px (quase reto) para **12 px** em `tokens.css` (`--raio`). Como botões, cards, campos, menu, etiquetas e carrossel usam `var(--raio)`, tudo que era quadrado ficou arredondado de uma vez.
+- **Cor mais vendedora:** do azul-céu para **verde escuro** (sugestão recebida). Mudou só em `tokens.css` (claro e escuro) e nos SVGs do logo e do app. Os preços continuam em verde, as ofertas em vermelho e o foco do teclado em amarelo.
+- **Publicação** na Vercel (projeto `koala-supermercados`).
 
 ## Prints
 
