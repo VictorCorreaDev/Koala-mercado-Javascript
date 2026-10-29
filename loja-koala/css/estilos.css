@@ -124,7 +124,7 @@ section { margin-bottom: var(--espaco-10); }
 .qtd { display: inline-flex; align-items: center; gap: var(--espaco-1); }
 .qtd button { width: 30px; height: 30px; border-radius: var(--raio); border: 2px solid var(--cor-borda); background: var(--cor-superficie); color: var(--cor-texto); font-size: var(--fonte-md); cursor: pointer; }
 .qtd output { min-width: 26px; text-align: center; font-weight: 700; }
-.progresso { height: 12px; background: var(--cor-superficie-2); border: 1px solid var(--cor-borda); }
+.progresso { height: 12px; background: var(--cor-superficie-2); border: 1px solid var(--cor-borda); border-radius: var(--raio); overflow: hidden; }
 .progresso i { display: block; height: 100%; width: 0; background: var(--cor-sucesso); transition: width .3s; }
 .resumo dl { margin: var(--espaco-3) 0; display: grid; grid-template-columns: 1fr auto; gap: var(--espaco-2); }
 .resumo dd { margin: 0; font-weight: 700; text-align: right; }
@@ -132,7 +132,7 @@ section { margin-bottom: var(--espaco-10); }
 .acoes { display: flex; flex-wrap: wrap; gap: var(--espaco-2); margin-top: var(--espaco-3); }
 
 /* avisos, toast, abas */
-.aviso { padding: var(--espaco-3) var(--espaco-4); border-left: 6px solid var(--cor-primaria); background: var(--cor-superficie-2); color: var(--cor-texto); font-weight: 600; }
+.aviso { padding: var(--espaco-3) var(--espaco-4); border-radius: var(--raio); border-left: 6px solid var(--cor-primaria); background: var(--cor-superficie-2); color: var(--cor-texto); font-weight: 600; }
 .aviso--erro { background: var(--cor-erro-fundo); border-color: var(--cor-erro); color: var(--cor-erro); }
 .aviso--sucesso { background: var(--cor-sucesso-fundo); border-color: var(--cor-sucesso); color: var(--cor-sucesso); }
 .aviso[hidden] { display: none; }
@@ -182,6 +182,27 @@ section { margin-bottom: var(--espaco-10); }
 .amostra { padding: var(--espaco-10) var(--espaco-2) var(--espaco-2); font-size: var(--fonte-sm); font-weight: 700; border: 1px solid var(--cor-borda); }
 
 /* responsivo: testado em 360, 768 e 1280 px */
+/* acabamento: movimento suave, hover nos cards e carrossel mais elegante */
+.card, .botao, .chip, .nav > a, .nav > .menu > button, .carrossel__seta { transition: transform .18s ease, box-shadow .18s ease, background .15s, border-color .15s; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 18px var(--cor-sombra); }
+.card--vertical img { transition: transform .35s ease; }
+.card--vertical { overflow: hidden; }
+.card--vertical:hover img { transform: scale(1.04); }
+.botao:active { transform: scale(.97); }
+.chip:hover { background: var(--cor-texto-fundo); color: var(--cor-fundo); }
+h1.sobre-fundo, .secao-topo h2, #dicas h2 { position: relative; padding-bottom: var(--espaco-2); }
+h1.sobre-fundo::after, .secao-topo h2::after, #dicas h2::after { content: ""; display: block; width: 56px; height: 4px; margin-top: var(--espaco-2); border-radius: var(--raio); background: var(--cor-rodape-destaque); }
+.carrossel { box-shadow: 0 10px 28px var(--cor-sombra); }
+.carrossel__texto h2 { font-size: var(--fonte-xl); }
+.carrossel__seta { opacity: .92; }
+.carrossel__seta:hover { transform: scale(1.08); opacity: 1; }
+.carrossel__pontos button { transition: width .25s, background .2s; }
+.carrossel__pontos button[aria-current="true"] { width: 32px; }
+.faixa-loja img { transition: transform .6s ease; }
+.faixa-loja:hover img { transform: scale(1.03); }
+.painel { transition: transform .18s ease, box-shadow .18s ease; }
+.dicas .painel:hover { transform: translateY(-3px); box-shadow: 0 8px 18px var(--cor-sombra); }
+
 @media (max-width: 1200px) {
   .menu-btn { display: inline-flex; }
   .cabecalho { height: 100px; }
@@ -217,5 +238,5 @@ section { margin-bottom: var(--espaco-10); }
   .flutuante--ajuda { right: var(--espaco-2); bottom: var(--espaco-2); }
   .flutuante--tema { left: var(--espaco-2); bottom: var(--espaco-2); }
 }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
+@media (prefers-reduced-motion: reduce) { .card:hover, .dicas .painel:hover, .card--vertical:hover img, .faixa-loja:hover img { transform: none; } * { transition: none !important; animation: none !important; scroll-behavior: auto !important; } }
 @media print { .cabecalho, .rodape, .flutuante { display: none; } body { background: none; } }

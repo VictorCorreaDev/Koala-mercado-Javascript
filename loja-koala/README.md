@@ -31,6 +31,7 @@ Não precisa instalar nada.
 - **Carrossel de destaques** na página inicial: 4 slides com foto real, troca automática a cada 5 s, setas, bolinhas, teclado (← →) e toque no celular. Pausa quando o mouse ou o foco está em cima e respeita `prefers-reduced-motion`.
 - **Bordas arredondadas:** o raio passou de 2 px (quase reto) para **12 px** em `tokens.css` (`--raio`). Como botões, cards, campos, menu, etiquetas e carrossel usam `var(--raio)`, tudo que era quadrado ficou arredondado de uma vez.
 - **Cor mais vendedora:** do azul-céu para **verde escuro** (sugestão recebida). Mudou só em `tokens.css` (claro e escuro) e nos SVGs do logo e do app. Os preços continuam em verde, as ofertas em vermelho e o foco do teclado em amarelo.
+- **Acabamento:** cards sobem e as fotos dão um leve zoom ao passar o mouse, títulos com traço amarelo, sombras mais suaves, barra de progresso e avisos também arredondados (movimento desligado para quem usa `prefers-reduced-motion`).
 - **Publicação** na Vercel (projeto `koala-supermercados`).
 
 ## Prints
