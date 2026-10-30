@@ -21,7 +21,7 @@ Fizemos um site novo em formato de **loja virtual**, na pasta [loja-koala/](loja
 Ele tem carrossel, lista de compras funcional, tema claro e escuro, página de catálogo de componentes (`tokens.css` e `AGENTS.md`) e **fotos reais**.
 Explicação completa: [loja-koala/README.md](loja-koala/README.md).
 
-**Como abrir:** baixe o projeto e abra `loja-koala/index.html` no navegador. Endereço hospedado (quando o GitHub Pages estiver ativo): https://veronisky.github.io/Koala-mercado-Javascript/loja-koala/
+**Como abrir:** baixe o projeto e abra `loja-koala/index.html` no navegador. Endereço hospedado (quando o GitHub Pages estiver ativo): koala-supermercados.vercel.app
 
 ### 1. Página inicial (aba de produtos)
 14 categorias com foto real, ofertas do dia com cronômetro, dicas, faixa da loja e rodapé "Baixe nosso aplicativo".
