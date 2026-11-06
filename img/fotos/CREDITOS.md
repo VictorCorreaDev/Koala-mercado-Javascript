@@ -59,7 +59,7 @@ Cada produto tem a sua foto, do Wikimedia Commons. As imagens foram cortadas em 
 | ervilha.jpg | [India - Varanasi green peas - 2714.jpg](https://commons.wikimedia.org/wiki/File:India_-_Varanasi_green_peas_-_2714.jpg) | Jorge Royan | CC BY-SA 3.0 |
 | atum-ralado.jpg | [Lata de atún-Albo.jpg](https://commons.wikimedia.org/wiki/File:Lata_de_at%C3%BAn-Albo.jpg) | Tamorlan | CC BY 3.0 |
 | azeitona-verde.jpg | [Fresh green olives and black olives served at a food display.jpg](https://commons.wikimedia.org/wiki/File:Fresh_green_olives_and_black_olives_served_at_a_food_display.jpg) | Shixart1985 | CC BY 2.0 |
-| nuggets-de-frango.jpg | [Impossible chicken nuggets 2.jpg](https://commons.wikimedia.org/wiki/File:Impossible_chicken_nuggets_2.jpg) | Mx. Granger | CC0 |
+| nuggets-de-frango.jpg | [Chicken nuggets on a plate.jpg](https://commons.wikimedia.org/wiki/File:Chicken_nuggets_on_a_plate.jpg) | Jiafei Slay Queen | CC0 |
 | salsicha-hot-dog.jpg | [Hot dog with two sausages, 2025-11-29.jpg](https://commons.wikimedia.org/wiki/File:Hot_dog_with_two_sausages,_2025-11-29.jpg) | Hekatlys | CC0 |
 | presunto-fatiado.jpg | [Sliced cooked ham.jpg](https://commons.wikimedia.org/wiki/File:Sliced_cooked_ham.jpg) | Anna.Massini | CC BY 4.0 |
 | mortadela.jpg | [Mortadella IMGP0978.jpg](https://commons.wikimedia.org/wiki/File:Mortadella_IMGP0978.jpg) | Nikodem Nijaki | CC BY-SA 3.0 |
