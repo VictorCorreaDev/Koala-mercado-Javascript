@@ -95,3 +95,43 @@
   --cor-desab-texto: #7d9a89;
   --cor-sombra: rgba(0, 0, 0, .5);
 }
+
+/* Alto contraste: ligado pelo painel "Acessibilidade" (ou pelo sistema). Vale sobre claro e escuro. */
+[data-contraste="alto"] {
+  --cor-fundo: #000000;
+  --cor-texto: #ffffff;
+  --cor-texto-fundo: #ffffff;
+  --cor-primaria: #ffff00;
+  --cor-primaria-hover: #ffffff;
+  --cor-sobre-primaria: #000000;
+  --cor-acento: #ffff00;
+  --cor-sobre-acento: #000000;
+  --cor-superficie: #000000;
+  --cor-superficie-2: #1a1a1a;
+  --cor-mudo: #e6e6e6;
+  --cor-borda: #ffffff;
+  --cor-card: #000000;
+  --cor-card-hover: #333333;
+  --cor-sobre-card: #ffffff;
+  --cor-cabecalho: #000000;
+  --cor-cabecalho-listra: #000000;
+  --cor-nav: #ffff00;
+  --cor-nav-hover: #ffffff;
+  --cor-nav-texto: #000000;
+  --cor-logo-1: #ffffff;
+  --cor-logo-2: #ffffff;
+  --cor-logo-3: #ffffff;
+  --cor-rodape: #000000;
+  --cor-rodape-base: #000000;
+  --cor-rodape-texto: #ffffff;
+  --cor-rodape-destaque: #ffff00;
+  --cor-foco: #00ffff;
+  --cor-erro: #ff9a9a;
+  --cor-erro-fundo: #000000;
+  --cor-sucesso: #8dff9f;
+  --cor-sucesso-fundo: #000000;
+  --cor-desab-fundo: #333333;
+  --cor-desab-texto: #d9d9d9;
+  --cor-toast: #ffffff;
+  --cor-sombra: rgba(0, 0, 0, 0);
+}

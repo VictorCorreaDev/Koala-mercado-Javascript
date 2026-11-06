@@ -10,6 +10,10 @@
   const $$ = (sel, raiz = document) => [...raiz.querySelectorAll(sel)];
   const pagina = location.pathname.split('/').pop() || 'index.html';
 
+  const reduzirMovimento = () =>
+    typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const comportamento = () => (reduzirMovimento() ? 'auto' : 'smooth');
+
   /* localStorage pode falhar (modo privado, arquivo local): sempre com try/catch */
   const guardar = (chave, valor) => {
     try { localStorage.setItem(chave, JSON.stringify(valor)); } catch (e) { /* ignora */ }
@@ -38,6 +42,14 @@
       const aberto = nav.classList.toggle('aberto');
       botao.setAttribute('aria-expanded', String(aberto));
       botao.textContent = aberto ? '✕ Fechar' : '☰ Menu';
+    });
+    nav.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('aberto')) {
+        nav.classList.remove('aberto');
+        botao.setAttribute('aria-expanded', 'false');
+        botao.textContent = '☰ Menu';
+        botao.focus();
+      }
     });
   }
 
@@ -70,7 +82,7 @@
 
     const atualizar = () => {
       const s = statusLoja();
-      selo.textContent = s.texto;
+      if (selo.textContent !== s.texto) selo.textContent = s.texto;
       selo.classList.toggle('aberto', s.aberto);
       selo.classList.toggle('fechado', !s.aberto);
     };
@@ -87,10 +99,17 @@
     botao.textContent = '↑';
     document.body.append(botao);
 
+    botao.hidden = true; // fora da ordem do Tab enquanto não aparece
     window.addEventListener('scroll', () => {
-      botao.classList.toggle('visivel', window.scrollY > 400);
+      const ver = window.scrollY > 400;
+      botao.hidden = !ver;
+      botao.classList.toggle('visivel', ver);
     }, { passive: true });
-    botao.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+    botao.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: comportamento() });
+      const principal = $('main');
+      if (principal) principal.focus({ preventScroll: true });
+    });
   }
 
   /* ---------- 4. Animação de entrada ao rolar a página ---------- */
@@ -160,7 +179,8 @@
       const max = Number(campo.getAttribute('maxlength'));
       const contador = document.createElement('small');
       contador.className = 'contador';
-      contador.setAttribute('aria-live', 'polite');
+      contador.id = `contador-${campo.id || Math.random().toString(36).slice(2, 7)}`;
+      campo.setAttribute('aria-describedby', [campo.getAttribute('aria-describedby'), contador.id].filter(Boolean).join(' '));
       campo.insertAdjacentElement('afterend', contador);
       const atualizar = () => {
         const restantes = max - campo.value.length;
@@ -180,33 +200,82 @@
       const aviso = document.createElement('div');
       aviso.className = 'aviso-form';
       aviso.setAttribute('role', 'alert');
+      aviso.tabIndex = -1;
       aviso.hidden = true;
       form.prepend(aviso);
 
-      const mostrar = (tipo, texto) => {
-        aviso.className = `aviso-form ${tipo}`;
-        aviso.textContent = texto;
-        aviso.hidden = false;
-        aviso.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const nota = document.createElement('p');
+      nota.innerHTML = 'Campos marcados com <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor">asterisco</span> são obrigatórios.';
+      form.prepend(nota);
+
+      const rotuloDe = (campo) => {
+        const r = campo.id && form.querySelector(`label[for="${campo.id}"]`);
+        if (r) return r.textContent.replace(/\*|\(obrigatório\)/g, '').replace(/\s+/g, ' ').trim();
+        const grupo = campo.closest('fieldset');
+        return (grupo && grupo.querySelector('legend') ? grupo.querySelector('legend').textContent : campo.name).trim();
       };
 
-      form.addEventListener('input', (e) => e.target.classList.remove('invalido'));
+      const limparErro = (campo) => {
+        campo.classList.remove('invalido');
+        campo.removeAttribute('aria-invalid');
+        const msg = campo.id && document.getElementById(`erro-${campo.id}`);
+        if (msg) {
+          const ids = (campo.getAttribute('aria-describedby') || '').split(' ').filter((i) => i && i !== msg.id);
+          if (ids.length) campo.setAttribute('aria-describedby', ids.join(' ')); else campo.removeAttribute('aria-describedby');
+          msg.remove();
+        }
+      };
+
+      const mostrar = (tipo, conteudo) => {
+        aviso.className = `aviso-form ${tipo}`;
+        aviso.setAttribute('role', tipo === 'erro' ? 'alert' : 'status');
+        aviso.replaceChildren(conteudo);
+        aviso.hidden = false;
+        aviso.scrollIntoView({ behavior: comportamento(), block: 'center' });
+      };
+
+      form.addEventListener('input', (e) => { if (e.target.matches('input, select, textarea')) limparErro(e.target); });
 
       form.addEventListener('submit', (e) => {
         e.preventDefault(); // não há servidor: o envio é simulado
+        $$('input, select, textarea', form).forEach(limparErro);
         const invalidos = $$('input, select, textarea', form).filter((c) => !c.checkValidity());
-        $$('.invalido', form).forEach((c) => c.classList.remove('invalido'));
 
         if (invalidos.length) {
-          invalidos.forEach((c) => c.classList.add('invalido'));
+          const resumo = document.createElement('div');
+          const titulo = document.createElement('p');
+          titulo.textContent = `Encontramos ${invalidos.length} campo(s) para corrigir:`;
+          const ul = document.createElement('ul');
+          invalidos.forEach((c) => {
+            c.classList.add('invalido');
+            c.setAttribute('aria-invalid', 'true');
+            if (c.id) {
+              const msg = document.createElement('small');
+              msg.id = `erro-${c.id}`;
+              msg.className = 'erro-campo';
+              msg.textContent = c.validationMessage;
+              c.setAttribute('aria-describedby', [c.getAttribute('aria-describedby'), msg.id].filter(Boolean).join(' '));
+              (c.type === 'radio' || c.type === 'checkbox' ? c.parentElement : c).insertAdjacentElement('afterend', msg);
+            }
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `#${c.id}`;
+            a.textContent = `${rotuloDe(c)}: ${c.validationMessage}`;
+            a.addEventListener('click', (ev) => { ev.preventDefault(); c.focus(); });
+            li.append(a);
+            ul.append(li);
+          });
+          resumo.append(titulo, ul);
+          mostrar('erro', resumo);
           invalidos[0].focus();
-          mostrar('erro', `Confira ${invalidos.length} campo(s) destacado(s) em vermelho: ${invalidos[0].validationMessage}`);
           return;
         }
 
         const nome = $('input[name^="nome"]', form);
         const primeiroNome = nome ? nome.value.trim().split(' ')[0] : '';
-        mostrar('sucesso', `Obrigado${primeiroNome ? ', ' + primeiroNome : ''}! Recebemos sua mensagem e responderemos em até 2 dias úteis.`);
+        const ok = document.createElement('p');
+        ok.textContent = `Obrigado${primeiroNome ? ', ' + primeiroNome : ''}! Recebemos sua mensagem e responderemos em até 2 dias úteis.`;
+        mostrar('sucesso', ok);
         if (form.querySelector('#produtos-desejados')) guardar('koala-lista', []);
         form.reset();
         $$('.contador', form).forEach((c) => c.previousElementSibling.dispatchEvent(new Event('input')));
@@ -269,8 +338,11 @@
       if (!pergunta || !resposta.length) return;
 
       pergunta.classList.add('faq-pergunta');
-      pergunta.tabIndex = 0;
-      pergunta.setAttribute('role', 'button');
+      const botaoPergunta = document.createElement('button');
+      botaoPergunta.type = 'button';
+      botaoPergunta.className = 'faq-botao';
+      botaoPergunta.append(...pergunta.childNodes);
+      pergunta.append(botaoPergunta);
       const idResp = `faq-resp-${i}`;
       const corpo = document.createElement('div');
       corpo.id = idResp;
@@ -280,15 +352,12 @@
 
       const definir = (aberto) => {
         corpo.hidden = !aberto;
-        pergunta.setAttribute('aria-expanded', String(aberto));
+        botaoPergunta.setAttribute('aria-expanded', String(aberto));
         art.classList.toggle('faq-aberto', aberto);
       };
       definir(false);
-      pergunta.setAttribute('aria-controls', idResp);
-      pergunta.addEventListener('click', () => definir(corpo.hidden));
-      pergunta.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); definir(corpo.hidden); }
-      });
+      botaoPergunta.setAttribute('aria-controls', idResp);
+      botaoPergunta.addEventListener('click', () => definir(corpo.hidden));
     });
 
     /* Ao buscar, abre automaticamente as respostas que combinam */
@@ -297,7 +366,7 @@
       busca.addEventListener('input', () => {
         const abrir = busca.value.trim() !== '';
         $$('main article').forEach((art) => {
-          const p = $('.faq-pergunta', art);
+          const p = $('.faq-botao', art);
           const c = $('.faq-resposta', art);
           if (p && c && !art.hidden) { c.hidden = !abrir; p.setAttribute('aria-expanded', String(abrir)); art.classList.toggle('faq-aberto', abrir); }
         });
@@ -324,6 +393,7 @@
       <div class="lista-corpo" hidden>
         <h2>Minha lista</h2>
         <ul class="lista-itens"></ul>
+        <p class="so-leitor lista-anuncio" role="status"></p>
         <p class="lista-vazia">Sua lista está vazia. ${ehProdutos ? 'Clique em “＋” nos produtos.' : ''}</p>
         <div class="lista-acoes">
           ${ehProdutos ? '<a class="lista-orcar" href="../orcamento.html">Pedir orçamento</a>' : '<button type="button" class="lista-usar">Usar no orçamento</button>'}
@@ -337,6 +407,8 @@
     const ul = $('.lista-itens', painel);
     const vazia = $('.lista-vazia', painel);
     const qtd = $('.lista-qtd', painel);
+    const anuncio = $('.lista-anuncio', painel);
+    const falar = (t) => { anuncio.textContent = ''; setTimeout(() => { anuncio.textContent = t; }, 50); };
 
     const desenhar = () => {
       ul.innerHTML = '';
@@ -348,7 +420,11 @@
         rm.className = 'lista-remover';
         rm.setAttribute('aria-label', `Remover ${item}`);
         rm.textContent = '✕';
-        rm.addEventListener('click', () => { lista.itens.splice(i, 1); lista.salvar(); desenhar(); });
+        rm.addEventListener('click', () => {
+          lista.itens.splice(i, 1); lista.salvar(); desenhar();
+          falar(`${item} removido da lista.`);
+          (ul.querySelectorAll('.lista-remover')[Math.min(i, lista.itens.length - 1)] || abrir).focus();
+        });
         li.append(rm);
         ul.append(li);
       });
@@ -359,6 +435,7 @@
         b.classList.toggle('marcado', marcado);
         b.textContent = marcado ? '✓' : '＋';
         b.setAttribute('aria-pressed', String(marcado));
+        b.setAttribute('aria-label', `Adicionar à lista: ${b.dataset.item}`);
       });
     };
 
@@ -366,7 +443,10 @@
       corpo.hidden = !corpo.hidden;
       abrir.setAttribute('aria-expanded', String(!corpo.hidden));
     });
-    $('.lista-limpar', painel).addEventListener('click', () => { lista.itens = []; lista.salvar(); desenhar(); });
+    painel.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !corpo.hidden) { corpo.hidden = true; abrir.setAttribute('aria-expanded', 'false'); abrir.focus(); }
+    });
+    $('.lista-limpar', painel).addEventListener('click', () => { lista.itens = []; lista.salvar(); desenhar(); falar('Lista esvaziada.'); abrir.focus(); });
 
     if (ehProdutos) {
       $$('main article li').forEach((li) => {
@@ -381,6 +461,7 @@
           if (pos >= 0) lista.itens.splice(pos, 1); else lista.itens.push(texto);
           lista.salvar();
           desenhar();
+          falar(pos >= 0 ? `${texto} removido da lista.` : `${texto} adicionado à lista.`);
         });
         li.append(' ', botao);
       });
@@ -433,7 +514,8 @@
     raiz.classList.add('js-carrossel');
     let atual = 0;
     let timer = null;
-    const reduzir = typeof window.matchMedia === 'function' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const reduzir = reduzirMovimento();
+    let pausado = false; // pausa escolhida pelo usuário (WCAG 2.2.2)
 
     const criarBotao = (classe, rotulo, texto) => {
       const b = document.createElement('button');
@@ -453,7 +535,10 @@
       pontos.append(b);
       return b;
     });
-    raiz.append(anterior, pontos, proximo);
+    const pausa = criarBotao('carrossel-pausa', 'Pausar rotação automática dos slides', 'Pausar');
+    pausa.setAttribute('aria-pressed', 'false');
+    raiz.append(pausa, anterior, pontos, proximo);
+    faixa.setAttribute('aria-live', 'off');
 
     function ir(i) {
       atual = (i + slides.length) % slides.length;
@@ -465,13 +550,21 @@
       });
       bolinhas.forEach((b, n) => {
         b.classList.toggle('ativo', n === atual);
-        b.setAttribute('aria-current', String(n === atual));
+        if (n === atual) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current');
       });
     }
     const parar = () => { clearInterval(timer); timer = null; };
-    const iniciar = () => { if (!reduzir && !timer) timer = setInterval(() => ir(atual + 1), 5000); };
+    const iniciar = () => { if (!reduzir && !pausado && !timer) timer = setInterval(() => ir(atual + 1), 5000); };
     const reiniciar = () => { parar(); iniciar(); };
 
+    pausa.addEventListener('click', () => {
+      pausado = !pausado;
+      pausa.textContent = pausado ? 'Reproduzir' : 'Pausar';
+      pausa.setAttribute('aria-label', pausado ? 'Retomar rotação automática dos slides' : 'Pausar rotação automática dos slides');
+      pausa.setAttribute('aria-pressed', String(pausado));
+      faixa.setAttribute('aria-live', pausado ? 'polite' : 'off');
+      if (pausado) parar(); else iniciar();
+    });
     anterior.addEventListener('click', () => { ir(atual - 1); reiniciar(); });
     proximo.addEventListener('click', () => { ir(atual + 1); reiniciar(); });
 
@@ -480,7 +573,6 @@
     raiz.addEventListener('mouseleave', iniciar);
     raiz.addEventListener('focusin', parar);
     raiz.addEventListener('focusout', iniciar);
-    raiz.tabIndex = 0;
     raiz.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowLeft') { ir(atual - 1); reiniciar(); }
       if (e.key === 'ArrowRight') { ir(atual + 1); reiniciar(); }
@@ -497,10 +589,57 @@
     });
 
     ir(0);
+    if (reduzir) pausa.hidden = true;
     iniciar();
   }
 
+  /* ---------- 14. Barra de acessibilidade: tamanho da letra e alto contraste ---------- */
+  function barraAcessibilidade() {
+    const raiz = document.documentElement;
+    const prefs = ler('koala-acessibilidade', null) || {
+      fonte: 0,
+      contraste: typeof window.matchMedia === 'function' && window.matchMedia('(prefers-contrast: more)').matches,
+    };
+
+    const barra = document.createElement('div');
+    barra.className = 'barra-acessibilidade';
+    barra.setAttribute('role', 'region');
+    barra.setAttribute('aria-label', 'Ferramentas de acessibilidade');
+    barra.innerHTML = `
+      <span>Acessibilidade:</span>
+      <button type="button" data-acao="menos" aria-label="Diminuir tamanho da letra">A−</button>
+      <button type="button" data-acao="normal" aria-label="Tamanho normal da letra">A</button>
+      <button type="button" data-acao="mais" aria-label="Aumentar tamanho da letra">A+</button>
+      <button type="button" data-acao="contraste" aria-pressed="false">Alto contraste</button>
+      <p class="so-leitor" role="status"></p>`;
+    const aviso = $('p', barra);
+    const btnContraste = $('[data-acao="contraste"]', barra);
+
+    const aplicar = (anunciar) => {
+      prefs.fonte = Math.max(0, Math.min(3, prefs.fonte));
+      if (prefs.fonte) raiz.dataset.fonte = String(prefs.fonte); else delete raiz.dataset.fonte;
+      if (prefs.contraste) raiz.dataset.contraste = 'alto'; else delete raiz.dataset.contraste;
+      btnContraste.setAttribute('aria-pressed', String(prefs.contraste));
+      guardar('koala-acessibilidade', prefs);
+      if (anunciar) aviso.textContent = `Letra em ${['100%', '112%', '125%', '150%'][prefs.fonte]}. Alto contraste ${prefs.contraste ? 'ligado' : 'desligado'}.`;
+    };
+    barra.addEventListener('click', (e) => {
+      const b = e.target.closest('button[data-acao]');
+      if (!b) return;
+      const a = b.dataset.acao;
+      if (a === 'mais') prefs.fonte += 1;
+      if (a === 'menos') prefs.fonte -= 1;
+      if (a === 'normal') prefs.fonte = 0;
+      if (a === 'contraste') prefs.contraste = !prefs.contraste;
+      aplicar(true);
+    });
+    aplicar(false);
+    const pular = $('.pular-conteudo');
+    if (pular) pular.insertAdjacentElement('afterend', barra); else document.body.prepend(barra);
+  }
+
   /* ---------- Inicialização ---------- */
+  barraAcessibilidade();
   menuMobile();
   seloAbertoFechado();
   voltarAoTopo();

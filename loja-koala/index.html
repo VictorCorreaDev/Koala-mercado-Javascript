@@ -42,7 +42,7 @@
     <section style="margin-top: var(--espaco-16)">
       <div class="secao-topo">
         <h2>Ofertas do dia</h2>
-        <span>Terminam em <span class="cronometro" id="cronometro"><b>00</b>:<b>00</b>:<b>00</b></span></span>
+        <span>Terminam em <span class="cronometro" id="cronometro" role="timer" aria-label="Tempo restante das ofertas"><b>00</b>:<b>00</b>:<b>00</b></span></span>
         <a href="promocoes.html">Ver todas as promoções</a>
       </div>
       <div class="grade-produtos" id="ofertas"></div>
@@ -65,10 +65,10 @@
           <div class="campo">
             <label for="email">Seu e-mail</label>
             <input id="email" type="email" autocomplete="email" aria-describedby="email-erro">
-            <div class="campo__erro" id="email-erro" hidden></div>
+            <div class="campo__erro" id="email-erro" role="alert" hidden></div>
           </div>
           <button class="botao" type="submit">Quero receber</button>
-          <div class="aviso aviso--sucesso" id="news-ok" hidden style="margin-top: var(--espaco-3)">Pronto! Você vai receber o encarte da semana.</div>
+          <div class="aviso aviso--sucesso" id="news-ok" role="status" hidden style="margin-top: var(--espaco-3)">Pronto! Você vai receber o encarte da semana.</div>
         </form>
       </div>
     </section>
@@ -105,21 +105,32 @@
     const prox = botao("carrossel__seta carrossel__seta--prox", "Próximo slide", "›");
     const pontos = document.createElement("div"); pontos.className = "carrossel__pontos";
     const bolas = slides.map((_, i) => { const b = botao("", `Ir para o slide ${i + 1}`, ""); b.addEventListener("click", () => { ir(i); reiniciar(); }); pontos.appendChild(b); return b; });
-    raiz.append(ant, pontos, prox);
+    const pausa = botao("carrossel__pausa", "Pausar rotação automática dos slides", "Pausar"); pausa.setAttribute("aria-pressed", "false");
+    let pausado = false;
+    raiz.append(pausa, ant, pontos, prox);
     function ir(i) {
       atual = (i + slides.length) % slides.length;
       faixa.style.transform = `translateX(-${atual * 100}%)`;
       slides.forEach((s, n) => { s.setAttribute("aria-hidden", n !== atual); s.querySelectorAll("a").forEach(a => { a.tabIndex = n === atual ? 0 : -1; }); });
-      bolas.forEach((b, n) => b.setAttribute("aria-current", n === atual));
+      bolas.forEach((b, n) => { if (n === atual) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
     }
     const parar = () => { clearInterval(timer); timer = null; };
-    const iniciar = () => { if (!reduzir && !timer) timer = setInterval(() => ir(atual + 1), 5000); };
+    const iniciar = () => { if (!reduzir && !pausado && !timer) timer = setInterval(() => ir(atual + 1), 5000); };
     const reiniciar = () => { parar(); iniciar(); };
+    pausa.addEventListener("click", () => {
+      pausado = !pausado;
+      pausa.textContent = pausado ? "Reproduzir" : "Pausar";
+      pausa.setAttribute("aria-label", pausado ? "Retomar rotação automática dos slides" : "Pausar rotação automática dos slides");
+      pausa.setAttribute("aria-pressed", pausado);
+      faixa.setAttribute("aria-live", pausado ? "polite" : "off");
+      if (pausado) parar(); else iniciar();
+    });
+    faixa.setAttribute("aria-live", "off");
+    if (reduzir) pausa.hidden = true;
     ant.addEventListener("click", () => { ir(atual - 1); reiniciar(); });
     prox.addEventListener("click", () => { ir(atual + 1); reiniciar(); });
     raiz.addEventListener("mouseenter", parar); raiz.addEventListener("mouseleave", iniciar);
     raiz.addEventListener("focusin", parar); raiz.addEventListener("focusout", iniciar);
-    raiz.tabIndex = 0;
     raiz.addEventListener("keydown", e => { if (e.key === "ArrowLeft") { ir(atual - 1); reiniciar(); } if (e.key === "ArrowRight") { ir(atual + 1); reiniciar(); } });
     let x0 = null;
     raiz.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });

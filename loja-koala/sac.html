@@ -35,7 +35,7 @@
       ${(anon ? ["Conduta de funcionário", "Fraude", "Segurança dos alimentos", "Outro"] : ["Dúvida", "Elogio", "Reclamação", "Sugestão"]).map(o => `<option>${o}</option>`).join("")}</select><div class="campo__erro" hidden></div></div>
     <div class="campo"><label>Mensagem</label><textarea name="msg" rows="5" maxlength="500"></textarea><span class="campo__ajuda"><span class="c">0</span>/500 — mínimo de 10 caracteres</span><div class="campo__erro" hidden></div></div>
     <button class="botao" type="submit">Enviar</button>
-    <div class="aviso aviso--sucesso" hidden style="margin-top: var(--espaco-4)"></div>`;
+    <div class="aviso aviso--sucesso" role="status" hidden style="margin-top: var(--espaco-4)"></div>`;
 
   $$(".f").forEach((f, i) => {
     f.innerHTML = modelo(i === 1);
@@ -47,6 +47,14 @@
       assunto: v => !!v || "Escolha um assunto.",
       msg: v => v.trim().length >= 10 || "Escreva ao menos 10 caracteres.",
     };
+    ["nome", "email", "assunto", "msg"].forEach(n => {
+      const el = f.elements[n], msg = el.closest(".campo").querySelector(".campo__erro");
+      msg.id = el.id + "-erro"; msg.setAttribute("role", "alert");
+      el.setAttribute("aria-describedby", msg.id);
+      if (n === "assunto" || n === "msg") el.setAttribute("aria-required", "true");
+    });
+    f.elements.msg.setAttribute("aria-describedby", f.elements.msg.id + "-erro " + f.elements.msg.id + "-ajuda");
+    $(".campo__ajuda", f).id = f.elements.msg.id + "-ajuda";
     f.addEventListener("submit", e => {
       e.preventDefault();
       const anon = f.elements.anon && f.elements.anon.checked;
