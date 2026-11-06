@@ -262,9 +262,9 @@ h1.sobre-fundo::after, .secao-topo h2::after, #dicas h2::after { content: ""; di
   .logo::before { top: -50px; height: 160px; }
   .logo img { width: 190px; }
   .nav { position: static; display: none; }
-  .cabecalho.aberto { height: auto; padding-bottom: var(--espaco-3); }
+  .cabecalho.aberto { height: auto; padding-bottom: var(--espaco-3); display: flex; flex-direction: column; align-items: center; }
   .cabecalho.aberto .nav { display: flex; flex-wrap: wrap; justify-content: center; margin: var(--espaco-2) var(--espaco-3) 0; }
-  .cabecalho.aberto .logo { position: relative; left: auto; transform: none; margin: 0 auto; }
+  .cabecalho.aberto .logo { position: relative; left: auto; transform: none; margin: 0 auto; order: -1; } /* logo no topo, botões abaixo dela */
   .menu-lista { left: 50%; transform: translateX(-50%); }
   .rodape__topo { flex-wrap: wrap; }
   .rodape__cols { grid-template-columns: repeat(3, 1fr); }
