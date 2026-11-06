@@ -68,7 +68,6 @@
   }
 
   /* cabeçalho e rodapé estão escritos no HTML de cada página; aqui só entram os comportamentos */
-  const RAIZ = new URL("..", document.currentScript.src).href; // pasta raiz do site
   function montarLayout() {
     const h = $(".cabecalho");
     if (h) {
@@ -100,7 +99,7 @@
     montarAcessibilidade();
     if (!$(".flutuante--ajuda")) {
       document.body.insertAdjacentHTML("beforeend",
-        `<button class="flutuante flutuante--tema" type="button"></button><a class="flutuante flutuante--ajuda" href="${RAIZ}paginas/sac.html">Posso ajudar?</a>`);
+        `<button class="flutuante flutuante--tema" type="button"></button><a class="flutuante flutuante--ajuda" href="sac.html">Posso ajudar?</a>`);
       $(".flutuante--tema").addEventListener("click", alternarTema);
     }
     syncTema();

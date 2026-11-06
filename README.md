@@ -3,7 +3,7 @@
 Site do **Mercado Koala**, mercado de bairro da Vila Carrão (São Paulo), feito com HTML, CSS e JavaScript puro, sem bibliotecas.
 Projeto da disciplina de **Desenvolvimento Frontend para Web** (A2 · 2026.2), Prof. Cid Andrade. Este README atende ao item 6 do enunciado da **Entrega 2**.
 
-**Site hospedado:** https://veronisky.github.io/Koala-mercado-Javascript/ (GitHub Pages, publicado a cada atualização da branch `main`)
+**Site hospedado:** https://veronisky.github.io/Koala-mercado-Javascript/ (GitHub Pages, publica a pasta `loja-koala/` a cada atualização da branch `main`) · também em https://koala-supermercados.vercel.app/
 
 ---
 
@@ -32,40 +32,44 @@ O **Mercado Koala** é um mercado de bairro localizado na:
 
 ## 🗂️ Estrutura do projeto
 
-Segue a organização sugerida no enunciado (página inicial na raiz, páginas de conteúdo em `paginas/`, e pastas `css/`, `js/` e `assets/`).
+O site fica todo na pasta `loja-koala/`, com as páginas lado a lado (sem subpastas), o que deixa todos os links simples e iguais em qualquer página. Os nomes `index.html`, `contato.html` e `orcamento.html` seguem o enunciado.
 
 ```
 Koala-mercado-Javascript/
-├── index.html                  # Página inicial
-├── paginas/
-│   ├── contato.html            # Contato (formulário com validação nativa do HTML5)
-│   ├── orcamento.html          # Orçamento / solicitação
-│   ├── sobre.html              # Quem somos (foto da entrevista)
-│   ├── departamentos.html      # Departamentos e serviços (vídeo e áudio)
-│   ├── produtos.html           # Produtos com busca, filtro e ordenação
-│   ├── promocoes.html          # Encarte de promoções
-│   ├── lista.html              # Lista de compras
-│   ├── faq.html                # Perguntas frequentes
-│   ├── depoimentos.html        # Depoimentos de clientes
-│   ├── trabalhe-conosco.html   # Trabalhe conosco (cadastro de currículo)
-│   ├── parceiros.html          # Parceiros e marcas
-│   ├── politica.html           # Política de privacidade
-│   ├── sac.html                # SAC e canal de denúncias
-│   └── catalogo.html           # Catálogo de componentes (teste visual)
-├── css/
-│   ├── tokens.css              # Fonte única de cores, espaços, raios e tipografia
-│   └── estilos.css             # Componentes e layout (Grid e Flexbox)
-├── js/
-│   ├── data.js                 # Categorias, produtos, dicas e modelos de lista
-│   ├── app.js                  # Tema, lista de compras, menus, acessibilidade
-│   └── formularios.js          # Máscaras e confirmação dos formulários
-├── assets/
-│   ├── img/                    # logo.svg, app.svg, fotos/ e foto da entrevista
-│   ├── audio/                  # Áudio de apresentação
-│   ├── video/                  # Vídeo de apresentação
-│   └── prints/                 # Capturas usadas neste README
-├── AGENTS.md                   # Regras do projeto usadas como contexto para a IA
-└── README.md
+├── README.md                   # este arquivo
+├── .github/workflows/pages.yml # publica a pasta loja-koala/ no GitHub Pages
+└── loja-koala/
+    ├── index.html              # página inicial
+    ├── produtos.html           # produtos, com busca e filtros
+    ├── promocoes.html          # encarte
+    ├── lista.html              # lista de compras
+    ├── sac.html                # SAC e canal de denúncias
+    ├── catalogo.html           # todos os componentes em todos os estados
+    ├── contato.html            # contato (formulário com validação nativa do HTML5)
+    ├── orcamento.html          # orçamento / solicitação
+    ├── sobre.html              # quem somos (foto da entrevista)
+    ├── departamentos.html      # departamentos e serviços (vídeo e áudio)
+    ├── faq.html                # perguntas frequentes
+    ├── depoimentos.html        # depoimentos de clientes
+    ├── trabalhe-conosco.html   # cadastro de currículo
+    ├── parceiros.html          # parceiros e marcas
+    ├── politica.html           # política de privacidade
+    ├── tokens.css              # fonte única de cores, espaços, raios e fontes
+    ├── AGENTS.md               # regras do projeto para a IA seguir
+    ├── css/
+    │   └── estilos.css         # estilo dos componentes e do layout
+    ├── js/
+    │   ├── data.js             # categorias, produtos, dicas e modelos de lista
+    │   ├── app.js              # tema, acessibilidade, lista e menus do cabeçalho
+    │   └── formularios.js      # máscaras e confirmação dos formulários
+    ├── img/
+    │   ├── logo.svg            # logo da Koala
+    │   ├── app.svg             # celular do rodapé
+    │   ├── entrevista-responsavel.jpg, acougue-carnes.jpg, padaria-paes.jpg
+    │   └── fotos/              # fotos dos produtos + CREDITOS.md
+    ├── audio/                  # áudio de apresentação
+    ├── video/                  # vídeo de apresentação
+    └── docs/prints/            # imagens usadas neste README
 ```
 
 São **15 páginas HTML** interligadas pelo mesmo menu (cabeçalho) e pelo mesmo mapa do site (rodapé).
@@ -76,11 +80,11 @@ São **15 páginas HTML** interligadas pelo mesmo menu (cabeçalho) e pelo mesmo
 |---|---|
 | 10 páginas interligadas, com `index`, `contato` e `orcamento` | 15 páginas; menu igual no `<header>` e mapa do site no `<footer>` de todas |
 | `header`, `nav`, `main`, `section`, `article`, `footer` | Em todas as páginas. O cabeçalho e o rodapé estão escritos no HTML (antes eram gerados por JavaScript) |
-| Formulário de contato com validação nativa do HTML5 | `paginas/contato.html`: `required`, `type="email"`, `type="tel"`, `pattern`, `minlength`, `maxlength`. O navegador bloqueia o envio sem depender de JS |
+| Formulário de contato com validação nativa do HTML5 | `contato.html`: `required`, `type="email"`, `type="tel"`, `pattern`, `minlength`, `maxlength`. O navegador bloqueia o envio sem depender de JS |
 | Máscaras | `js/formularios.js` formata telefone `(11) 99999-9999` e CNPJ `00.000.000/0000-00` enquanto a pessoa digita. O formato é conferido pelo `pattern` do HTML |
-| `<audio>` e `<video>` | `paginas/departamentos.html`, seção "Conheça Nosso Mercado" |
-| SVG em uma imagem | `assets/img/logo.svg` (logo no cabeçalho) e `assets/img/app.svg` (celular no rodapé) |
-| CSS com identidade única, Grid e Flexbox | `css/tokens.css` + `css/estilos.css`. Grid nas grades de categorias, produtos, dicas, rodapé, seções e formulários; Flexbox no corpo, cabeçalho, filtros e botões |
+| `<audio>` e `<video>` | `departamentos.html`, seção "Conheça Nosso Mercado" |
+| SVG em uma imagem | `img/logo.svg` (logo no cabeçalho) e `img/app.svg` (celular no rodapé) |
+| CSS com identidade única, Grid e Flexbox | `tokens.css` + `css/estilos.css`. Grid nas grades de categorias, produtos, dicas, rodapé, seções e formulários; Flexbox no corpo, cabeçalho, filtros e botões |
 | JavaScript respondendo a eventos | Carrossel, menus, lista de compras, busca e filtros, tema escuro, painel de acessibilidade, abas do SAC, máscaras |
 | Validação W3C | Ver [Validação](#-validação-w3c) |
 
@@ -94,9 +98,9 @@ O Mercado Koala é o negócio do pai de Marcelo Gabriel Alves, o que garantiu ac
 
 A entrevista foi feita de forma presencial.
 
-> 📷 **Foto que comprova o contato com o responsável:** [`assets/img/entrevista-responsavel.jpg`](assets/img/entrevista-responsavel.jpg), também exibida na página [Quem somos](paginas/sobre.html).
+> 📷 **Foto que comprova o contato com o responsável:** [`loja-koala/img/entrevista-responsavel.jpg`](loja-koala/img/entrevista-responsavel.jpg), também exibida na página [Quem somos](loja-koala/sobre.html).
 
-![Foto do contato com o responsável](assets/img/entrevista-responsavel.jpg)
+![Foto do contato com o responsável](loja-koala/img/entrevista-responsavel.jpg)
 
 ### Processo de desenvolvimento
 
@@ -106,22 +110,22 @@ A entrevista foi feita de forma presencial.
 
 **Testes de paleta e tipografia.**
 1. A primeira versão usava **azul claro com cinza claro** (cores do koala), com Bootstrap só no menu.
-2. Na loja nova a cor principal passou para **verde escuro**, que lembra mercado, frescor e confiança. A troca foi feita só em `css/tokens.css`, nos temas claro e escuro, e nos SVGs do logo e do app.
+2. Na loja nova a cor principal passou para **verde escuro**, que lembra mercado, frescor e confiança. A troca foi feita só em `tokens.css`, nos temas claro e escuro, e nos SVGs do logo e do app.
 3. Preços ficam em verde, ofertas em vermelho e o foco do teclado em amarelo, para manter o contraste.
 4. Tipografia: **Barlow Condensed** (Google Fonts), em escala de 1.25.
 5. Geometria: bordas de 12 px (`--raio`) e espaços em escala de 4 px.
 
-**Design system.** Todas as cores, espaços e raios estão em `css/tokens.css`. Nenhum outro arquivo tem cor hexadecimal. A página `paginas/catalogo.html` mostra cada componente (botão, campo, card, aviso, item da lista) em todos os estados.
+**Design system.** Todas as cores, espaços e raios estão em `tokens.css`. Nenhum outro arquivo tem cor hexadecimal. A página `catalogo.html` mostra cada componente (botão, campo, card, aviso, item da lista) em todos os estados.
 
 **Reorganização da Entrega 2.** O repositório tinha dois sites: o institucional, na raiz, e a loja, em `loja-koala/`. Eles foram unidos em um só, na estrutura do enunciado:
-- a loja passou a ser a página inicial, e suas páginas foram para `paginas/`;
+- a loja continua em `loja-koala/`, e as páginas institucionais entraram na mesma pasta, ao lado das da loja;
 - as páginas institucionais (Quem somos, Departamentos, Contato, Orçamento, FAQ, Depoimentos, Trabalhe conosco, Parceiros, Política) ganharam o visual da loja **sem mudança de conteúdo**. Só saiu uma frase desatualizada que dizia que o vídeo e o áudio seriam "reposicionados quando definirmos o CSS";
 - horários, mapa e boas-vindas da antiga página inicial foram para a nova página inicial;
 - o cabeçalho, o menu e o rodapé deixaram de ser gerados por JavaScript e passaram a estar no HTML de cada página;
 - as perguntas do FAQ viraram `<details>`/`<summary>`, que abrem e fecham sem JavaScript.
 
 **Desafios técnicos.**
-- **Caminhos relativos:** as fotos dos produtos são montadas pelo JavaScript e precisam funcionar tanto em `index.html` quanto em `paginas/`. O `data.js` calcula o endereço a partir da própria localização (`new URL("../assets/img/fotos/", document.currentScript.src)`).
+- **Caminhos relativos:** com todas as páginas na mesma pasta, os links e as fotos montadas pelo JavaScript (`img/fotos/...`) funcionam igual em qualquer página, sem `../`.
 - **Validação nativa x máscara:** a máscara só formata o texto. Quem decide se o campo é válido é o `pattern` do HTML.
 - **CNPJ condicional:** o campo só fica obrigatório quando o tipo de cliente é "Pessoa jurídica".
 - **Acessibilidade:** link "Pular para o conteúdo", `aria-current` no menu, foco visível em duas cores, tema escuro, alto contraste e ajuste do tamanho da letra.
@@ -130,26 +134,26 @@ A entrevista foi feita de forma presencial.
 
 | Página inicial | Celular (360 px) |
 |---|---|
-| ![Página inicial](assets/prints/01-inicio.png) | ![Celular](assets/prints/04-celular-360px.png) |
+| ![Página inicial](loja-koala/docs/prints/01-inicio.png) | ![Celular](loja-koala/docs/prints/04-celular-360px.png) |
 
 | Produtos do açougue | Lista de compras |
 |---|---|
-| ![Produtos](assets/prints/05-produtos-acougue.png) | ![Lista](assets/prints/02-lista-de-compras.png) |
+| ![Produtos](loja-koala/docs/prints/05-produtos-acougue.png) | ![Lista](loja-koala/docs/prints/02-lista-de-compras.png) |
 
 | Contato (validação nativa) | Departamentos (vídeo e áudio) |
 |---|---|
-| ![Contato](assets/prints/07-contato.png) | ![Departamentos](assets/prints/08-departamentos.png) |
+| ![Contato](loja-koala/docs/prints/07-contato.png) | ![Departamentos](loja-koala/docs/prints/08-departamentos.png) |
 
 | Tema escuro | Catálogo de componentes |
 |---|---|
-| ![Tema escuro](assets/prints/06-tema-escuro.png) | ![Catálogo](assets/prints/03-catalogo-de-componentes.png) |
+| ![Tema escuro](loja-koala/docs/prints/06-tema-escuro.png) | ![Catálogo](loja-koala/docs/prints/03-catalogo-de-componentes.png) |
 
 ### Como seria o mesmo resultado feito com IA
 
 O professor passou um fluxo em quatro passos, que é o que usaríamos para obter um resultado equivalente com IA:
 
 1. **Referência antes:** escolher o site de referência (Guanabara) e descrever para a IA só o leiaute que deve ser seguido.
-2. **Design system como contexto:** entregar `css/tokens.css` e `AGENTS.md` junto com o pedido, para a IA usar só as variáveis e os componentes existentes.
+2. **Design system como contexto:** entregar `tokens.css` e `AGENTS.md` junto com o pedido, para a IA usar só as variáveis e os componentes existentes.
 3. **Prompt com critério de aceite:** pedir cada página com uma lista do que precisa funcionar (exemplo: "o formulário bloqueia o envio sem e-mail válido usando só HTML").
 4. **Teste depois:** conferir no navegador em 360, 768 e 1280 px, no `catalogo.html` e no validador W3C.
 
@@ -167,8 +171,9 @@ A IA gera a estrutura bem mais rápido. Mas o conteúdo real (endereço, horári
 Todas as páginas e os arquivos CSS foram verificados com o **Nu Html Checker** (`vnu.jar`, o mesmo motor do https://validator.w3.org/) e passaram **sem erros e sem avisos**:
 
 ```
-java -jar vnu.jar index.html paginas/*.html   # 0 mensagens
-java -jar vnu.jar --css css/*.css             # 0 mensagens
+cd loja-koala
+java -jar vnu.jar *.html                          # 0 mensagens
+java -jar vnu.jar --css tokens.css css/estilos.css  # 0 mensagens
 ```
 
 **[COMPLETAR pelo grupo]:** colocar aqui os prints da validação online, em https://validator.w3.org/ (por endereço do site publicado) e em https://jigsaw.w3.org/css-validator/, que é o que o enunciado pede como comprovação.
@@ -207,6 +212,6 @@ A maior lição da reorganização final foi não depender de JavaScript para o 
 
 ### Créditos das fotos
 
-As fotos dos produtos são do Wikimedia Commons; autor e licença de cada uma estão em [assets/img/fotos/CREDITOS.md](assets/img/fotos/CREDITOS.md). As fotos do açougue e da padaria da página de departamentos estão em `assets/img/`.
+As fotos dos produtos são do Wikimedia Commons; autor e licença de cada uma estão em [loja-koala/img/fotos/CREDITOS.md](loja-koala/img/fotos/CREDITOS.md). As fotos do açougue e da padaria da página de departamentos estão em `loja-koala/img/`.
 
 *Projeto desenvolvido para fins acadêmicos — Desenvolvimento Frontend para Web, 2026.*

@@ -6,10 +6,10 @@
 <meta name="description" content="Catálogo de componentes visuais do site do Mercado Koala em todos os estados.">
 <title>Catálogo de componentes – Koala</title>
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../css/tokens.css">
-<link rel="stylesheet" href="../css/estilos.css">
-<script src="../js/data.js"></script>
-<script src="../js/app.js"></script>
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="css/estilos.css">
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
 </head>
 <body>
 <header class="cabecalho">
@@ -21,7 +21,7 @@
     <div class="menu">
       <button type="button" aria-expanded="false">Produtos ▾</button>
       <ul class="menu-lista">
-          <li><a href="../index.html">Todas as categorias</a></li>
+          <li><a href="index.html">Todas as categorias</a></li>
           <li><a href="produtos.html?cat=acougue">Açougue</a></li>
           <li><a href="produtos.html?cat=bebidas">Bebidas</a></li>
           <li><a href="produtos.html?cat=biscoitos">Biscoitos</a></li>
@@ -39,7 +39,7 @@
       </ul>
     </div>
   </nav>
-  <a class="logo" href="../index.html" aria-label="Koala Supermercados – início"><img src="../assets/img/logo.svg" alt="Koala Supermercados"></a>
+  <a class="logo" href="index.html" aria-label="Koala Supermercados – início"><img src="img/logo.svg" alt="Koala Supermercados"></a>
   <nav class="nav nav--dir" aria-label="Institucional">
     <div class="menu">
       <button type="button" aria-expanded="false">O Koala ▾</button>
@@ -106,15 +106,15 @@
     </div></div>
 
     <div class="bloco"><h3>.card (categoria)</h3><div class="estados" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))">
-      <figure><a class="card" href="#"><img src="../assets/img/fotos/acougue.jpg" alt=""><span>Açougue</span></a><figcaption>Normal</figcaption></figure>
-      <figure><a class="card is-hover" href="#"><img src="../assets/img/fotos/bebidas.jpg" alt=""><span>Bebidas</span></a><figcaption>Hover</figcaption></figure>
-      <figure><a class="card is-foco" href="#"><img src="../assets/img/fotos/massas.jpg" alt=""><span>Massas</span></a><figcaption>Foco</figcaption></figure>
+      <figure><a class="card" href="#"><img src="img/fotos/acougue.jpg" alt=""><span>Açougue</span></a><figcaption>Normal</figcaption></figure>
+      <figure><a class="card is-hover" href="#"><img src="img/fotos/bebidas.jpg" alt=""><span>Bebidas</span></a><figcaption>Hover</figcaption></figure>
+      <figure><a class="card is-foco" href="#"><img src="img/fotos/massas.jpg" alt=""><span>Massas</span></a><figcaption>Foco</figcaption></figure>
     </div></div>
 
     <div class="bloco"><h3>.card--vertical (produto)</h3><div class="estados" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr))">
-      <figure><article class="card card--vertical"><img src="../assets/img/fotos/cereais.jpg" alt=""><div class="card__corpo"><h3>Arroz Branco</h3><div class="card__mudo">5 kg</div><div class="preco">R$ 27,90</div><button class="botao" type="button">Adicionar à lista</button></div></article><figcaption>Normal</figcaption></figure>
-      <figure><article class="card card--vertical"><span class="etiqueta">-12%</span><img src="../assets/img/fotos/cereais.jpg" alt=""><div class="card__corpo"><h3>Arroz Branco</h3><div class="card__mudo">5 kg</div><div class="preco"><s>R$ 31,90</s>R$ 27,90</div><button class="botao" type="button">Adicionar à lista</button></div></article><figcaption>Em promoção</figcaption></figure>
-      <figure><article class="card card--vertical"><img src="../assets/img/fotos/cereais.jpg" alt=""><div class="card__corpo"><h3>Arroz Branco</h3><div class="card__mudo">5 kg</div><div class="preco">R$ 27,90</div><button class="botao" type="button" disabled>Indisponível</button></div></article><figcaption>Desabilitado</figcaption></figure>
+      <figure><article class="card card--vertical"><img src="img/fotos/cereais.jpg" alt=""><div class="card__corpo"><h3>Arroz Branco</h3><div class="card__mudo">5 kg</div><div class="preco">R$ 27,90</div><button class="botao" type="button">Adicionar à lista</button></div></article><figcaption>Normal</figcaption></figure>
+      <figure><article class="card card--vertical"><span class="etiqueta">-12%</span><img src="img/fotos/cereais.jpg" alt=""><div class="card__corpo"><h3>Arroz Branco</h3><div class="card__mudo">5 kg</div><div class="preco"><s>R$ 31,90</s>R$ 27,90</div><button class="botao" type="button">Adicionar à lista</button></div></article><figcaption>Em promoção</figcaption></figure>
+      <figure><article class="card card--vertical"><img src="img/fotos/cereais.jpg" alt=""><div class="card__corpo"><h3>Arroz Branco</h3><div class="card__mudo">5 kg</div><div class="preco">R$ 27,90</div><button class="botao" type="button" disabled>Indisponível</button></div></article><figcaption>Desabilitado</figcaption></figure>
     </div></div>
 
     <div class="bloco"><h3>.aviso e .toast</h3><div style="display: grid; gap: var(--espaco-2)">
@@ -135,12 +135,12 @@
     <div class="app">
       <div class="app__texto"><strong>Baixe nosso<br><em>aplicativo!</em></strong>
         <a class="selo-loja" href="#">Disponível na<br><b>App Store</b></a></div>
-      <img src="../assets/img/app.svg" alt="Aplicativo Koala em um celular">
+      <img src="img/app.svg" alt="Aplicativo Koala em um celular">
     </div>
     <nav class="rodape__cols" aria-label="Mapa do site">
       <div><h2 class="rodape__tit">Koala</h2><ul>
         <li><a href="sobre.html">Quem somos</a></li>
-        <li><a href="../index.html#dicas">Dicas</a></li>
+        <li><a href="index.html#dicas">Dicas</a></li>
         <li><a href="faq.html">Perguntas frequentes</a></li>
         <li><a href="trabalhe-conosco.html">Trabalhe conosco</a></li></ul></div>
       <div><h2 class="rodape__tit">Produtos</h2><ul>
