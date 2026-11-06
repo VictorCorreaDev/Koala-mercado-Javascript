@@ -1,38 +1,68 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Trabalhe no Mercado Koala — confira as vagas disponíveis e cadastre seu currículo. Junte-se à nossa equipe em Vila Carrão, São Paulo." />
-  <title>Trabalhe Conosco — Mercado Koala</title>
-  <link href="../css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Trabalhe no Mercado Koala — confira as vagas disponíveis e cadastre seu currículo. Junte-se à nossa equipe em Vila Carrão, São Paulo.">
+<title>Trabalhe Conosco — Mercado Koala</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/estilos.css">
+<script src="../js/data.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/formularios.js" defer></script>
 </head>
 <body>
-  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo principal</a>
-
-  <header>
-    <h1>Mercado Koala</h1>
-    <p>Seu mercado de bairro em Vila Carrão, São Paulo</p>
-  </header>
-
-  <nav aria-label="Menu principal">
-    <ul class="nav nav-pills justify-content-center">
-      <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
-      <li class="nav-item"><a class="nav-link" href="sobre.html">Quem Somos</a></li>
-      <li class="nav-item"><a class="nav-link" href="produtos.html">Produtos &amp; Serviços</a></li>
-      <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-      <li class="nav-item"><a class="nav-link" href="depoimentos.html">Depoimentos</a></li>
-      <li class="nav-item"><a class="nav-link" href="trabalhe-conosco.html" aria-current="page">Trabalhe Conosco</a></li>
-      <li class="nav-item"><a class="nav-link" href="parceiros.html">Parceiros</a></li>
-      <li class="nav-item"><a class="nav-link" href="politica.html">Política de Privacidade</a></li>
-      <li class="nav-item"><a class="nav-link" href="../orcamento.html">Orçamento</a></li>
-      <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
-    </ul>
+<header class="cabecalho">
+  <a class="pular" href="#main">Pular para o conteúdo</a>
+  <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+  <nav class="nav nav--esq" aria-label="Principal">
+    <a href="lista.html">Listas de compras <span class="contador" id="contador" hidden>0</span></a>
+    <a href="promocoes.html">Promoções</a>
+    <div class="menu">
+      <button type="button" aria-expanded="false">Produtos ▾</button>
+      <ul class="menu-lista">
+          <li><a href="../index.html">Todas as categorias</a></li>
+          <li><a href="produtos.html?cat=acougue">Açougue</a></li>
+          <li><a href="produtos.html?cat=bebidas">Bebidas</a></li>
+          <li><a href="produtos.html?cat=biscoitos">Biscoitos</a></li>
+          <li><a href="produtos.html?cat=bebe">Cantinho Do Bebê</a></li>
+          <li><a href="produtos.html?cat=carnes-salgadas">Carnes Salgadas</a></li>
+          <li><a href="produtos.html?cat=cereais">Cereais E Farináceos</a></li>
+          <li><a href="produtos.html?cat=chocolates">Chocolates E Bombons</a></li>
+          <li><a href="produtos.html?cat=conservas">Conservas</a></li>
+          <li><a href="produtos.html?cat=embutidos">Embutidos</a></li>
+          <li><a href="produtos.html?cat=frios">Frios E Laticínios</a></li>
+          <li><a href="produtos.html?cat=higiene">Higiene Pessoal</a></li>
+          <li><a href="produtos.html?cat=limpeza">Limpeza</a></li>
+          <li><a href="produtos.html?cat=massas">Massas</a></li>
+          <li><a href="produtos.html?cat=matinais">Matinais E Padaria</a></li>
+      </ul>
+    </div>
   </nav>
+  <a class="logo" href="../index.html" aria-label="Koala Supermercados – início"><img src="../assets/img/logo.svg" alt="Koala Supermercados"></a>
+  <nav class="nav nav--dir" aria-label="Institucional">
+    <div class="menu">
+      <button type="button" aria-expanded="false">O Koala ▾</button>
+      <ul class="menu-lista">
+          <li><a href="sobre.html">Quem somos</a></li>
+          <li><a href="departamentos.html">Departamentos e serviços</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="parceiros.html">Parceiros e marcas</a></li>
+          <li><a href="trabalhe-conosco.html" aria-current="page">Trabalhe conosco</a></li>
+          <li><a href="faq.html">Perguntas frequentes</a></li>
+          <li><a href="politica.html">Política de privacidade</a></li>
+      </ul>
+    </div>
+    <a href="orcamento.html">Orçamento</a>
+    <a href="contato.html">Contato</a>
+    <a href="sac.html">SAC</a>
+  </nav>
+</header>
 
-  <main id="conteudo" tabindex="-1">
-
+<main id="main">
+  <div class="container conteudo">
+    <h1 class="sobre-fundo">Trabalhe conosco</h1>
     <section aria-labelledby="trabalhe-intro-titulo">
       <h2 id="trabalhe-intro-titulo">Faça Parte da Nossa Equipe</h2>
       <p>
@@ -118,13 +148,13 @@
         em contato!
       </p>
 
-      <form action="#" method="post">
+      <form action="#" method="post" data-sucesso="Currículo enviado! Entraremos em contato quando houver uma vaga compatível.">
 
         <fieldset>
           <legend>Dados Pessoais</legend>
 
           <div>
-            <label for="nome-curriculo">Nome completo <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
+            <label for="nome-curriculo">Nome completo <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span></label>
             <input
               type="text"
               id="nome-curriculo"
@@ -134,11 +164,11 @@
               minlength="3"
               maxlength="100"
               autocomplete="name"
-            />
+>
           </div>
 
           <div>
-            <label for="email-curriculo">E-mail <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
+            <label for="email-curriculo">E-mail <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span></label>
             <input
               type="email"
               id="email-curriculo"
@@ -147,11 +177,11 @@
               required
               maxlength="150"
               autocomplete="email"
-            />
+>
           </div>
 
           <div>
-            <label for="telefone-curriculo">Telefone <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
+            <label for="telefone-curriculo">Telefone <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span></label>
             <input
               type="tel"
               id="telefone-curriculo"
@@ -161,7 +191,7 @@
               required
               maxlength="16"
               autocomplete="tel"
-            />
+>
           </div>
 
           <div>
@@ -173,7 +203,7 @@
               min="16"
               max="99"
               placeholder="Ex: 25"
-            />
+>
           </div>
 
         </fieldset>
@@ -182,7 +212,7 @@
           <legend>Informações Profissionais</legend>
 
           <div>
-            <label for="area-interesse">Área de interesse <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
+            <label for="area-interesse">Área de interesse <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span></label>
             <select id="area-interesse" name="area-interesse" required>
               <option value="">— Selecione uma área —</option>
               <option value="caixa">Operador(a) de Caixa</option>
@@ -196,7 +226,7 @@
           </div>
 
           <div>
-            <label for="disponibilidade">Disponibilidade de horário <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
+            <label for="disponibilidade">Disponibilidade de horário <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span></label>
             <select id="disponibilidade" name="disponibilidade" required>
               <option value="">— Selecione —</option>
               <option value="manha">Manhã</option>
@@ -236,49 +266,63 @@
         <fieldset>
           <legend>Confirmação</legend>
           <div>
-            <input type="checkbox" id="aceite-dados-trabalhe" name="aceite-dados" required />
+            <input type="checkbox" id="aceite-dados-trabalhe" name="aceite-dados" required>
             <label for="aceite-dados-trabalhe">
               Autorizo o Mercado Koala a armazenar meus dados para fins de processo seletivo,
               conforme a <a href="politica.html">Política de Privacidade</a>.
-              <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span>
+              <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span>
             </label>
           </div>
         </fieldset>
 
         <div>
-          <button type="submit">Enviar Currículo</button>
-          <button type="reset">Limpar</button>
+          <button class="botao" type="submit">Enviar Currículo</button>
+          <button class="botao botao--sec" type="reset">Limpar</button>
         </div>
 
       </form>
     </section>
 
-  </main>
+  
+  </div>
+</main>
 
-  <footer>
-    <div class="rodape-col">
-      <h2>Mercado Koala</h2>
-      <p>Seu mercado de bairro em Vila Carrão, com produtos frescos e atendimento próximo.</p>
-      <p>&copy; 2026 Mercado Koala. Todos os direitos reservados.</p>
+<footer class="rodape">
+  <div class="container rodape__topo">
+    <div class="app">
+      <div class="app__texto"><strong>Baixe nosso<br><em>aplicativo!</em></strong>
+        <a class="selo-loja" href="#">Disponível na<br><b>App Store</b></a></div>
+      <img src="../assets/img/app.svg" alt="Aplicativo Koala em um celular">
     </div>
-    <div class="rodape-col">
-      <h2>Onde estamos</h2>
-      <address>
-      Rua Dr. Cristiano Altenfelder Silva, 515 — Vila Carrão, São Paulo - SP, CEP 03448-010
-    </address>
-    </div>
-    <div class="rodape-col">
-      <h2>Links úteis</h2>
-      <nav aria-label="Links do rodapé">
-      <ul>
+    <nav class="rodape__cols" aria-label="Mapa do site">
+      <div><h2 class="rodape__tit">Koala</h2><ul>
+        <li><a href="sobre.html">Quem somos</a></li>
+        <li><a href="../index.html#dicas">Dicas</a></li>
+        <li><a href="faq.html">Perguntas frequentes</a></li>
+        <li><a href="trabalhe-conosco.html">Trabalhe conosco</a></li></ul></div>
+      <div><h2 class="rodape__tit">Produtos</h2><ul>
+        <li><a href="departamentos.html">Departamentos</a></li>
+        <li class="sub"><a href="produtos.html">Todos os produtos</a></li>
+        <li class="sub"><a href="promocoes.html">Encarte</a></li>
+        <li class="sub"><a href="parceiros.html">Parceiros e marcas</a></li></ul></div>
+      <div><h2 class="rodape__tit">Atendimento</h2><ul>
         <li><a href="contato.html">Contato</a></li>
-        <li><a href="politica.html">Política de Privacidade</a></li>
-        <li><a href="../orcamento.html">Solicitar Orçamento</a></li>
-      </ul>
+        <li class="sub"><a href="orcamento.html">Orçamento</a></li>
+        <li class="sub"><a href="sac.html">SAC</a></li>
+        <li class="sub"><a href="depoimentos.html">Depoimentos</a></li></ul></div>
+      <div><h2 class="rodape__tit">Promoções</h2><ul><li><a href="lista.html">Listas</a></li>
+        <li class="sub"><a href="lista.html">Todas</a></li><li class="sub"><a href="lista.html?modelo=dia-a-dia">Dia-a-Dia</a></li>
+        <li class="sub"><a href="lista.html?modelo=churrasco">Churrasco</a></li><li class="sub"><a href="lista.html?modelo=festa">Festa</a></li></ul></div>
+      <div><h2 class="rodape__tit">Onde estamos</h2>
+        <address>Rua Dr. Cristiano Altenfelder Silva, 515<br>Vila Carrão, São Paulo - SP<br>CEP 03448-010</address>
+        <ul><li class="sub">2ª a 6ª feira, das 07h às 21h.</li>
+        <li><a class="botao" href="contato.html">Fale conosco</a></li></ul></div>
     </nav>
-    </div>
-  </footer>
-
-  <script src="../js/main.js" defer></script>
+    <div class="redes"><h2 class="rodape__tit">Siga a gente</h2>
+      <a href="#"><b>f</b> Facebook</a><a href="#"><b>X</b> X</a><a href="#"><b>▶</b> YouTube</a><a href="#"><b>◎</b> Instagram</a></div>
+  </div>
+  <div class="rodape__base"><div class="container"><span>© 2026 Mercado Koala. Trabalho acadêmico.</span>
+    <span><a href="catalogo.html">Catálogo de componentes</a> · <a href="politica.html">Política de privacidade</a></span></div></div>
+</footer>
 </body>
 </html>

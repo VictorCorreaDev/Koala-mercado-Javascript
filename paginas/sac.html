@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SAC e canal de denúncias do Mercado Koala.">
+<title>SAC – Koala Supermercados</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/estilos.css">
+<script src="../js/data.js"></script>
+<script src="../js/app.js"></script>
+</head>
+<body>
+<header class="cabecalho">
+  <a class="pular" href="#main">Pular para o conteúdo</a>
+  <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+  <nav class="nav nav--esq" aria-label="Principal">
+    <a href="lista.html">Listas de compras <span class="contador" id="contador" hidden>0</span></a>
+    <a href="promocoes.html">Promoções</a>
+    <div class="menu">
+      <button type="button" aria-expanded="false">Produtos ▾</button>
+      <ul class="menu-lista">
+          <li><a href="../index.html">Todas as categorias</a></li>
+          <li><a href="produtos.html?cat=acougue">Açougue</a></li>
+          <li><a href="produtos.html?cat=bebidas">Bebidas</a></li>
+          <li><a href="produtos.html?cat=biscoitos">Biscoitos</a></li>
+          <li><a href="produtos.html?cat=bebe">Cantinho Do Bebê</a></li>
+          <li><a href="produtos.html?cat=carnes-salgadas">Carnes Salgadas</a></li>
+          <li><a href="produtos.html?cat=cereais">Cereais E Farináceos</a></li>
+          <li><a href="produtos.html?cat=chocolates">Chocolates E Bombons</a></li>
+          <li><a href="produtos.html?cat=conservas">Conservas</a></li>
+          <li><a href="produtos.html?cat=embutidos">Embutidos</a></li>
+          <li><a href="produtos.html?cat=frios">Frios E Laticínios</a></li>
+          <li><a href="produtos.html?cat=higiene">Higiene Pessoal</a></li>
+          <li><a href="produtos.html?cat=limpeza">Limpeza</a></li>
+          <li><a href="produtos.html?cat=massas">Massas</a></li>
+          <li><a href="produtos.html?cat=matinais">Matinais E Padaria</a></li>
+      </ul>
+    </div>
+  </nav>
+  <a class="logo" href="../index.html" aria-label="Koala Supermercados – início"><img src="../assets/img/logo.svg" alt="Koala Supermercados"></a>
+  <nav class="nav nav--dir" aria-label="Institucional">
+    <div class="menu">
+      <button type="button" aria-expanded="false">O Koala ▾</button>
+      <ul class="menu-lista">
+          <li><a href="sobre.html">Quem somos</a></li>
+          <li><a href="departamentos.html">Departamentos e serviços</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="parceiros.html">Parceiros e marcas</a></li>
+          <li><a href="trabalhe-conosco.html">Trabalhe conosco</a></li>
+          <li><a href="faq.html">Perguntas frequentes</a></li>
+          <li><a href="politica.html">Política de privacidade</a></li>
+      </ul>
+    </div>
+    <a href="orcamento.html">Orçamento</a>
+    <a href="contato.html">Contato</a>
+    <a href="sac.html" aria-current="page">SAC</a>
+  </nav>
+</header>
+<main id="main"><div class="container" style="max-width: 700px">
+  <h1 class="sobre-fundo">Fale com a Koala</h1>
+  <div class="painel abas">
+    <div role="tablist" aria-label="Atendimento">
+      <button role="tab" id="t-sac" aria-selected="true" aria-controls="p-sac" type="button">SAC</button>
+      <button role="tab" id="t-den" aria-selected="false" aria-controls="p-den" type="button" tabindex="-1">Canal de denúncias</button>
+    </div>
+    <div role="tabpanel" id="p-sac" aria-labelledby="t-sac"><form class="f" novalidate data-tipo="mensagem"></form></div>
+    <div role="tabpanel" id="p-den" aria-labelledby="t-den" hidden><form class="f" novalidate data-tipo="denúncia"></form></div>
+  </div>
+</div></main>
+<footer class="rodape">
+  <div class="container rodape__topo">
+    <div class="app">
+      <div class="app__texto"><strong>Baixe nosso<br><em>aplicativo!</em></strong>
+        <a class="selo-loja" href="#">Disponível na<br><b>App Store</b></a></div>
+      <img src="../assets/img/app.svg" alt="Aplicativo Koala em um celular">
+    </div>
+    <nav class="rodape__cols" aria-label="Mapa do site">
+      <div><h2 class="rodape__tit">Koala</h2><ul>
+        <li><a href="sobre.html">Quem somos</a></li>
+        <li><a href="../index.html#dicas">Dicas</a></li>
+        <li><a href="faq.html">Perguntas frequentes</a></li>
+        <li><a href="trabalhe-conosco.html">Trabalhe conosco</a></li></ul></div>
+      <div><h2 class="rodape__tit">Produtos</h2><ul>
+        <li><a href="departamentos.html">Departamentos</a></li>
+        <li class="sub"><a href="produtos.html">Todos os produtos</a></li>
+        <li class="sub"><a href="promocoes.html">Encarte</a></li>
+        <li class="sub"><a href="parceiros.html">Parceiros e marcas</a></li></ul></div>
+      <div><h2 class="rodape__tit">Atendimento</h2><ul>
+        <li><a href="contato.html">Contato</a></li>
+        <li class="sub"><a href="orcamento.html">Orçamento</a></li>
+        <li class="sub"><a href="sac.html">SAC</a></li>
+        <li class="sub"><a href="depoimentos.html">Depoimentos</a></li></ul></div>
+      <div><h2 class="rodape__tit">Promoções</h2><ul><li><a href="lista.html">Listas</a></li>
+        <li class="sub"><a href="lista.html">Todas</a></li><li class="sub"><a href="lista.html?modelo=dia-a-dia">Dia-a-Dia</a></li>
+        <li class="sub"><a href="lista.html?modelo=churrasco">Churrasco</a></li><li class="sub"><a href="lista.html?modelo=festa">Festa</a></li></ul></div>
+      <div><h2 class="rodape__tit">Onde estamos</h2>
+        <address>Rua Dr. Cristiano Altenfelder Silva, 515<br>Vila Carrão, São Paulo - SP<br>CEP 03448-010</address>
+        <ul><li class="sub">2ª a 6ª feira, das 07h às 21h.</li>
+        <li><a class="botao" href="contato.html">Fale conosco</a></li></ul></div>
+    </nav>
+    <div class="redes"><h2 class="rodape__tit">Siga a gente</h2>
+      <a href="#"><b>f</b> Facebook</a><a href="#"><b>X</b> X</a><a href="#"><b>▶</b> YouTube</a><a href="#"><b>◎</b> Instagram</a></div>
+  </div>
+  <div class="rodape__base"><div class="container"><span>© 2026 Mercado Koala. Trabalho acadêmico.</span>
+    <span><a href="catalogo.html">Catálogo de componentes</a> · <a href="politica.html">Política de privacidade</a></span></div></div>
+</footer>
+<script>
+(() => {
+  const { $, $$ } = Koala;
+  const modelo = anon => `
+    ${anon ? '<p class="campo__ajuda">Você pode enviar de forma anônima. Nesse caso, nome e e-mail são opcionais.</p><label class="marcar" style="margin-bottom: var(--espaco-4)"><input type="checkbox" name="anon"> Enviar anonimamente</label>' : ""}
+    <div class="campo"><label>Nome</label><input name="nome" autocomplete="name"><div class="campo__erro" hidden></div></div>
+    <div class="campo"><label>E-mail</label><input name="email" type="email" autocomplete="email"><div class="campo__erro" hidden></div></div>
+    <div class="campo"><label>Assunto</label><select name="assunto"><option value="">Selecione</option>
+      ${(anon ? ["Conduta de funcionário", "Fraude", "Segurança dos alimentos", "Outro"] : ["Dúvida", "Elogio", "Reclamação", "Sugestão"]).map(o => `<option>${o}</option>`).join("")}</select><div class="campo__erro" hidden></div></div>
+    <div class="campo"><label>Mensagem</label><textarea name="msg" rows="5" maxlength="500"></textarea><span class="campo__ajuda"><span class="c">0</span>/500 — mínimo de 10 caracteres</span><div class="campo__erro" hidden></div></div>
+    <button class="botao" type="submit">Enviar</button>
+    <div class="aviso aviso--sucesso" role="status" hidden style="margin-top: var(--espaco-4)"></div>`;
+
+  $$(".f").forEach((f, i) => {
+    f.innerHTML = modelo(i === 1);
+    ["nome", "email", "assunto", "msg"].forEach(n => { const el = f.elements[n]; el.id = "f" + i + "-" + n; el.closest(".campo").querySelector("label").htmlFor = el.id; });
+    f.elements.msg.addEventListener("input", () => $(".c", f).textContent = f.elements.msg.value.length);
+    const regras = {
+      nome: v => v.trim().length >= 2 || "Informe seu nome.",
+      email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) || "Digite um e-mail válido.",
+      assunto: v => !!v || "Escolha um assunto.",
+      msg: v => v.trim().length >= 10 || "Escreva ao menos 10 caracteres.",
+    };
+    ["nome", "email", "assunto", "msg"].forEach(n => {
+      const el = f.elements[n], msg = el.closest(".campo").querySelector(".campo__erro");
+      msg.id = el.id + "-erro"; msg.setAttribute("role", "alert");
+      el.setAttribute("aria-describedby", msg.id);
+      if (n === "assunto" || n === "msg") el.setAttribute("aria-required", "true");
+    });
+    f.elements.msg.setAttribute("aria-describedby", f.elements.msg.id + "-erro " + f.elements.msg.id + "-ajuda");
+    $(".campo__ajuda", f).id = f.elements.msg.id + "-ajuda";
+    f.addEventListener("submit", e => {
+      e.preventDefault();
+      const anon = f.elements.anon && f.elements.anon.checked;
+      let primeiro = null;
+      Object.keys(regras).forEach(n => {
+        const el = f.elements[n], msg = el.closest(".campo").querySelector(".campo__erro");
+        const r = anon && (n === "nome" || n === "email") ? true : regras[n](el.value);
+        el.setAttribute("aria-invalid", r !== true);
+        msg.hidden = r === true; msg.textContent = r === true ? "" : r;
+        if (r !== true && !primeiro) primeiro = el;
+      });
+      const ok = $(".aviso", f);
+      ok.hidden = !!primeiro;
+      if (primeiro) { primeiro.focus(); return; }
+      const btn = $(".botao", f); btn.classList.add("carregando"); btn.disabled = true;
+      setTimeout(() => {
+        btn.classList.remove("carregando"); btn.disabled = false;
+        ok.textContent = "Recebemos sua " + f.dataset.tipo + ". Protocolo " + Math.random().toString(36).slice(2, 8).toUpperCase() + ".";
+        ok.hidden = false; f.reset(); $(".c", f).textContent = 0;
+      }, 800);
+    });
+  });
+
+  // abas acessíveis (setas)
+  const abas = $$("[role=tab]");
+  function selecionar(t) {
+    abas.forEach(x => { const on = x === t; x.setAttribute("aria-selected", on); x.tabIndex = on ? 0 : -1; $("#" + x.getAttribute("aria-controls")).hidden = !on; });
+    t.focus();
+  }
+  abas.forEach((t, i) => {
+    t.addEventListener("click", () => selecionar(t));
+    t.addEventListener("keydown", e => {
+      if (e.key === "ArrowRight") selecionar(abas[(i + 1) % abas.length]);
+      if (e.key === "ArrowLeft") selecionar(abas[(i - 1 + abas.length) % abas.length]);
+    });
+  });
+  if (location.hash === "#denuncia") selecionar(abas[1]);
+})();
+</script>
+</body>
+</html>
