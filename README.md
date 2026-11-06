@@ -3,7 +3,7 @@
 Site do **Mercado Koala**, mercado de bairro da Vila Carrão (São Paulo), feito com HTML, CSS e JavaScript puro, sem bibliotecas.
 Projeto da disciplina de **Desenvolvimento Frontend para Web** (A2 · 2026.2), Prof. Cid Andrade. Este README atende ao item 6 do enunciado da **Entrega 2**.
 
-**Site hospedado:** https://veronisky.github.io/Koala-mercado-Javascript/ (GitHub Pages, publicado a cada atualização da branch `main`)
+**Site hospedado:** https://veronisky.github.io/Koala-mercado-Javascript/ (GitHub Pages, publicado a cada atualização da branch `main`) · também na Vercel: https://koala-supermercados.vercel.app/
 
 ---
 
@@ -88,6 +88,80 @@ São **15 páginas HTML** interligadas pelo mesmo menu (cabeçalho) e pelo mesmo
 | JavaScript respondendo a eventos | Carrossel, menus, lista de compras, busca e filtros, tema escuro, painel de acessibilidade, abas do SAC, máscaras |
 | Validação W3C | Ver [Validação](#-validação-w3c) |
 
+## ♿ Acessibilidade
+
+A acessibilidade foi pensada com base nas recomendações da **WCAG 2.2 (nível AA)**. O que já está no site:
+
+| Recurso | Como funciona |
+|---|---|
+| **Painel "Acessibilidade"** | Botão no canto inferior esquerdo. Tem **A−, A e A+** para o tamanho da letra e o botão **Alto contraste**. A escolha fica salva |
+| **Alto contraste** | Tema em preto, branco e amarelo. Liga sozinho se o sistema do usuário pedir mais contraste |
+| **Pular para o conteúdo** | Aperte `Tab` assim que a página abrir: aparece o link para ir direto ao conteúdo principal |
+| **Foco visível** | Anel de foco em duas cores (escuro por dentro, amarelo por fora), que aparece tanto em fundo claro quanto escuro |
+| **Teclado em tudo** | Menu, carrossel, abas do SAC, lista de compras e painel funcionam sem mouse. `Esc` fecha menus e painéis |
+| **Carrossel pausável** | Botão "Pausar" e respeito ao `prefers-reduced-motion` (quem prefere menos movimento não vê a troca automática) |
+| **Lista de compras** | Ao mexer em um item, o foco do teclado continua no mesmo botão. As ações são anunciadas ("Arroz removido da lista") |
+| **Leitor de tela** | Botões com o nome do produto ("Adicionar à lista: Arroz"), preço antigo lido como "De … por …", desconto falado, avisos e erros anunciados |
+| **Formulários** | Cada erro aparece junto do campo, ligado a ele com `aria-describedby`, e o foco vai para o primeiro erro |
+| **Alvos de toque** | Botões com pelo menos 44 px de altura |
+
+Com a letra no tamanho máximo (150%), o menu de computador pode ficar apertado, mas no celular o menu "hambúrguer" resolve.
+
+Testamos no Chrome (computador). Ainda vale uma conferida com leitor de tela (NVDA ou TalkBack) e com uma ferramenta como o Lighthouse ou o axe.
+
+---
+
+## 🚀 Como iniciar o projeto
+
+Não precisa instalar nada: não tem `npm`, build ou dependências.
+
+### 1. Baixar o projeto
+
+```bash
+git clone https://github.com/veronisky/Koala-mercado-Javascript.git
+cd Koala-mercado-Javascript
+```
+
+Ou baixe o ZIP pelo botão **Code → Download ZIP** no GitHub e extraia.
+
+### 2. Abrir o site
+
+**Jeito mais simples:** dê dois cliques no arquivo `index.html`. Ele abre no navegador.
+
+**Jeito recomendado (servidor local):** alguns recursos funcionam melhor com um servidor, como o `localStorage` em alguns navegadores. Na pasta do projeto, use uma das opções:
+
+```bash
+# Python (já vem instalado na maioria dos computadores)
+python -m http.server 8000
+
+# ou Node.js
+npx serve .
+```
+
+Depois abra **http://localhost:8000** no navegador.
+
+**No VS Code:** instale a extensão **Live Server**, clique com o botão direito em `index.html` e escolha **Open with Live Server**.
+
+### 3. Conferir se está tudo certo
+
+- Aperte `Tab` na página inicial: deve aparecer o link "Pular para o conteúdo".
+- Clique em **Acessibilidade** (canto inferior esquerdo) e teste o **Alto contraste**.
+- Adicione um produto à lista e recarregue a página: o item deve continuar lá.
+
+---
+
+## ☁️ Como publicar na Vercel
+
+O site é estático, então a publicação é simples:
+
+1. Entre em [vercel.com](https://vercel.com) e clique em **Add New → Project**.
+2. Importe o repositório `Koala-mercado-Javascript` do GitHub.
+3. Em **Root Directory**, deixe a **raiz do repositório** (`./`), porque o `index.html`, o `css/`, o `js/` e o `img/` ficam na raiz.
+4. Deixe **Framework Preset** como *Other* e não preencha comando de build.
+5. Clique em **Deploy**.
+
+Depois disso, cada `git push` na branch `main` atualiza o site sozinho.
+
 ---
 
 ## 🛠️ Desenvolvimento
@@ -148,6 +222,10 @@ A entrevista foi feita de forma presencial.
 | Tema escuro | Catálogo de componentes |
 |---|---|
 | ![Tema escuro](docs/prints/06-tema-escuro.png) | ![Catálogo](docs/prints/03-catalogo-de-componentes.png) |
+
+| Painel de acessibilidade | Alto contraste |
+|---|---|
+| ![Painel de acessibilidade](docs/prints/07-painel-acessibilidade.png) | ![Alto contraste](docs/prints/08-alto-contraste.png) |
 
 ### Como seria o mesmo resultado feito com IA
 
