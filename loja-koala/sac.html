@@ -3,15 +3,61 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SAC e canal de denúncias do Mercado Koala.">
 <title>SAC – Koala Supermercados</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="tokens.css">
-<link rel="stylesheet" href="css/estilos.css">
-<script src="js/data.js"></script>
-<script src="js/app.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/estilos.css">
+<script src="../js/data.js"></script>
+<script src="../js/app.js"></script>
 </head>
 <body>
-<header id="cabecalho"></header>
+<header class="cabecalho">
+  <a class="pular" href="#main">Pular para o conteúdo</a>
+  <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+  <nav class="nav nav--esq" aria-label="Principal">
+    <a href="lista.html">Listas de compras <span class="contador" id="contador" hidden>0</span></a>
+    <a href="promocoes.html">Promoções</a>
+    <div class="menu">
+      <button type="button" aria-expanded="false">Produtos ▾</button>
+      <ul class="menu-lista">
+          <li><a href="../index.html">Todas as categorias</a></li>
+          <li><a href="produtos.html?cat=acougue">Açougue</a></li>
+          <li><a href="produtos.html?cat=bebidas">Bebidas</a></li>
+          <li><a href="produtos.html?cat=biscoitos">Biscoitos</a></li>
+          <li><a href="produtos.html?cat=bebe">Cantinho Do Bebê</a></li>
+          <li><a href="produtos.html?cat=carnes-salgadas">Carnes Salgadas</a></li>
+          <li><a href="produtos.html?cat=cereais">Cereais E Farináceos</a></li>
+          <li><a href="produtos.html?cat=chocolates">Chocolates E Bombons</a></li>
+          <li><a href="produtos.html?cat=conservas">Conservas</a></li>
+          <li><a href="produtos.html?cat=embutidos">Embutidos</a></li>
+          <li><a href="produtos.html?cat=frios">Frios E Laticínios</a></li>
+          <li><a href="produtos.html?cat=higiene">Higiene Pessoal</a></li>
+          <li><a href="produtos.html?cat=limpeza">Limpeza</a></li>
+          <li><a href="produtos.html?cat=massas">Massas</a></li>
+          <li><a href="produtos.html?cat=matinais">Matinais E Padaria</a></li>
+      </ul>
+    </div>
+  </nav>
+  <a class="logo" href="../index.html" aria-label="Koala Supermercados – início"><img src="../img/logo.svg" alt="Koala Supermercados"></a>
+  <nav class="nav nav--dir" aria-label="Institucional">
+    <div class="menu">
+      <button type="button" aria-expanded="false">O Koala ▾</button>
+      <ul class="menu-lista">
+          <li><a href="sobre.html">Quem somos</a></li>
+          <li><a href="departamentos.html">Departamentos e serviços</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="parceiros.html">Parceiros e marcas</a></li>
+          <li><a href="trabalhe-conosco.html">Trabalhe conosco</a></li>
+          <li><a href="faq.html">Perguntas frequentes</a></li>
+          <li><a href="politica.html">Política de privacidade</a></li>
+      </ul>
+    </div>
+    <a href="orcamento.html">Orçamento</a>
+    <a href="contato.html">Contato</a>
+    <a href="sac.html" aria-current="page">SAC</a>
+  </nav>
+</header>
 <main id="main"><div class="container" style="max-width: 700px">
   <h1 class="sobre-fundo">Fale com a Koala</h1>
   <div class="painel abas">
@@ -23,7 +69,43 @@
     <div role="tabpanel" id="p-den" aria-labelledby="t-den" hidden><form class="f" novalidate data-tipo="denúncia"></form></div>
   </div>
 </div></main>
-<footer id="rodape"></footer>
+<footer class="rodape">
+  <div class="container rodape__topo">
+    <aside class="app" aria-label="Aplicativo">
+      <div class="app__texto"><strong>Baixe nosso<br><em>aplicativo!</em></strong>
+        <a class="selo-loja" href="#">Disponível na<br><b>App Store</b></a></div>
+      <img src="../img/app.svg" alt="Aplicativo Koala em um celular">
+    </aside>
+    <nav class="rodape__cols" aria-label="Mapa do site">
+      <div><h2 class="rodape__tit">Koala</h2><ul>
+        <li><a href="sobre.html">Quem somos</a></li>
+        <li><a href="../index.html#dicas">Dicas</a></li>
+        <li><a href="faq.html">Perguntas frequentes</a></li>
+        <li><a href="trabalhe-conosco.html">Trabalhe conosco</a></li></ul></div>
+      <div><h2 class="rodape__tit">Produtos</h2><ul>
+        <li><a href="departamentos.html">Departamentos</a></li>
+        <li class="sub"><a href="produtos.html">Todos os produtos</a></li>
+        <li class="sub"><a href="promocoes.html">Encarte</a></li>
+        <li class="sub"><a href="parceiros.html">Parceiros e marcas</a></li></ul></div>
+      <div><h2 class="rodape__tit">Atendimento</h2><ul>
+        <li><a href="contato.html">Contato</a></li>
+        <li class="sub"><a href="orcamento.html">Orçamento</a></li>
+        <li class="sub"><a href="sac.html">SAC</a></li>
+        <li class="sub"><a href="depoimentos.html">Depoimentos</a></li></ul></div>
+      <div><h2 class="rodape__tit">Promoções</h2><ul><li><a href="lista.html">Listas</a></li>
+        <li class="sub"><a href="lista.html">Todas</a></li><li class="sub"><a href="lista.html?modelo=dia-a-dia">Dia-a-Dia</a></li>
+        <li class="sub"><a href="lista.html?modelo=churrasco">Churrasco</a></li><li class="sub"><a href="lista.html?modelo=festa">Festa</a></li></ul></div>
+      <div><h2 class="rodape__tit">Onde estamos</h2>
+        <address>Rua Dr. Cristiano Altenfelder Silva, 515<br>Vila Carrão, São Paulo - SP<br>CEP 03448-010</address>
+        <ul><li class="sub">2ª a 6ª feira, das 07h às 21h.</li>
+        <li><a class="botao" href="contato.html">Fale conosco</a></li></ul></div>
+    </nav>
+    <nav class="redes" aria-label="Redes sociais"><h2 class="rodape__tit">Siga a gente</h2>
+      <a href="#"><b>f</b> Facebook</a><a href="#"><b>X</b> X</a><a href="#"><b>▶</b> YouTube</a><a href="#"><b>◎</b> Instagram</a></nav>
+  </div>
+  <div class="rodape__base"><div class="container"><span>© 2026 Mercado Koala. Trabalho acadêmico.</span>
+    <span><a href="catalogo.html">Catálogo de componentes</a> · <a href="politica.html">Política de privacidade</a></span></div></div>
+</footer>
 <script>
 (() => {
   const { $, $$ } = Koala;

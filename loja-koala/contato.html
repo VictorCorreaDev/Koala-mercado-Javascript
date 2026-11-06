@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Entre em contato com o Mercado Koala. Estamos prontos para atender suas dúvidas, sugestões e solicitações.">
+<title>Contato — Mercado Koala</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/tokens.css">
+<link rel="stylesheet" href="../css/estilos.css">
+<script src="../js/data.js"></script>
+<script src="../js/app.js"></script>
+<script src="../js/formularios.js" defer></script>
+</head>
+<body>
+<header class="cabecalho">
+  <a class="pular" href="#main">Pular para o conteúdo</a>
+  <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+  <nav class="nav nav--esq" aria-label="Principal">
+    <a href="lista.html">Listas de compras <span class="contador" id="contador" hidden>0</span></a>
+    <a href="promocoes.html">Promoções</a>
+    <div class="menu">
+      <button type="button" aria-expanded="false">Produtos ▾</button>
+      <ul class="menu-lista">
+          <li><a href="../index.html">Todas as categorias</a></li>
+          <li><a href="produtos.html?cat=acougue">Açougue</a></li>
+          <li><a href="produtos.html?cat=bebidas">Bebidas</a></li>
+          <li><a href="produtos.html?cat=biscoitos">Biscoitos</a></li>
+          <li><a href="produtos.html?cat=bebe">Cantinho Do Bebê</a></li>
+          <li><a href="produtos.html?cat=carnes-salgadas">Carnes Salgadas</a></li>
+          <li><a href="produtos.html?cat=cereais">Cereais E Farináceos</a></li>
+          <li><a href="produtos.html?cat=chocolates">Chocolates E Bombons</a></li>
+          <li><a href="produtos.html?cat=conservas">Conservas</a></li>
+          <li><a href="produtos.html?cat=embutidos">Embutidos</a></li>
+          <li><a href="produtos.html?cat=frios">Frios E Laticínios</a></li>
+          <li><a href="produtos.html?cat=higiene">Higiene Pessoal</a></li>
+          <li><a href="produtos.html?cat=limpeza">Limpeza</a></li>
+          <li><a href="produtos.html?cat=massas">Massas</a></li>
+          <li><a href="produtos.html?cat=matinais">Matinais E Padaria</a></li>
+      </ul>
+    </div>
+  </nav>
+  <a class="logo" href="../index.html" aria-label="Koala Supermercados – início"><img src="../img/logo.svg" alt="Koala Supermercados"></a>
+  <nav class="nav nav--dir" aria-label="Institucional">
+    <div class="menu">
+      <button type="button" aria-expanded="false">O Koala ▾</button>
+      <ul class="menu-lista">
+          <li><a href="sobre.html">Quem somos</a></li>
+          <li><a href="departamentos.html">Departamentos e serviços</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="parceiros.html">Parceiros e marcas</a></li>
+          <li><a href="trabalhe-conosco.html">Trabalhe conosco</a></li>
+          <li><a href="faq.html">Perguntas frequentes</a></li>
+          <li><a href="politica.html">Política de privacidade</a></li>
+      </ul>
+    </div>
+    <a href="orcamento.html">Orçamento</a>
+    <a href="contato.html" aria-current="page">Contato</a>
+    <a href="sac.html">SAC</a>
+  </nav>
+</header>
+
+<main id="main">
+  <div class="container conteudo">
+    <h1 class="sobre-fundo">Contato</h1>
+    <section aria-labelledby="contato-titulo">
+      <h2 id="contato-titulo">Fale Conosco</h2>
+      <p>
+        Tem alguma dúvida, sugestão ou elogio? Preencha o formulário abaixo e entraremos
+        em contato em até 2 dias úteis. Fique à vontade para nos escrever!
+      </p>
+    </section>
+
+    <section aria-labelledby="formulario-titulo">
+      <h2 id="formulario-titulo">Formulário de Contato</h2>
+
+      <form action="#" method="post" data-sucesso="Mensagem enviada! Responderemos em até 2 dias úteis.">
+
+        <fieldset>
+          <legend>Dados Pessoais</legend>
+
+          <div>
+            <label for="nome">Nome completo <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span></label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Digite seu nome completo"
+              required
+              minlength="3"
+              maxlength="100"
+              autocomplete="name"
+>
+          </div>
+
+          <div>
+            <label for="email">E-mail <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span></label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="seuemail@exemplo.com"
+              required
+              maxlength="150"
+              autocomplete="email"
+>
+          </div>
+
+          <div>
+            <label for="telefone">Telefone / WhatsApp</label>
+            <input
+              type="tel"
+              id="telefone"
+              name="telefone"
+              placeholder="(11) 99999-9999"
+              pattern="\(\d{2}\)\s?\d{4,5}-\d{4}"
+              maxlength="16"
+              autocomplete="tel"
+>
+            <small>Formato: (11) 99999-9999</small>
+          </div>
+
+        </fieldset>
+
+        <fieldset>
+          <legend>Sua Mensagem</legend>
+
+          <div>
+            <label for="assunto">Assunto <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span></label>
+            <select id="assunto" name="assunto" required>
+              <option value="">— Selecione um assunto —</option>
+              <option value="duvida">Dúvida sobre produtos</option>
+              <option value="reclamacao">Reclamação</option>
+              <option value="sugestao">Sugestão</option>
+              <option value="elogio">Elogio</option>
+              <option value="parceria">Parceria comercial</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="mensagem">Mensagem <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span></label>
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              rows="6"
+              cols="50"
+              placeholder="Escreva sua mensagem aqui..."
+              required
+              minlength="10"
+              maxlength="1000"
+            ></textarea>
+            <small>Mínimo de 10 caracteres.</small>
+          </div>
+
+          <div>
+            <label for="como-conheceu">Como nos conheceu?</label>
+            <select id="como-conheceu" name="como-conheceu">
+              <option value="">— Selecione uma opção —</option>
+              <option value="indicacao">Indicação de amigos/familiares</option>
+              <option value="passando">Passando pela rua</option>
+              <option value="redes-sociais">Redes sociais</option>
+              <option value="google">Google/Buscadores</option>
+              <option value="outro">Outro</option>
+            </select>
+          </div>
+
+        </fieldset>
+
+        <fieldset>
+          <legend>Confirmação</legend>
+
+          <div>
+            <input type="checkbox" id="aceite-politica" name="aceite-politica" required>
+            <label for="aceite-politica">
+              Li e aceito a <a href="politica.html">Política de Privacidade</a>
+              do Mercado Koala. <span aria-hidden="true" class="obrigatorio">*</span><span class="sr-only"> (obrigatório)</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div>
+          <button class="botao" type="submit">Enviar Mensagem</button>
+          <button class="botao botao--sec" type="reset">Limpar Formulário</button>
+        </div>
+
+      </form>
+    </section>
+
+    <section aria-labelledby="outros-contatos-titulo">
+      <h2 id="outros-contatos-titulo">Outras Formas de Contato</h2>
+
+      <article>
+        <h3>Endereço</h3>
+        <address>
+          Rua Dr. Cristiano Altenfelder Silva, 515<br>
+          Vila Carrão, São Paulo — SP<br>
+          CEP: 03448-010
+        </address>
+      </article>
+
+      <article>
+        <h3>WhatsApp</h3>
+        <p><em>(Em breve — número ainda não disponível)</em></p>
+      </article>
+
+      <article>
+        <h3>Horários de Funcionamento</h3>
+        <table>
+          <caption>Horários de atendimento</caption>
+          <thead>
+            <tr>
+              <th scope="col">Dia</th>
+              <th scope="col">Horário</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Segunda a Sexta</td>
+              <td>07h00 às 21h00</td>
+            </tr>
+            <tr>
+              <td>Sábado</td>
+              <td>07h00 às 20h00</td>
+            </tr>
+            <tr>
+              <td>Domingo e Feriados</td>
+              <td>08h00 às 14h00</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+  
+  </div>
+</main>
+
+<footer class="rodape">
+  <div class="container rodape__topo">
+    <aside class="app" aria-label="Aplicativo">
+      <div class="app__texto"><strong>Baixe nosso<br><em>aplicativo!</em></strong>
+        <a class="selo-loja" href="#">Disponível na<br><b>App Store</b></a></div>
+      <img src="../img/app.svg" alt="Aplicativo Koala em um celular">
+    </aside>
+    <nav class="rodape__cols" aria-label="Mapa do site">
+      <div><h2 class="rodape__tit">Koala</h2><ul>
+        <li><a href="sobre.html">Quem somos</a></li>
+        <li><a href="../index.html#dicas">Dicas</a></li>
+        <li><a href="faq.html">Perguntas frequentes</a></li>
+        <li><a href="trabalhe-conosco.html">Trabalhe conosco</a></li></ul></div>
+      <div><h2 class="rodape__tit">Produtos</h2><ul>
+        <li><a href="departamentos.html">Departamentos</a></li>
+        <li class="sub"><a href="produtos.html">Todos os produtos</a></li>
+        <li class="sub"><a href="promocoes.html">Encarte</a></li>
+        <li class="sub"><a href="parceiros.html">Parceiros e marcas</a></li></ul></div>
+      <div><h2 class="rodape__tit">Atendimento</h2><ul>
+        <li><a href="contato.html">Contato</a></li>
+        <li class="sub"><a href="orcamento.html">Orçamento</a></li>
+        <li class="sub"><a href="sac.html">SAC</a></li>
+        <li class="sub"><a href="depoimentos.html">Depoimentos</a></li></ul></div>
+      <div><h2 class="rodape__tit">Promoções</h2><ul><li><a href="lista.html">Listas</a></li>
+        <li class="sub"><a href="lista.html">Todas</a></li><li class="sub"><a href="lista.html?modelo=dia-a-dia">Dia-a-Dia</a></li>
+        <li class="sub"><a href="lista.html?modelo=churrasco">Churrasco</a></li><li class="sub"><a href="lista.html?modelo=festa">Festa</a></li></ul></div>
+      <div><h2 class="rodape__tit">Onde estamos</h2>
+        <address>Rua Dr. Cristiano Altenfelder Silva, 515<br>Vila Carrão, São Paulo - SP<br>CEP 03448-010</address>
+        <ul><li class="sub">2ª a 6ª feira, das 07h às 21h.</li>
+        <li><a class="botao" href="contato.html">Fale conosco</a></li></ul></div>
+    </nav>
+    <nav class="redes" aria-label="Redes sociais"><h2 class="rodape__tit">Siga a gente</h2>
+      <a href="#"><b>f</b> Facebook</a><a href="#"><b>X</b> X</a><a href="#"><b>▶</b> YouTube</a><a href="#"><b>◎</b> Instagram</a></nav>
+  </div>
+  <div class="rodape__base"><div class="container"><span>© 2026 Mercado Koala. Trabalho acadêmico.</span>
+    <span><a href="catalogo.html">Catálogo de componentes</a> · <a href="politica.html">Política de privacidade</a></span></div></div>
+</footer>
+</body>
+</html>

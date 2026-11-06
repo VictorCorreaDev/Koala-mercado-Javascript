@@ -1,221 +1,300 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mercado Koala — Seu mercado de bairro em Vila Carrão, São Paulo. Encontre produtos frescos, promoções e atendimento de qualidade perto de você." />
-  <title>Mercado Koala — Página Inicial</title>
-  <link href="css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Mercado Koala, mercado de bairro na Vila Carrão (São Paulo): categorias, ofertas do dia, dicas e horários.">
+<title>Produtos – Koala Supermercados</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/estilos.css">
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
 </head>
 <body>
-  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo principal</a>
-
-  <header>
-    <h1>Mercado Koala</h1>
-    <p>Seu mercado de bairro em Vila Carrão, São Paulo</p>
-    <address>
-      Rua Dr. Cristiano Altenfelder Silva, 515 — Vila Carrão, São Paulo - SP, CEP 03448-010
-    </address>
-  </header>
-
-  <nav aria-label="Menu principal">
-    <ul class="nav nav-pills justify-content-center">
-      <li class="nav-item"><a class="nav-link" href="index.html" aria-current="page">Início</a></li>
-      <li class="nav-item"><a class="nav-link" href="paginas/sobre.html">Quem Somos</a></li>
-      <li class="nav-item"><a class="nav-link" href="paginas/produtos.html">Produtos &amp; Serviços</a></li>
-      <li class="nav-item"><a class="nav-link" href="paginas/faq.html">FAQ</a></li>
-      <li class="nav-item"><a class="nav-link" href="paginas/depoimentos.html">Depoimentos</a></li>
-      <li class="nav-item"><a class="nav-link" href="paginas/trabalhe-conosco.html">Trabalhe Conosco</a></li>
-      <li class="nav-item"><a class="nav-link" href="paginas/parceiros.html">Parceiros</a></li>
-      <li class="nav-item"><a class="nav-link" href="paginas/politica.html">Política de Privacidade</a></li>
-      <li class="nav-item"><a class="nav-link" href="orcamento.html">Orçamento</a></li>
-      <li class="nav-item"><a class="nav-link" href="paginas/contato.html">Contato</a></li>
-    </ul>
+<header class="cabecalho">
+  <a class="pular" href="#main">Pular para o conteúdo</a>
+  <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false">Menu</button>
+  <nav class="nav nav--esq" aria-label="Principal">
+    <a href="loja-koala/lista.html">Listas de compras <span class="contador" id="contador" hidden>0</span></a>
+    <a href="loja-koala/promocoes.html">Promoções</a>
+    <div class="menu">
+      <button type="button" aria-expanded="false">Produtos ▾</button>
+      <ul class="menu-lista">
+          <li><a href="index.html">Todas as categorias</a></li>
+          <li><a href="loja-koala/produtos.html?cat=acougue">Açougue</a></li>
+          <li><a href="loja-koala/produtos.html?cat=bebidas">Bebidas</a></li>
+          <li><a href="loja-koala/produtos.html?cat=biscoitos">Biscoitos</a></li>
+          <li><a href="loja-koala/produtos.html?cat=bebe">Cantinho Do Bebê</a></li>
+          <li><a href="loja-koala/produtos.html?cat=carnes-salgadas">Carnes Salgadas</a></li>
+          <li><a href="loja-koala/produtos.html?cat=cereais">Cereais E Farináceos</a></li>
+          <li><a href="loja-koala/produtos.html?cat=chocolates">Chocolates E Bombons</a></li>
+          <li><a href="loja-koala/produtos.html?cat=conservas">Conservas</a></li>
+          <li><a href="loja-koala/produtos.html?cat=embutidos">Embutidos</a></li>
+          <li><a href="loja-koala/produtos.html?cat=frios">Frios E Laticínios</a></li>
+          <li><a href="loja-koala/produtos.html?cat=higiene">Higiene Pessoal</a></li>
+          <li><a href="loja-koala/produtos.html?cat=limpeza">Limpeza</a></li>
+          <li><a href="loja-koala/produtos.html?cat=massas">Massas</a></li>
+          <li><a href="loja-koala/produtos.html?cat=matinais">Matinais E Padaria</a></li>
+      </ul>
+    </div>
   </nav>
+  <a class="logo" href="index.html" aria-label="Koala Supermercados – início"><img src="img/logo.svg" alt="Koala Supermercados"></a>
+  <nav class="nav nav--dir" aria-label="Institucional">
+    <div class="menu">
+      <button type="button" aria-expanded="false">O Koala ▾</button>
+      <ul class="menu-lista">
+          <li><a href="loja-koala/sobre.html">Quem somos</a></li>
+          <li><a href="loja-koala/departamentos.html">Departamentos e serviços</a></li>
+          <li><a href="loja-koala/depoimentos.html">Depoimentos</a></li>
+          <li><a href="loja-koala/parceiros.html">Parceiros e marcas</a></li>
+          <li><a href="loja-koala/trabalhe-conosco.html">Trabalhe conosco</a></li>
+          <li><a href="loja-koala/faq.html">Perguntas frequentes</a></li>
+          <li><a href="loja-koala/politica.html">Política de privacidade</a></li>
+      </ul>
+    </div>
+    <a href="loja-koala/orcamento.html">Orçamento</a>
+    <a href="loja-koala/contato.html">Contato</a>
+    <a href="loja-koala/sac.html">SAC</a>
+  </nav>
+</header>
 
-  <main id="conteudo" tabindex="-1">
-
-    <section class="carrossel" aria-roledescription="carrossel" aria-label="Ofertas e novidades do Mercado Koala">
-      <div class="carrossel-faixa">
-        <div class="slide slide-1" role="group" aria-roledescription="slide" aria-label="1 de 4">
-          <p class="slide-etiqueta">Hortifrúti</p>
-          <h2>Frutas, legumes e verduras fresquinhos</h2>
-          <p>Produtos selecionados chegam toda semana ao nosso mercado.</p>
-          <a class="slide-botao" href="paginas/produtos.html">Ver produtos</a>
-        </div>
-        <div class="slide slide-2" role="group" aria-roledescription="slide" aria-label="2 de 4">
-          <p class="slide-etiqueta">Açougue</p>
-          <h2>Cortes especiais sob encomenda</h2>
-          <p>Carnes frescas, de procedência garantida, preparadas por profissionais experientes.</p>
-          <a class="slide-botao" href="orcamento.html">Pedir orçamento</a>
-        </div>
-        <div class="slide slide-3" role="group" aria-roledescription="slide" aria-label="3 de 4">
-          <p class="slide-etiqueta">Padaria</p>
-          <h2>Pão quentinho de hora em hora</h2>
-          <p>Pães e salgados artesanais para começar bem o seu dia.</p>
-          <a class="slide-botao" href="paginas/sobre.html">Conheça o Koala</a>
-        </div>
-        <div class="slide slide-4" role="group" aria-roledescription="slide" aria-label="4 de 4">
-          <p class="slide-etiqueta">Facilidade</p>
-          <h2>Pague com Pix, débito ou crédito</h2>
-          <p>Estacionamento para clientes e atendimento de bairro, sem filas enormes.</p>
-          <a class="slide-botao" href="paginas/contato.html">Fale conosco</a>
-        </div>
+<main id="main">
+  <div class="container">
+    <section class="carrossel" aria-roledescription="carrossel" aria-label="Destaques da Koala">
+      <div class="carrossel__faixa">
+      <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="1 de 4">
+        <img src="img/fotos/loja.jpg" alt="Corredor de um supermercado com prateleiras abastecidas">
+        <div class="carrossel__texto"><h2>Tudo pra você, todos os dias</h2><p>Hortifrúti, açougue, padaria e mais de mil produtos para a sua lista.</p><a class="botao" href="loja-koala/promocoes.html">Ver promoções</a></div>
+      </div>
+      <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="2 de 4">
+        <img src="img/fotos/acougue.jpg" alt="Cortes de carne frescos no balcão" loading="lazy">
+        <div class="carrossel__texto"><h2>Açougue com cortes frescos</h2><p>Carnes selecionadas para o churrasco e para o dia a dia.</p><a class="botao" href="loja-koala/produtos.html?cat=acougue">Ver o açougue</a></div>
+      </div>
+      <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="3 de 4">
+        <img src="img/fotos/bebidas.jpg" alt="Variedade de bebidas" loading="lazy">
+        <div class="carrossel__texto"><h2>Bebidas para toda ocasião</h2><p>Sucos, refrigerantes e muito mais, sempre geladinhos.</p><a class="botao" href="loja-koala/produtos.html?cat=bebidas">Ver bebidas</a></div>
+      </div>
+      <div class="carrossel__slide" role="group" aria-roledescription="slide" aria-label="4 de 4">
+        <img src="img/fotos/matinais.jpg" alt="Itens para o café da manhã" loading="lazy">
+        <div class="carrossel__texto"><h2>Café da manhã completo</h2><p>Pães, cereais e matinais para começar bem o dia.</p><a class="botao" href="loja-koala/produtos.html?cat=matinais">Ver matinais</a></div>
+      </div>
       </div>
     </section>
 
-    <section class="faixa-beneficios" aria-label="Benefícios do Mercado Koala">
-      <ul>
-        <li><strong>Produtos frescos</strong> todos os dias</li>
-        <li><strong>Pix, débito e crédito</strong> aceitos</li>
-        <li><strong>Estacionamento</strong> para clientes</li>
-        <li><strong>Preços justos</strong> no seu bairro</li>
-      </ul>
+    <h1 class="sobre-fundo">Nossos produtos</h1>
+    <nav class="grade" id="cats" aria-label="Categorias de produtos"></nav>
+
+    <section style="margin-top: var(--espaco-16)">
+      <header class="secao-topo">
+        <h2>Ofertas do dia</h2>
+        <span>Terminam em <span class="cronometro" id="cronometro" role="timer" aria-label="Tempo restante das ofertas"><b>00</b>:<b>00</b>:<b>00</b></span></span>
+        <a href="loja-koala/promocoes.html">Ver todas as promoções</a>
+      </header>
+      <div class="grade-produtos" id="ofertas"></div>
     </section>
 
-    <section class="departamentos" aria-labelledby="departamentos-titulo">
-      <h2 id="departamentos-titulo">Nossos Departamentos</h2>
-      <ul>
-        <li>Hortifrúti</li>
-        <li>Açougue</li>
-        <li>Padaria</li>
-        <li>Laticínios</li>
-        <li>Mercearia</li>
-        <li>Bebidas</li>
-      </ul>
+    <section class="faixa-loja" aria-label="Nossa loja">
+      <img src="img/fotos/loja.jpg" alt="Corredor de um supermercado com prateleiras abastecidas">
+      <div><h2>Tudo pra você, todos os dias</h2><p>Hortifrúti, açougue, padaria e mais de mil produtos para a sua lista.</p></div>
     </section>
 
-    <section aria-labelledby="boas-vindas-titulo">
-      <h2 id="boas-vindas-titulo">Bem-vindo ao Mercado Koala!</h2>
-      <p>
-        O Mercado Koala é um mercado de bairro localizado no coração da Vila Carrão, em São Paulo.
-        Oferecemos produtos frescos, itens de mercearia, bebidas, laticínios, hortifrúti e muito mais
-        com o atendimento próximo e de qualidade que só um mercado de bairro pode proporcionar.
-      </p>
-      <p>
-        Aqui você encontra o que precisa para o dia a dia, sem precisar enfrentar as grandes filas
-        dos supermercados. Venha nos visitar!
-      </p>
+    <section id="dicas" style="margin-top: var(--espaco-10)">
+      <h2 class="sobre-fundo">Dicas Koala</h2>
+      <div class="dicas" id="dicas-lista"></div>
     </section>
 
-    <section aria-labelledby="destaques-titulo">
-      <h2 id="destaques-titulo">Destaques da Semana</h2>
-
-      <article>
-        <h3>Promoção de Hortifrúti</h3>
+    <section>
+      <div class="painel" style="max-width: 520px">
+        <h2>Receba o encarte por e-mail</h2>
+        <form id="news" novalidate>
+          <div class="campo">
+            <label for="email">Seu e-mail</label>
+            <input id="email" type="email" autocomplete="email" aria-describedby="email-erro">
+            <div class="campo__erro" id="email-erro" role="alert" hidden></div>
+          </div>
+          <button class="botao" type="submit">Quero receber</button>
+          <div class="aviso aviso--sucesso" id="news-ok" role="status" hidden style="margin-top: var(--espaco-3)">Pronto! Você vai receber o encarte da semana.</div>
+        </form>
+      </div>
+    </section>
+    <div class="conteudo">
+      <section aria-labelledby="boas-vindas-titulo">
+        <h2 id="boas-vindas-titulo">Bem-vindo ao Mercado Koala!</h2>
         <p>
-          Toda semana temos novidades no setor de frutas, legumes e verduras.
-          Produtos selecionados, colhidos frescos e entregues diretamente ao nosso mercado.
+          O Mercado Koala é um mercado de bairro localizado no coração da Vila Carrão, em São Paulo.
+          Oferecemos produtos frescos, itens de mercearia, bebidas, laticínios, hortifrúti e muito mais
+          com o atendimento próximo e de qualidade que só um mercado de bairro pode proporcionar.
         </p>
-      </article>
-
-      <article>
-        <h3>Açougue com Cortes Especiais</h3>
         <p>
-          Nosso açougue oferece cortes especiais sob encomenda. Carnes frescas,
-          de procedência garantida, preparadas por profissionais experientes.
+          Aqui você encontra o que precisa para o dia a dia, sem precisar enfrentar as grandes filas
+          dos supermercados. Venha nos visitar!
         </p>
-      </article>
+      </section>
 
-      <article>
-        <h3>Padaria Artesanal</h3>
+      <section aria-labelledby="horarios-titulo">
+        <h2 id="horarios-titulo">Horários de Funcionamento</h2>
+        <table>
+          <caption>Horários de atendimento do Mercado Koala</caption>
+          <thead>
+            <tr>
+              <th scope="col">Dia da Semana</th>
+              <th scope="col">Horário</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Segunda a Sexta</td>
+              <td>07h00 às 21h00</td>
+            </tr>
+            <tr>
+              <td>Sábado</td>
+              <td>07h00 às 20h00</td>
+            </tr>
+            <tr>
+              <td>Domingo e Feriados</td>
+              <td>08h00 às 14h00</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section aria-labelledby="localizacao-titulo">
+        <h2 id="localizacao-titulo">Como Chegar</h2>
         <p>
-          Pães e salgados fresquinhos todos os dias. Nossa padaria interna prepara
-          produtos artesanais com ingredientes de qualidade para começar bem o seu dia.
+          Estamos localizados na <strong>Rua Dr. Cristiano Altenfelder Silva, 515</strong>,
+          no bairro Vila Carrão, São Paulo - SP, CEP 03448-010.
         </p>
-      </article>
-    </section>
-
-    <section aria-labelledby="horarios-titulo">
-      <h2 id="horarios-titulo">Horários de Funcionamento</h2>
-      <table>
-        <caption>Horários de atendimento do Mercado Koala</caption>
-        <thead>
-          <tr>
-            <th scope="col">Dia da Semana</th>
-            <th scope="col">Horário</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Segunda a Sexta</td>
-            <td>07h00 às 21h00</td>
-          </tr>
-          <tr>
-            <td>Sábado</td>
-            <td>07h00 às 20h00</td>
-          </tr>
-          <tr>
-            <td>Domingo e Feriados</td>
-            <td>08h00 às 14h00</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <section aria-labelledby="diferenciais-titulo">
-      <h2 id="diferenciais-titulo">Por que escolher o Mercado Koala?</h2>
-      <ul>
-        <li>Produtos frescos e de qualidade todos os dias</li>
-        <li>Atendimento personalizado e próximo da comunidade</li>
-        <li>Preços justos e competitivos</li>
-        <li>Localização central na Vila Carrão</li>
-        <li>Estacionamento disponível para clientes</li>
-        <li>Aceita cartão de débito, crédito e Pix</li>
-      </ul>
-    </section>
-
-    <section aria-labelledby="localizacao-titulo">
-      <h2 id="localizacao-titulo">Como Chegar</h2>
-      <p>
-        Estamos localizados na <strong>Rua Dr. Cristiano Altenfelder Silva, 515</strong>,
-        no bairro Vila Carrão, São Paulo - SP, CEP 03448-010.
-      </p>
-      <p>
-        Referência: próximo à Praça da Vila Carrão. Facilmente acessível de carro,
-        ônibus ou a pé para moradores do bairro.
-      </p>
-      <figure>
-        <figcaption>Mapa de localização do Mercado Koala — Vila Carrão, São Paulo</figcaption>
-        <iframe
-          title="Mapa Google Maps — Mercado Koala"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.4!2d-46.5399!3d-23.5454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMyJzIzLjQiUyA0NsKwMzInMjMuNiJX!5e0!3m2!1spt-BR!2sbr!4v1000000000000"
-          width="600"
-          height="300"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
-      </figure>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="rodape-col">
-      <h2>Mercado Koala</h2>
-      <p>Seu mercado de bairro em Vila Carrão, com produtos frescos e atendimento próximo.</p>
-      <p>&copy; 2026 Mercado Koala. Todos os direitos reservados.</p>
+        <p>
+          Referência: próximo à Praça da Vila Carrão. Facilmente acessível de carro,
+          ônibus ou a pé para moradores do bairro.
+        </p>
+        <figure>
+          <figcaption>Mapa de localização do Mercado Koala — Vila Carrão, São Paulo</figcaption>
+          <iframe
+            title="Mapa Google Maps — Mercado Koala"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.4!2d-46.5399!3d-23.5454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDMyJzIzLjQiUyA0NsKwMzInMjMuNiJX!5e0!3m2!1spt-BR!2sbr!4v1000000000000"
+            width="600"
+            height="300"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </figure>
+      </section>
     </div>
-    <div class="rodape-col">
-      <h2>Onde estamos</h2>
-      <address>
-      Rua Dr. Cristiano Altenfelder Silva, 515 — Vila Carrão, São Paulo - SP, CEP 03448-010
-    </address>
-    </div>
-    <div class="rodape-col">
-      <h2>Links úteis</h2>
-      <nav aria-label="Links do rodapé">
-      <ul>
-        <li><a href="paginas/contato.html">Contato</a></li>
-        <li><a href="paginas/politica.html">Política de Privacidade</a></li>
-        <li><a href="orcamento.html">Solicitar Orçamento</a></li>
-      </ul>
+  </div>
+</main>
+
+<footer class="rodape">
+  <div class="container rodape__topo">
+    <aside class="app" aria-label="Aplicativo">
+      <div class="app__texto"><strong>Baixe nosso<br><em>aplicativo!</em></strong>
+        <a class="selo-loja" href="#">Disponível na<br><b>App Store</b></a></div>
+      <img src="img/app.svg" alt="Aplicativo Koala em um celular">
+    </aside>
+    <nav class="rodape__cols" aria-label="Mapa do site">
+      <div><h2 class="rodape__tit">Koala</h2><ul>
+        <li><a href="loja-koala/sobre.html">Quem somos</a></li>
+        <li><a href="index.html#dicas">Dicas</a></li>
+        <li><a href="loja-koala/faq.html">Perguntas frequentes</a></li>
+        <li><a href="loja-koala/trabalhe-conosco.html">Trabalhe conosco</a></li></ul></div>
+      <div><h2 class="rodape__tit">Produtos</h2><ul>
+        <li><a href="loja-koala/departamentos.html">Departamentos</a></li>
+        <li class="sub"><a href="loja-koala/produtos.html">Todos os produtos</a></li>
+        <li class="sub"><a href="loja-koala/promocoes.html">Encarte</a></li>
+        <li class="sub"><a href="loja-koala/parceiros.html">Parceiros e marcas</a></li></ul></div>
+      <div><h2 class="rodape__tit">Atendimento</h2><ul>
+        <li><a href="loja-koala/contato.html">Contato</a></li>
+        <li class="sub"><a href="loja-koala/orcamento.html">Orçamento</a></li>
+        <li class="sub"><a href="loja-koala/sac.html">SAC</a></li>
+        <li class="sub"><a href="loja-koala/depoimentos.html">Depoimentos</a></li></ul></div>
+      <div><h2 class="rodape__tit">Promoções</h2><ul><li><a href="loja-koala/lista.html">Listas</a></li>
+        <li class="sub"><a href="loja-koala/lista.html">Todas</a></li><li class="sub"><a href="loja-koala/lista.html?modelo=dia-a-dia">Dia-a-Dia</a></li>
+        <li class="sub"><a href="loja-koala/lista.html?modelo=churrasco">Churrasco</a></li><li class="sub"><a href="loja-koala/lista.html?modelo=festa">Festa</a></li></ul></div>
+      <div><h2 class="rodape__tit">Onde estamos</h2>
+        <address>Rua Dr. Cristiano Altenfelder Silva, 515<br>Vila Carrão, São Paulo - SP<br>CEP 03448-010</address>
+        <ul><li class="sub">2ª a 6ª feira, das 07h às 21h.</li>
+        <li><a class="botao" href="loja-koala/contato.html">Fale conosco</a></li></ul></div>
     </nav>
-    </div>
-  </footer>
+    <nav class="redes" aria-label="Redes sociais"><h2 class="rodape__tit">Siga a gente</h2>
+      <a href="#"><b>f</b> Facebook</a><a href="#"><b>X</b> X</a><a href="#"><b>▶</b> YouTube</a><a href="#"><b>◎</b> Instagram</a></nav>
+  </div>
+  <div class="rodape__base"><div class="container"><span>© 2026 Mercado Koala. Trabalho acadêmico.</span>
+    <span><a href="loja-koala/catalogo.html">Catálogo de componentes</a> · <a href="loja-koala/politica.html">Política de privacidade</a></span></div></div>
+</footer>
+<script>
+(() => {
+  const { $, cardProduto } = Koala;
+  const cards = CATS.map(c => `<a class="card" href="loja-koala/produtos.html?cat=${c.slug}"><img src="${c.img}" alt=""><span>${c.name}</span></a>`);
+  // as duas últimas categorias ocupam a linha final, como no layout de referência
+  $("#cats").innerHTML = cards.slice(0, 12).join("") + `<div class="grade__larga">${cards.slice(12).join("")}</div>`;
 
-  <script src="js/main.js" defer></script>
+  PRODUCTS.filter(p => p.old).slice(0, 4).forEach(p => $("#ofertas").appendChild(cardProduto(p)));
+  $("#dicas-lista").innerHTML = TIPS.map(t => `<article class="painel"><h3>${t.t}</h3><p>${t.d}</p></article>`).join("");
+
+  // contagem regressiva até a meia-noite
+  const pad = n => String(n).padStart(2, "0");
+  function tick() {
+    const agora = new Date(), fim = new Date(agora); fim.setHours(24, 0, 0, 0);
+    const s = Math.floor((fim - agora) / 1000), b = document.querySelectorAll("#cronometro b");
+    b[0].textContent = pad(Math.floor(s / 3600)); b[1].textContent = pad(Math.floor(s % 3600 / 60)); b[2].textContent = pad(s % 60);
+  }
+  tick(); setInterval(tick, 1000);
+
+  // carrossel de destaques: troca sozinho (5 s), setas, bolinhas, teclado e toque
+  (() => {
+    const raiz = $(".carrossel"), faixa = $(".carrossel__faixa"), slides = [...document.querySelectorAll(".carrossel__slide")];
+    let atual = 0, timer = null;
+    const reduzir = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const botao = (cls, rotulo, txt) => { const b = document.createElement("button"); b.type = "button"; b.className = cls; b.setAttribute("aria-label", rotulo); b.textContent = txt; return b; };
+    const ant = botao("carrossel__seta carrossel__seta--ant", "Slide anterior", "‹");
+    const prox = botao("carrossel__seta carrossel__seta--prox", "Próximo slide", "›");
+    const pontos = document.createElement("div"); pontos.className = "carrossel__pontos";
+    const bolas = slides.map((_, i) => { const b = botao("", `Ir para o slide ${i + 1}`, ""); b.addEventListener("click", () => { ir(i); reiniciar(); }); pontos.appendChild(b); return b; });
+    const pausa = botao("carrossel__pausa", "Pausar rotação automática dos slides", "Pausar"); pausa.setAttribute("aria-pressed", "false");
+    let pausado = false;
+    raiz.append(pausa, ant, pontos, prox);
+    function ir(i) {
+      atual = (i + slides.length) % slides.length;
+      faixa.style.transform = `translateX(-${atual * 100}%)`;
+      slides.forEach((s, n) => { s.setAttribute("aria-hidden", n !== atual); s.querySelectorAll("a").forEach(a => { a.tabIndex = n === atual ? 0 : -1; }); });
+      bolas.forEach((b, n) => { if (n === atual) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current"); });
+    }
+    const parar = () => { clearInterval(timer); timer = null; };
+    const iniciar = () => { if (!reduzir && !pausado && !timer) timer = setInterval(() => ir(atual + 1), 5000); };
+    const reiniciar = () => { parar(); iniciar(); };
+    pausa.addEventListener("click", () => {
+      pausado = !pausado;
+      pausa.textContent = pausado ? "Reproduzir" : "Pausar";
+      pausa.setAttribute("aria-label", pausado ? "Retomar rotação automática dos slides" : "Pausar rotação automática dos slides");
+      pausa.setAttribute("aria-pressed", pausado);
+      faixa.setAttribute("aria-live", pausado ? "polite" : "off");
+      if (pausado) parar(); else iniciar();
+    });
+    faixa.setAttribute("aria-live", "off");
+    if (reduzir) pausa.hidden = true;
+    ant.addEventListener("click", () => { ir(atual - 1); reiniciar(); });
+    prox.addEventListener("click", () => { ir(atual + 1); reiniciar(); });
+    raiz.addEventListener("mouseenter", parar); raiz.addEventListener("mouseleave", iniciar);
+    raiz.addEventListener("focusin", parar); raiz.addEventListener("focusout", iniciar);
+    raiz.addEventListener("keydown", e => { if (e.key === "ArrowLeft") { ir(atual - 1); reiniciar(); } if (e.key === "ArrowRight") { ir(atual + 1); reiniciar(); } });
+    let x0 = null;
+    raiz.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+    raiz.addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { ir(atual + (dx < 0 ? 1 : -1)); reiniciar(); } x0 = null; });
+    ir(0); iniciar();
+  })();
+
+  $("#news").addEventListener("submit", e => {
+    e.preventDefault();
+    const inp = $("#email"), msg = $("#email-erro"), v = inp.value.trim();
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    inp.setAttribute("aria-invalid", !ok);
+    msg.hidden = ok; msg.textContent = v ? "Digite um e-mail válido, como nome@exemplo.com." : "Informe seu e-mail.";
+    $("#news-ok").hidden = !ok;
+    if (!ok) inp.focus(); else inp.value = "";
+  });
+})();
+</script>
 </body>
 </html>

@@ -67,35 +67,25 @@
     return el;
   }
 
-  /* cabeçalho e rodapé compartilhados */
+  /* cabeçalho e rodapé estão escritos no HTML de cada página; aqui só entram os comportamentos */
+  const RAIZ = new URL("..", document.currentScript.src).href; // pasta raiz do site
   function montarLayout() {
-    const pagina = location.pathname.split("/").pop() || "index.html";
-    const atual = h => (h === pagina ? ' aria-current="page"' : "");
-    const h = $("#cabecalho");
+    const h = $(".cabecalho");
     if (h) {
-      h.className = "cabecalho";
-      h.innerHTML = `<a class="pular" href="#main">Pular para o conteúdo</a>
-        <button class="menu-btn" type="button" aria-label="Abrir menu" aria-expanded="false">Menu</button>
-        <nav class="nav nav--esq" aria-label="Principal">
-          <a href="lista.html"${atual("lista.html")}>Listas de compras <span class="contador" id="contador" hidden>0</span></a>
-          <a href="promocoes.html"${atual("promocoes.html")}>Promoções</a>
-          <div class="menu"><button type="button" aria-haspopup="true" aria-expanded="false">Produtos ▾</button>
-            <div class="menu-lista"><a href="index.html">Todas as categorias</a>
-              ${CATS.map(c => `<a href="produtos.html?cat=${c.slug}">${c.name}</a>`).join("")}</div></div>
-        </nav>
-        <a class="logo" href="index.html" aria-label="Koala Supermercados – início"><img src="img/logo.svg" alt="Koala Supermercados"></a>
-        <nav class="nav nav--dir" aria-label="Secundário">
-          <a href="index.html#dicas">Dicas</a>
-          <a href="promocoes.html">Encarte</a>
-          <a href="sac.html"${atual("sac.html")}>SAC</a>
-          <a href="sac.html#denuncia">Canal de denúncias</a>
-        </nav>`;
-      const menu = $(".menu", h), mb = $(".menu button", h);
-      const fechar = () => { menu.classList.remove("aberto"); mb.setAttribute("aria-expanded", "false"); };
-      mb.addEventListener("click", e => { e.stopPropagation(); const o = menu.classList.toggle("aberto"); mb.setAttribute("aria-expanded", o); });
-      document.addEventListener("click", fechar);
+      const menus = $$(".menu", h);
+      const fechar = menu => { menu.classList.remove("aberto"); $("button", menu).setAttribute("aria-expanded", "false"); };
+      menus.forEach(menu => {
+        const mb = $("button", menu);
+        mb.addEventListener("click", e => {
+          e.stopPropagation();
+          menus.filter(m => m !== menu).forEach(fechar);
+          const o = menu.classList.toggle("aberto"); mb.setAttribute("aria-expanded", o);
+        });
+      });
+      document.addEventListener("click", () => menus.forEach(fechar));
       document.addEventListener("keydown", e => {
-        if (e.key === "Escape" && menu.classList.contains("aberto")) { fechar(); mb.focus(); }
+        const aberto = menus.find(m => m.classList.contains("aberto"));
+        if (e.key === "Escape" && aberto) { fechar(aberto); $("button", aberto).focus(); }
       });
       const burger = $(".menu-btn", h);
       burger.addEventListener("click", () => {
@@ -104,36 +94,13 @@
         burger.setAttribute("aria-label", o ? "Fechar menu" : "Abrir menu");
       });
     }
-    const f = $("#rodape");
-    if (f) {
-      f.className = "rodape";
-      f.innerHTML = `<div class="container rodape__topo">
-          <div class="app"><div class="app__texto"><strong>Baixe nosso<br><em>aplicativo!</em></strong>
-            <a class="selo-loja" href="#">Disponível na<br><b>App Store</b></a></div>
-            <img src="img/app.svg" alt="Aplicativo Koala em um celular"></div>
-          <div class="rodape__cols">
-            <div><h2 class="rodape__tit">Koala</h2><ul><li><a href="index.html#dicas">Dicas</a></li><li><a href="#">Cartões aceitos</a></li><li><a href="#">Transparência salarial</a></li></ul></div>
-            <div><h2 class="rodape__tit">Produtos</h2><ul><li><a href="promocoes.html">Encarte</a></li><li class="sub"><a href="promocoes.html">Veja</a></li><li class="sub"><a href="promocoes.html">Baixe</a></li></ul></div>
-            <div><h2 class="rodape__tit">Lojas</h2><ul><li><a href="#">Koala Card</a></li><li class="sub"><a href="sac.html">Atendimento</a></li></ul></div>
-            <div><h2 class="rodape__tit">Promoções</h2><ul><li><a href="lista.html">Listas</a></li>
-              <li class="sub"><a href="lista.html">Todas</a></li><li class="sub"><a href="lista.html?modelo=dia-a-dia">Dia-a-Dia</a></li>
-              <li class="sub"><a href="lista.html?modelo=churrasco">Churrasco</a></li><li class="sub"><a href="lista.html?modelo=festa">Festa</a></li></ul></div>
-            <div><h2 class="rodape__tit">Contato SAC</h2><ul><li class="tel">0800 000 0000</li><li class="sub">2ª a 6ª feira, das 8h às 18h.</li>
-              <li><a class="botao" href="sac.html">SAC</a></li></ul></div>
-          </div>
-          <div class="redes"><h2 class="rodape__tit">Siga a gente</h2>
-            <a href="#"><b>f</b> Facebook</a><a href="#"><b>X</b> X</a><a href="#"><b>▶</b> YouTube</a><a href="#"><b>◎</b> Instagram</a></div>
-        </div>
-        <div class="rodape__base"><div class="container"><span>© 2026 Supermercados Koala. Trabalho acadêmico, loja fictícia.</span>
-          <span><a href="catalogo.html">Catálogo de componentes</a> · <a href="#">Política de privacidade</a></span></div></div>`;
-    }
     const principal = $("main");
     if (principal) principal.tabIndex = -1; // destino do link "Pular para o conteúdo"
     garantirToasts();
     montarAcessibilidade();
     if (!$(".flutuante--ajuda")) {
       document.body.insertAdjacentHTML("beforeend",
-        `<button class="flutuante flutuante--tema" type="button"></button><a class="flutuante flutuante--ajuda" href="sac.html">Posso ajudar?</a>`);
+        `<button class="flutuante flutuante--tema" type="button"></button><a class="flutuante flutuante--ajuda" href="${RAIZ}loja-koala/sac.html">Posso ajudar?</a>`);
       $(".flutuante--tema").addEventListener("click", alternarTema);
     }
     syncTema();
