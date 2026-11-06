@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo principal</a>
 
   <header>
     <h1>Mercado Koala</h1>
@@ -30,7 +31,7 @@
     </ul>
   </nav>
 
-  <main>
+  <main id="conteudo" tabindex="-1">
 
     <section aria-labelledby="orcamento-intro-titulo">
       <h2 id="orcamento-intro-titulo">Solicite um Orçamento</h2>
@@ -53,7 +54,7 @@
           <legend>Dados do Solicitante</legend>
 
           <div>
-            <label for="nome-orcamento">Nome completo <abbr title="campo obrigatório">*</abbr></label>
+            <label for="nome-orcamento">Nome completo <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
             <input
               type="text"
               id="nome-orcamento"
@@ -67,7 +68,7 @@
           </div>
 
           <div>
-            <label for="email-orcamento">E-mail <abbr title="campo obrigatório">*</abbr></label>
+            <label for="email-orcamento">E-mail <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
             <input
               type="email"
               id="email-orcamento"
@@ -80,7 +81,7 @@
           </div>
 
           <div>
-            <label for="telefone-orcamento">Telefone <abbr title="campo obrigatório">*</abbr></label>
+            <label for="telefone-orcamento">Telefone <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
             <input
               type="tel"
               id="telefone-orcamento"
@@ -95,7 +96,7 @@
           </div>
 
           <div>
-            <label for="tipo-cliente">Tipo de cliente <abbr title="campo obrigatório">*</abbr></label>
+            <label for="tipo-cliente">Tipo de cliente <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
             <select id="tipo-cliente" name="tipo-cliente" required>
               <option value="">— Selecione —</option>
               <option value="pessoa-fisica">Pessoa física</option>
@@ -124,7 +125,7 @@
           <legend>Detalhes do Pedido</legend>
 
           <div>
-            <label for="finalidade">Finalidade do pedido <abbr title="campo obrigatório">*</abbr></label>
+            <label for="finalidade">Finalidade do pedido <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
             <select id="finalidade" name="finalidade" required>
               <option value="">— Selecione —</option>
               <option value="evento">Evento / Festa</option>
@@ -147,7 +148,7 @@
           </div>
 
           <div>
-            <label for="produtos-desejados">Produtos desejados <abbr title="campo obrigatório">*</abbr></label>
+            <label for="produtos-desejados">Produtos desejados <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span></label>
             <textarea
               id="produtos-desejados"
               name="produtos-desejados"
@@ -194,7 +195,7 @@
             <input type="checkbox" id="aceite-politica-orc" name="aceite-politica" required />
             <label for="aceite-politica-orc">
               Li e aceito a <a href="paginas/politica.html">Política de Privacidade</a>.
-              <abbr title="campo obrigatório">*</abbr>
+              <span aria-hidden="true" class="obrigatorio">*</span><span class="so-leitor"> (obrigatório)</span>
             </label>
           </div>
         </fieldset>

@@ -1,10 +1,43 @@
-# Mercado Koala — Site de Divulgação
+# 🐨 Koala Supermercados
 
-Site institucional desenvolvido como projeto escolar para a disciplina de **Desenvolvimento Frontend para Web** (A2 · 2026.2), sob orientação do Prof. Cid Andrade. A **Entrega 2** adiciona a identidade visual (CSS) ao site da Entrega 1.
+Site de um supermercado fictício chamado **Koala**, feito só com **HTML, CSS e JavaScript puro**, sem frameworks e sem nenhuma biblioteca. Dá para navegar pelas categorias, ver as promoções, montar uma lista de compras que fica salva no navegador, falar com o SAC e usar tudo pelo teclado, com tema escuro e alto contraste.
+
+🔗 **Site no ar:** https://koala-supermercados.vercel.app/
+
+![Página inicial da Koala Supermercados](loja-koala/docs/prints/01-inicio.png)
 
 ---
 
-## 👥 Integrantes do Grupo
+## 📚 Sumário
+
+- [Sobre o projeto](#-sobre-o-projeto)
+- [Integrantes do grupo](#-integrantes-do-grupo)
+- [O que o site tem](#-o-que-o-site-tem)
+- [Acessibilidade](#-acessibilidade)
+- [Prints](#-prints)
+- [Como iniciar o projeto](#-como-iniciar-o-projeto)
+- [Como publicar na Vercel](#-como-publicar-na-vercel)
+- [Estrutura de pastas](#-estrutura-de-pastas)
+- [Como o visual foi pensado](#-como-o-visual-foi-pensado)
+- [Tecnologias](#-tecnologias)
+- [Fotos e créditos](#-fotos-e-créditos)
+- [Critérios de aceite](#-critérios-de-aceite)
+
+---
+
+## 💡 Sobre o projeto
+
+Este é um trabalho da disciplina de **Desenvolvimento Frontend para Web** (A2 · 2026.2), sob orientação do **Prof. Cid Andrade**.
+
+A ideia foi criar uma loja virtual de supermercado com cara de site de verdade. Usamos como referência o layout do site do Supermercados Guanabara (a barra do topo, a grade de categorias, a lista de compras e o rodapé). **Só o layout**: a marca, o logo e as fotos são da Koala.
+
+A cor principal é o **verde escuro**, que passa a ideia de frescor e confiança, e o site tem **tema claro, tema escuro e alto contraste**.
+
+> Os produtos, os preços e o telefone 0800 do rodapé são inventados. O site não tem servidor: tudo o que você faz (lista, tema, preferências) fica salvo apenas no seu navegador.
+
+---
+
+## 👥 Integrantes do grupo
 
 | Nome | RGM |
 |------|----|
@@ -15,294 +48,229 @@ Site institucional desenvolvido como projeto escolar para a disciplina de **Dese
 
 ---
 
-## 🛒 SITE NOVO — Loja Koala (prints)
+## 🛒 O que o site tem
 
-Fizemos um site novo em formato de **loja virtual**, na pasta [loja-koala/](loja-koala/), inspirado no layout do Supermercados Guanabara, com a marca Koala em **verde escuro**, bordas arredondadas e carrossel de destaques na página inicial.
-Ele tem carrossel, lista de compras funcional, tema claro e escuro, página de catálogo de componentes (`tokens.css` e `AGENTS.md`) e **fotos reais**.
-Explicação completa: [loja-koala/README.md](loja-koala/README.md).
+| Página | O que dá para fazer |
+|---|---|
+| **Início** (`index.html`) | Carrossel de destaques, 14 categorias com foto, ofertas do dia com cronômetro, dicas e cadastro de e-mail para receber o encarte |
+| **Produtos** (`produtos.html`) | Buscar por nome, filtrar por categoria, ordenar por nome ou preço e adicionar à lista |
+| **Promoções** (`promocoes.html`) | O encarte da semana, com as ofertas ordenadas pelo maior desconto |
+| **Lista de compras** (`lista.html`) | Adicionar itens, mudar a quantidade, marcar o que já pegou, ver o total estimado, copiar e imprimir. Tem modelos prontos: Dia-a-Dia, Churrasco e Festa |
+| **SAC** (`sac.html`) | SAC e Canal de denúncias (com opção de envio anônimo), em abas e com validação dos campos |
+| **Catálogo** (`catalogo.html`) | Todos os componentes (botão, campo, card, aviso, item de lista) em todos os estados |
 
-**Como abrir:** baixe o projeto e abra `loja-koala/index.html` no navegador. Endereço hospedado (quando o GitHub Pages estiver ativo): https://koala-supermercados.vercel.app/
+Detalhes que fazem diferença:
 
-### 1. Página inicial (aba de produtos)
-14 categorias com foto real, ofertas do dia com cronômetro, dicas, faixa da loja e rodapé "Baixe nosso aplicativo".
+- **Lista salva no navegador:** se você recarregar a página, ela continua lá. O contador no menu atualiza na hora.
+- **Tema escuro** com um botão no canto da tela. O site lembra a sua escolha.
+- **Responsivo:** no celular, as categorias viram uma coluna e o menu vira um botão "Menu".
+- **Carrossel** com troca automática a cada 5 segundos, setas, bolinhas, teclado (← →) e arrastar com o dedo.
 
-![Página inicial da loja Koala](loja-koala/docs/prints/01-inicio.png)
+---
 
-### 2. Produtos de uma categoria
+## ♿ Acessibilidade
+
+A acessibilidade foi pensada com base nas recomendações da **WCAG 2.2 (nível AA)**. O que já está no site:
+
+| Recurso | Como funciona |
+|---|---|
+| **Painel "Acessibilidade"** | Botão no canto inferior esquerdo. Tem **A−, A e A+** para o tamanho da letra e o botão **Alto contraste**. A escolha fica salva |
+| **Alto contraste** | Tema em preto, branco e amarelo. Liga sozinho se o sistema do usuário pedir mais contraste |
+| **Pular para o conteúdo** | Aperte `Tab` assim que a página abrir: aparece o link para ir direto ao conteúdo principal |
+| **Foco visível** | Anel de foco em duas cores (escuro por dentro, amarelo por fora), que aparece tanto em fundo claro quanto escuro |
+| **Teclado em tudo** | Menu, carrossel, abas do SAC, lista de compras e painel funcionam sem mouse. `Esc` fecha menus e painéis |
+| **Carrossel pausável** | Botão "Pausar" e respeito ao `prefers-reduced-motion` (quem prefere menos movimento não vê a troca automática) |
+| **Lista de compras** | Ao mexer em um item, o foco do teclado continua no mesmo botão. As ações são anunciadas ("Arroz removido da lista") |
+| **Leitor de tela** | Botões com o nome do produto ("Adicionar à lista: Arroz"), preço antigo lido como "De … por …", desconto falado, avisos e erros anunciados |
+| **Formulários** | Cada erro aparece junto do campo, ligado a ele com `aria-describedby`, e o foco vai para o primeiro erro |
+| **Alvos de toque** | Botões com pelo menos 44 px de altura |
+
+Com a letra no tamanho máximo (150%), o menu de computador pode ficar apertado, mas no celular o menu "hambúrguer" resolve.
+
+Testamos no Chrome (computador). Ainda vale uma conferida com leitor de tela (NVDA ou TalkBack) e com uma ferramenta como o Lighthouse ou o axe.
+
+---
+
+## 📸 Prints
+
+### Página inicial
+As 14 categorias com foto real, as ofertas do dia com cronômetro, as dicas, a faixa da loja e o rodapé "Baixe nosso aplicativo".
+
+![Página inicial](loja-koala/docs/prints/01-inicio.png)
+
+### Produtos de uma categoria
 Busca, filtro por categoria, ordenação e botão "Adicionar à lista".
 
 ![Produtos do açougue](loja-koala/docs/prints/05-produtos-acougue.png)
 
-### 3. Lista de compras
-Adicionar itens, mudar a quantidade, marcar o que já pegou, ver o total e usar modelos (Dia-a-Dia, Churrasco, Festa). Fica salva no navegador.
+### Lista de compras
+No print foi usado o modelo Churrasco.
 
 ![Lista de compras](loja-koala/docs/prints/02-lista-de-compras.png)
 
-### 4. Tema escuro
-O botão "Tema escuro" troca as cores. O site lembra a escolha.
+### Painel de acessibilidade
+Tamanho da letra e alto contraste, no canto inferior esquerdo.
 
+![Painel de acessibilidade](loja-koala/docs/prints/07-painel-acessibilidade.png)
+
+### Alto contraste
+Preto, branco e amarelo, com bordas bem marcadas. O print está com a letra um pouco maior.
+
+![Alto contraste](loja-koala/docs/prints/08-alto-contraste.png)
+
+### Tema escuro
 ![Tema escuro](loja-koala/docs/prints/06-tema-escuro.png)
 
-### 5. Catálogo de componentes
-Botões, campos, cards e avisos em todos os estados (normal, hover, foco, desabilitado e erro), nos temas claro e escuro.
+### Catálogo de componentes
+Todos os componentes em todos os estados: normal, hover, foco, desabilitado e erro.
 
 ![Catálogo de componentes](loja-koala/docs/prints/03-catalogo-de-componentes.png)
 
-### 6. Versão para celular (360 px)
-As categorias viram uma coluna e o menu vira um botão "Menu".
-
+### No celular (360 px)
 ![Versão para celular](loja-koala/docs/prints/04-celular-360px.png)
 
 ---
 
-## 🏪 Introdução — A Organização
+## 🚀 Como iniciar o projeto
 
-O **Mercado Koala** é um mercado de bairro localizado na:
+Não precisa instalar nada: não tem `npm`, build ou dependências.
 
-> **Rua Dr. Cristiano Altenfelder Silva, 515 — Vila Carrão, São Paulo - SP, CEP 03448-010**
+### 1. Baixar o projeto
 
-Trata-se de um negócio familiar, fundado com o objetivo de oferecer aos moradores da Vila Carrão produtos frescos, atendimento próximo e preços justos. O mercado conta com seções de hortifrúti, açougue, padaria artesanal, mercearia, bebidas, laticínios e produtos de limpeza e higiene.
+```bash
+git clone https://github.com/veronisky/Koala-mercado-Javascript.git
+cd Koala-mercado-Javascript/loja-koala
+```
 
-O site foi desenvolvido para **divulgar o mercado digitalmente**, apresentando a história da empresa, seus produtos e serviços, canais de contato e formulários de orçamento — tudo com estrutura semântica em HTML5 puro, conforme os requisitos da Entrega 1.
+Ou baixe o ZIP pelo botão **Code → Download ZIP** no GitHub e extraia.
+
+### 2. Abrir o site
+
+**Jeito mais simples:** dê dois cliques no arquivo `loja-koala/index.html`. Ele abre no navegador.
+
+**Jeito recomendado (servidor local):** alguns recursos funcionam melhor com um servidor, como o `localStorage` em alguns navegadores. Dentro da pasta `loja-koala`, use uma das opções:
+
+```bash
+# Python (já vem instalado na maioria dos computadores)
+python -m http.server 8000
+
+# ou Node.js
+npx serve .
+```
+
+Depois abra **http://localhost:8000** no navegador.
+
+**No VS Code:** instale a extensão **Live Server**, clique com o botão direito em `loja-koala/index.html` e escolha **Open with Live Server**.
+
+### 3. Conferir se está tudo certo
+
+- Aperte `Tab` na página inicial: deve aparecer o link "Pular para o conteúdo".
+- Clique em **Acessibilidade** (canto inferior esquerdo) e teste o **Alto contraste**.
+- Adicione um produto à lista e recarregue a página: o item deve continuar lá.
+
+> **Observação:** a pasta `loja-koala/` é o site completo. Os arquivos que ficam fora dela (`index.html`, `paginas/`, `css/`, `js/`, `assets/`) são de uma versão anterior do trabalho, o *Mercado Koala* azul, e não fazem parte do site publicado.
 
 ---
 
-## 🗂️ Estrutura do Projeto
+## ☁️ Como publicar na Vercel
+
+O site é estático, então a publicação é simples:
+
+1. Entre em [vercel.com](https://vercel.com) e clique em **Add New → Project**.
+2. Importe o repositório `Koala-mercado-Javascript` do GitHub.
+3. Em **Root Directory**, escolha **`loja-koala`**.
+4. Deixe **Framework Preset** como *Other* e não preencha comando de build.
+5. Clique em **Deploy**.
+
+Depois disso, cada `git push` na branch `main` atualiza o site sozinho.
+
+---
+
+## 🗂️ Estrutura de pastas
 
 ```
-Koala-Anuncio/
-├── index.html               # Página Inicial
-├── orcamento.html           # Página de Orçamento/Solicitação
-├── paginas/
-│   ├── contato.html         # Página de Contato (formulário)
-│   ├── sobre.html           # Quem Somos
-│   ├── produtos.html        # Produtos & Serviços
-│   ├── faq.html             # Perguntas Frequentes
-│   ├── depoimentos.html     # Depoimentos & Avaliações
-│   ├── trabalhe-conosco.html # Trabalhe Conosco
-│   ├── parceiros.html       # Parceiros & Marcas
-│   └── politica.html        # Política de Privacidade
+loja-koala/
+├── index.html          # página inicial
+├── produtos.html       # produtos, com busca e filtros
+├── promocoes.html      # encarte
+├── lista.html          # lista de compras
+├── sac.html            # SAC e canal de denúncias
+├── catalogo.html       # todos os componentes em todos os estados
+├── tokens.css          # fonte única de cores, espaços, raios e fontes
+├── AGENTS.md           # regras do projeto para a IA seguir
 ├── css/
-│   ├── style.css            # Estilos do Mercado Koala (identidade visual)
-│   └── bootstrap.min.css    # Bootstrap 5.3.3 (somente CSS, hospedado localmente)
+│   └── estilos.css     # estilo dos componentes e do layout
 ├── js/
-│   └── main.js              # Interatividade (JavaScript puro, sem bibliotecas)
-├── assets/
-│   ├── img/                 # Foto da entrevista com o responsável
-│   ├── audio/               # Áudio de apresentação
-│   └── video/               # Vídeo de apresentação
-├── .gitignore               # Arquivos locais ignorados pelo Git
-└── README.md
+│   ├── data.js         # categorias, produtos, dicas e modelos de lista
+│   └── app.js          # tema, acessibilidade, lista, cabeçalho e rodapé
+├── img/
+│   ├── logo.svg        # logo da Koala
+│   ├── app.svg         # celular do rodapé
+│   └── fotos/          # fotos reais + CREDITOS.md
+└── docs/prints/        # imagens usadas neste README
 ```
 
-O workflow de publicação do GitHub Pages fica em `.github/workflows/` e não é
-exibido nesta árvore resumida para manter a documentação mais limpa.
+---
+
+## 🎨 Como o visual foi pensado
+
+O professor passou um fluxo em quatro passos: **referência antes, design system como contexto, prompt com critério de aceite e teste depois.**
+
+1. **Referência antes:** olhamos o site do Guanabara e aproveitamos só o jeito de organizar a página.
+2. **Design system como contexto:** o `tokens.css` é o único arquivo com cores. Todo o resto usa `var(--cor-...)`. O `AGENTS.md` guarda as regras para a IA seguir.
+3. **Critério de aceite:** a lista está mais abaixo.
+4. **Teste depois:** o `catalogo.html` reúne todos os componentes num lugar só, em vez de testar página por página.
+
+### Mudar a geometria, não só a cor
+Para o site não ficar com cara de template, mudamos também a forma das coisas:
+
+- **Raio:** 12 px nas bordas de botões, cards, campos e carrossel (`--raio`).
+- **Espaço:** escala de 4 px (4, 8, 12, 16, 24, 40, 64).
+- **Letras:** escala tipográfica de 1.25, com a fonte *Barlow Condensed*.
+
+### Regras do `AGENTS.md`
+
+- HTML semântico, com um único `<h1>` por página.
+- Cores, espaços e raios só com `var(--...)` do `tokens.css`.
+- Nunca usar cor hexadecimal fora do `tokens.css`.
+- Reusar `.botao`, `.card` e `.campo`, sem criar variações.
+- Sem bibliotecas novas.
+- Testar em 360 px, 768 px e 1280 px.
+
+Como as cores ficam todas no `tokens.css`, os três temas (claro, escuro e alto contraste) são só três conjuntos de variáveis. Para criar um tema novo, basta acrescentar um bloco `[data-...]` nesse arquivo.
 
 ---
 
-## 📸 Prints do site
+## 🧰 Tecnologias
 
-Capturas reais do site rodando (versão para computador em 1280 px e versão para celular em 360 px).
-
-### Página inicial
-Cabeçalho com o selo "Aberto agora", menu de departamentos, carrossel de ofertas, faixa de benefícios, dica do dia e destaques da semana.
-
-![Página inicial](assets/prints/01-pagina-inicial.png)
-
-### Produtos & Serviços
-![Página de produtos](assets/prints/02-produtos.png)
-
-### Orçamento (formulário com validação e máscaras)
-![Página de orçamento](assets/prints/03-orcamento.png)
-
-### Versão para celular
-O menu vira um botão "☰ Menu" e os blocos ficam em uma coluna.
-
-![Versão para celular](assets/prints/04-celular.png)
+- **HTML5** semântico
+- **CSS3**: variáveis CSS, Grid, Flexbox e media queries (incluindo `prefers-reduced-motion`, `prefers-color-scheme` e `prefers-contrast`)
+- **JavaScript puro**, sem frameworks
+- **localStorage** para guardar a lista de compras, o tema e as preferências de acessibilidade
+- **Vercel** para publicar o site
 
 ---
 
-## 🔗 Link do Site Hospedado
+## 📷 Fotos e créditos
 
-O site é publicado em: **https://veronisky.github.io/Koala-mercado-Javascript/**
+As fotos são reais e vieram do **Wikimedia Commons**. Cada foto tem a sua licença, e a lista com título, autor e licença está em [loja-koala/img/fotos/CREDITOS.md](loja-koala/img/fotos/CREDITOS.md).
 
-O deploy está configurado para ocorrer automaticamente a cada atualização da branch `main`.
-Para ativar pela primeira vez, acesse **Settings > Pages** no GitHub e selecione **GitHub Actions** como fonte de publicação.
-
----
-
-## 🛠️ Desenvolvimento
-
-### Contato com a Organização
-
-O Mercado Koala é o negócio do pai de um dos integrantes do grupo (Marcelo Gabriel Alves),
-o que garantiu acesso direto ao responsável para levantamento de informações reais sobre
-endereço, funcionamento, serviços, produtos e diferenciais do estabelecimento.
-
-A entrevista foi realizada de forma presencial, com visita ao mercado para coleta de informações.
-
-> 📷 **Foto comprobatória do contato com o responsável:** disponível em `assets/img/entrevista-responsavel.jpg` e exibida na página `paginas/sobre.html`.
-
-
-### Processo de Desenvolvimento
-
-#### Decisões de Estrutura
-
-- Optamos por 10 páginas interligadas conforme o requisito, com páginas adicionais de conteúdo relacionadas aos serviços reais do mercado.
-- A estrutura de pastas separa as páginas de conteúdo (`/paginas/`) dos arquivos raiz (`index.html`, `contato.html`, `orcamento.html`), seguindo a sugestão do enunciado.
-- Todos os caminhos relativos foram cuidadosamente ajustados para manter a navegação funcional entre as pastas.
-
-#### Semântica HTML5
-
-Todas as páginas utilizam as seguintes tags semânticas obrigatórias:
-- `<header>` — cabeçalho do site com nome e descrição
-- `<nav>` — menu de navegação principal (com `aria-label`)
-- `<main>` — conteúdo principal da página
-- `<section>` — seções temáticas com `aria-labelledby`
-- `<article>` — artigos/blocos de conteúdo independentes
-- `<footer>` — rodapé com copyright e links
-
-#### Formulários com Validação HTML5 Nativa
-
-Três páginas contêm formulários com validação nativa:
-- **contato.html** — formulário de contato com `type="email"`, `type="tel"`, `pattern`, `required`, `minlength`, `maxlength`
-- **orcamento.html** — formulário de orçamento com campos específicos para pessoa física/jurídica, `type="date"`, `type="tel"`, `pattern` para CNPJ
-- **trabalhe-conosco.html** — formulário de cadastro de currículo com `type="number"` (idade com `min`/`max`)
-
-#### Áudio e Vídeo
-
-As tags `<audio>` e `<video>` estão incorporadas na página `paginas/produtos.html`, com arquivos placeholder em `assets/audio/` e `assets/video/`. O vídeo placeholder mostra um koala e ambos poderão ser reposicionados quando o CSS for implementado.
-
-#### Desafios Técnicos
-
-- **Caminhos relativos:** ajuste dos caminhos (`../`) para as páginas dentro da pasta `/paginas/` acessarem corretamente `index.html`, `contato.html` e `orcamento.html`.
-- **Validação W3C:** atenção ao fechamento correto de todas as tags, uso adequado de `aria-label` e `aria-labelledby`, evitar elementos depreciados.
-- **Acessibilidade:** uso de `<abbr>` para indicar campos obrigatórios, `aria-current="page"` no menu para indicar a página ativa.
+Cada categoria tem uma foto, e os produtos da mesma categoria usam a mesma foto.
 
 ---
 
-## 🎨 Entrega 2 — Como o CSS foi feito
+## ✅ Critérios de aceite
 
-### Objetivo e inspiração
-
-O visual foi inspirado na estrutura de um site de supermercado online (cabeçalho com marca à esquerda,
-barra de departamentos, vitrines em cards e rodapé em colunas), mas **sem JavaScript e sem imagens**,
-usando apenas HTML e CSS e a paleta do koala: **azul claro mesclado com cinza claro**.
-
-### Passo a passo
-
-1. **Análise do HTML existente.** As 10 páginas já eram semânticas (`header`, `nav`, `main`, `section`,
-   `article`, `footer`). Por isso o CSS foi escrito sobre essas tags, sem espalhar classes no HTML.
-2. **Paleta com variáveis CSS** (`:root` em `css/style.css`): azul claro `#a9d6f0`, azul médio `#6fb7e3`,
-   azul escuro `#2f6f9f`, cinzas `#eef1f4`, `#cfd6dd` e `#4a5560`. Mudar uma cor muda o site inteiro.
-3. **Bootstrap simples apenas no menu.** Foi usado só o **CSS** do Bootstrap 5.3.3 (arquivo local em
-   `css/bootstrap.min.css`, sem CDN e sem o JavaScript do Bootstrap). O menu recebeu as classes
-   `nav nav-pills justify-content-center`, `nav-item` e `nav-link`, e o `style.css` transforma essas
-   "pílulas" em uma barra de departamentos azul clara com links em maiúsculas.
-4. **Cabeçalho:** fundo branco, marca à esquerda, slogan e endereço ao lado e uma faixa azul no topo.
-5. **Menu fixo (`position: sticky`)** com a página atual destacada via `aria-current="page"`
-   (a mesma marcação de acessibilidade já existente).
-6. **Seções e cards:** `section` virou cartão branco com borda azul lateral; seções com `article` viram
-   uma vitrine em **CSS Grid** (`repeat(auto-fit, minmax(240px, 1fr))`) com efeito de elevação no `:hover`.
-7. **Tabelas, formulários e botões:** cabeçalho de tabela azul, linhas zebradas, campos com foco azul
-   (`:focus`), botões arredondados e botão "Limpar" em cinza.
-8. **Rodapé com informações:** reorganizado em 3 colunas (Mercado Koala, Onde estamos, Links úteis) em
-   todas as páginas, com degradê cinza para azul. No celular as colunas se empilham sozinhas.
-9. **Página inicial:** foram adicionadas uma faixa de benefícios (produtos frescos, Pix/débito/crédito,
-   estacionamento, preços justos) e a seção "Nossos Departamentos".
-10. **Responsividade:** `meta viewport`, grids `auto-fit` e uma `@media (max-width: 576px)` que ajusta
-    espaçamentos e desativa o menu fixo em telas pequenas.
-11. **Correções de navegação:** os links do menu, do rodapé e dos textos foram ajustados para os caminhos
-    corretos na raiz e em `paginas/` (`../` nas páginas internas). Foi conferido por script que todos os
-    links locais apontam para arquivos existentes.
-12. **Consistência de conteúdo:** o horário de segunda a sexta foi padronizado em 07h–21h
-    (contato, FAQ e página inicial agora concordam).
-
-### Técnicas de CSS utilizadas
-
-Variáveis CSS, Flexbox (cabeçalho, corpo da página), CSS Grid (vitrines, rodapé, benefícios), `position: sticky`,
-gradientes lineares, `:hover` / `:focus` / `:nth-child`, `:has()`, `clamp()`, transições e media queries.
-
-### Limitações conhecidas
-
-- O mapa da página inicial é um `iframe` do Google Maps e precisa de internet.
-- O número de WhatsApp ainda não existe e aparece como "em breve".
-- Os formulários não enviam dados a lugar nenhum (não há back-end).
-
----
-assets/img/entrevista-responsavel.jpg e exibida na página paginas/sobre.html.
-
-## ⚡ Entrega 3 — JavaScript e interatividade
-
-Todo o JavaScript está em **um único arquivo**, [js/main.js](js/main.js), escrito em JavaScript puro (sem
-jQuery, sem Bootstrap JS e sem bibliotecas). Ele é carregado com `<script src="js/main.js" defer>` no fim do
-`<body>` de cada página. Cada recurso é uma função independente e só age se encontrar os elementos da página.
-
-### Recursos
-
-| Recurso | Onde | Como funciona |
-|---|---|---|
-| Menu "hambúrguer" | todas (celular) | cria o botão ☰, alterna a classe `aberto` e atualiza `aria-expanded` |
-| Selo "Aberto agora / Fechado" | todas | compara `Date` com a tabela de horários, informa quando abre e atualiza a cada minuto |
-| Voltar ao topo | todas | botão que aparece após 400 px de rolagem e usa `scrollTo({behavior: "smooth"})` |
-| Animação ao rolar | todas | `IntersectionObserver` revela cada seção; respeita `prefers-reduced-motion` |
-| Máscaras | formulários | telefone `(11) 99999-9999` e CNPJ `00.000.000/0000-00` enquanto digita |
-| CNPJ condicional | orçamento | o campo só é habilitado (e obrigatório) quando o tipo é "Pessoa jurídica" |
-| Contador de caracteres | formulários | mostra `n/máximo` e muda de cor perto do limite |
-| Validação e envio simulado | formulários | `checkValidity()`, destaca campos inválidos, foca o primeiro erro e mostra mensagem de sucesso |
-| Busca ao vivo | produtos e FAQ | filtra artigos e seções ignorando acentos e maiúsculas |
-| FAQ sanfona | FAQ | clique ou Enter/Espaço abre e fecha a resposta (`role="button"`, `aria-expanded`) |
-| Minha lista | produtos e orçamento | botão ＋ nos produtos, lista salva no `localStorage` e enviada ao campo "Produtos desejados" |
-| Dica do dia | início | muda todo dia, a partir da data |
-| Carrossel de ofertas | início | 4 slides de texto com troca automática (5 s), setas, bolinhas, teclado e toque; pausa ao passar o mouse |
-
-### Decisões
-
-- **Sem servidor:** os formulários não enviam dados de verdade. O `submit` é interceptado (`preventDefault`) e o
-  envio é simulado com uma mensagem na tela.
-- **Acessibilidade:** `aria-live`, `aria-expanded`, `role="status"/"alert"` e navegação por teclado nos recursos novos.
-- **Segurança:** o texto dos produtos é inserido com `textContent`, nunca com `innerHTML`.
-- **Robustez:** o `localStorage` é usado dentro de `try/catch` e, se estiver indisponível, o site continua funcionando.
-- **HTML quase intocado:** só foi acrescentada a tag `<script>`. Os elementos novos são criados pelo JavaScript.
-- **CSS:** os estilos dos recursos ficam no fim de [css/style.css](css/style.css).
-
-### Testes feitos
-
-Foi feito um teste simulado (jsdom) em 6 páginas, sem erros de execução, conferindo menu, selo de horário,
-busca, FAQ, lista de compras, máscaras e validação. Falta apenas conferir o visual no navegador.
+- [x] A página inicial mostra as 14 categorias com foto, e cada uma leva ao filtro certo.
+- [x] Adicionar um produto atualiza o contador da lista sem recarregar a página.
+- [x] A lista continua salva depois de recarregar e calcula o total.
+- [x] Os formulários mostram o erro de cada campo e levam o foco para o primeiro erro.
+- [x] Dá para usar tudo pelo teclado, com foco visível.
+- [x] Existe tema escuro e alto contraste, e o site lembra a escolha.
+- [x] Não há cor hexadecimal fora do `tokens.css`.
+- [x] O layout funciona em 360 px e 1280 px.
+- [ ] Conferir o layout em 768 px.
 
 ---
 
-## 🛒 Loja Koala (site novo)
-
-Os prints e a explicação do site novo estão no começo deste README e em [loja-koala/README.md](loja-koala/README.md).
-
----
-
-## ✅ Checklist da Entrega 1
-
-- [x] 10 páginas HTML interligadas (index, contato, orçamento + 7 de conteúdo)
-- [x] Estrutura semântica HTML5 em todas as páginas (`header`, `nav`, `main`, `section`, `article`, `footer`)
-- [x] Formulário de contato com validação/máscaras nativas do HTML5
-- [x] Áudio e vídeo incorporados com placeholders em uma página do site
-- [x] Código validado no W3C Validator
-- [x] Repositório no GitHub, organizado em pastas
-- [x] README e página "Quem Somos" com foto do contato com o entrevistado
-- [x] Site hospedado e link disponível no README (GitHub Pages)
-- [x] Organização real confirmada — Mercado Koala (será a mesma na Entrega 2)
-
----
-
-## 📝 Conclusão
-
-A Entrega 1 nos permitiu compreender na prática a importância da marcação semântica HTML5 para estruturar um site real. Trabalhar com uma organização conhecida facilitou o levantamento de informações e o planejamento das páginas.
-
-O principal aprendizado foi perceber que uma boa estrutura HTML — mesmo sem nenhuma estilização — já organiza visualmente o conteúdo de forma compreensível, e que as escolhas semânticas impactam diretamente na acessibilidade e no SEO do site.
-
-Os desafios envolveram principalmente o gerenciamento correto dos caminhos relativos entre arquivos em diferentes pastas e a atenção aos atributos de acessibilidade (`aria-*`). O grupo se organizou bem para dividir as páginas e manter um padrão consistente em todas elas.
-
-Na Entrega 2 foi incorporado o CSS com a identidade visual do Koala (azul claro e cinza claro). Ainda falta substituir os arquivos placeholder de áudio e vídeo pelos reais.
-
----
-
-*Projeto desenvolvido para fins acadêmicos — Disciplina de Desenvolvimento Frontend para Web, 2026.*
+*Projeto acadêmico da disciplina de Desenvolvimento Frontend para Web (Prof. Cid Andrade), 2026.*
