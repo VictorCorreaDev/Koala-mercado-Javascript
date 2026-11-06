@@ -50,9 +50,13 @@ const RAW = [
   ["matinais", "Leite Integral", 4.99, 0, "1 L"], ["matinais", "Bolo de Cenoura", 12.9, 0, "un"],
 ];
 
+// cada produto tem a sua própria foto em img/produtos/ (o nome do arquivo é o nome do produto, sem acento)
+const PRODUTOS_FOTOS = new URL("../img/produtos/", document.currentScript.src).href;
+const arquivoFoto = nome => nome.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 window.PRODUCTS = RAW.map(([cat, name, price, old, unit], i) => ({
   id: "p" + (i + 1), cat, name, price, old: old || 0, unit,
-  img: CATS.find(c => c.slug === cat).img,
+  img: PRODUTOS_FOTOS + arquivoFoto(name) + ".jpg",
 }));
 
 window.TIPS = [
