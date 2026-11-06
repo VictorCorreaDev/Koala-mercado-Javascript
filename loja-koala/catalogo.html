@@ -64,7 +64,7 @@
   <div id="temas"></div>
 
   <template id="tpl">
-    <div class="bloco"><h3>Cores (tokens.css)</h3>
+    <section class="bloco"><h3>Cores (tokens.css)</h3>
       <div class="amostras">
         <div class="amostra" style="background: var(--cor-fundo); color: var(--cor-texto-fundo)">--cor-fundo</div>
         <div class="amostra" style="background: var(--cor-superficie); color: var(--cor-texto)">--cor-superficie</div>
@@ -74,69 +74,69 @@
         <div class="amostra" style="background: var(--cor-foco); color: var(--cor-preto)">--cor-foco</div>
         <div class="amostra" style="background: var(--cor-erro-fundo); color: var(--cor-erro)">--cor-erro</div>
         <div class="amostra" style="background: var(--cor-sucesso-fundo); color: var(--cor-sucesso)">--cor-sucesso</div>
-      </div></div>
+      </div></section>
 
-    <div class="bloco"><h3>.botao</h3><div class="estados">
+    <section class="bloco"><h3>.botao</h3><div class="estados">
       <figure><button class="botao" type="button">Adicionar</button><figcaption>Normal</figcaption></figure>
       <figure><button class="botao is-hover" type="button">Adicionar</button><figcaption>Hover</figcaption></figure>
       <figure><button class="botao is-foco" type="button">Adicionar</button><figcaption>Foco</figcaption></figure>
       <figure><button class="botao" type="button" disabled>Adicionar</button><figcaption>Desabilitado</figcaption></figure>
       <figure><button class="botao carregando" type="button">Enviando</button><figcaption>Carregando</figcaption></figure>
-    </div></div>
+    </div></section>
 
-    <div class="bloco"><h3>.botao--sec</h3><div class="estados">
+    <section class="bloco"><h3>.botao--sec</h3><div class="estados">
       <figure><button class="botao botao--sec" type="button">Secundário</button><figcaption>Normal</figcaption></figure>
       <figure><button class="botao botao--sec is-hover" type="button">Secundário</button><figcaption>Hover</figcaption></figure>
       <figure><button class="botao botao--sec is-foco" type="button">Secundário</button><figcaption>Foco</figcaption></figure>
       <figure><button class="botao botao--sec" type="button" disabled>Secundário</button><figcaption>Desabilitado</figcaption></figure>
-    </div></div>
+    </div></section>
 
-    <div class="bloco"><h3>.campo</h3><div class="estados">
+    <section class="bloco"><h3>.campo</h3><div class="estados">
       <figure><div class="campo"><input placeholder="Nome do item" aria-label="Normal"></div><figcaption>Normal</figcaption></figure>
       <figure><div class="campo"><input class="is-hover" placeholder="Nome do item" aria-label="Hover"></div><figcaption>Hover</figcaption></figure>
       <figure><div class="campo"><input class="is-foco" value="Café" aria-label="Foco"></div><figcaption>Foco</figcaption></figure>
       <figure><div class="campo"><input value="Indisponível" disabled aria-label="Desabilitado"></div><figcaption>Desabilitado</figcaption></figure>
       <figure><div class="campo"><input aria-invalid="true" value="abc" aria-label="Erro"><div class="campo__erro">Digite um e-mail válido.</div></div><figcaption>Erro</figcaption></figure>
-    </div></div>
+    </div></section>
 
-    <div class="bloco"><h3>Caixa de marcar</h3><div class="estados">
+    <section class="bloco"><h3>Caixa de marcar</h3><div class="estados">
       <figure><label class="marcar"><input type="checkbox"> Normal</label></figure>
       <figure><label class="marcar"><input type="checkbox" checked> Marcado</label></figure>
       <figure><label class="marcar"><input type="checkbox" disabled> Desabilitado</label></figure>
-    </div></div>
+    </div></section>
 
-    <div class="bloco"><h3>.card (categoria)</h3><div class="estados" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))">
+    <section class="bloco"><h3>.card (categoria)</h3><div class="estados" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))">
       <figure><a class="card" href="#"><img src="../img/fotos/acougue.jpg" alt=""><span>Açougue</span></a><figcaption>Normal</figcaption></figure>
       <figure><a class="card is-hover" href="#"><img src="../img/fotos/bebidas.jpg" alt=""><span>Bebidas</span></a><figcaption>Hover</figcaption></figure>
       <figure><a class="card is-foco" href="#"><img src="../img/fotos/massas.jpg" alt=""><span>Massas</span></a><figcaption>Foco</figcaption></figure>
-    </div></div>
+    </div></section>
 
-    <div class="bloco"><h3>.card--vertical (produto)</h3><div class="estados" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr))">
+    <section class="bloco"><h3>.card--vertical (produto)</h3><div class="estados" style="grid-template-columns: repeat(auto-fit, minmax(210px, 1fr))">
       <figure><article class="card card--vertical"><img src="../img/fotos/cereais.jpg" alt=""><div class="card__corpo"><h3>Arroz Branco</h3><div class="card__mudo">5 kg</div><div class="preco">R$ 27,90</div><button class="botao" type="button">Adicionar à lista</button></div></article><figcaption>Normal</figcaption></figure>
       <figure><article class="card card--vertical"><span class="etiqueta">-12%</span><img src="../img/fotos/cereais.jpg" alt=""><div class="card__corpo"><h3>Arroz Branco</h3><div class="card__mudo">5 kg</div><div class="preco"><s>R$ 31,90</s>R$ 27,90</div><button class="botao" type="button">Adicionar à lista</button></div></article><figcaption>Em promoção</figcaption></figure>
       <figure><article class="card card--vertical"><img src="../img/fotos/cereais.jpg" alt=""><div class="card__corpo"><h3>Arroz Branco</h3><div class="card__mudo">5 kg</div><div class="preco">R$ 27,90</div><button class="botao" type="button" disabled>Indisponível</button></div></article><figcaption>Desabilitado</figcaption></figure>
-    </div></div>
+    </div></section>
 
-    <div class="bloco"><h3>.aviso e .toast</h3><div style="display: grid; gap: var(--espaco-2)">
+    <section class="bloco"><h3>.aviso e .toast</h3><div style="display: grid; gap: var(--espaco-2)">
       <div class="aviso">Informação: o encarte muda toda quinta-feira.</div>
       <div class="aviso aviso--sucesso">Sucesso: item adicionado à lista.</div>
       <div class="aviso aviso--erro">Erro: não foi possível enviar a mensagem.</div>
       <div><span class="toast" style="display: inline-block">Café adicionado à lista</span></div>
-    </div></div>
+    </div></section>
 
-    <div class="bloco"><h3>Item da lista</h3><ul class="itens" style="margin: 0">
+    <section class="bloco"><h3>Item da lista</h3><ul class="itens" style="margin: 0">
       <li class="item"><input type="checkbox" aria-label="Marcar"><span class="nome">Café <small>500 g</small></span><span class="qtd"><button type="button">−</button><output>2</output><button type="button">+</button></span><span class="subtotal">R$ 35,80</span><button class="botao botao--sec" type="button">Remover</button></li>
       <li class="item item--feito"><input type="checkbox" checked aria-label="Marcar"><span class="nome">Leite <small>1 L</small></span><span class="qtd"><button type="button">−</button><output>6</output><button type="button">+</button></span><span class="subtotal">R$ 29,94</span><button class="botao botao--sec" type="button">Remover</button></li>
-    </ul></div>
+    </ul></section>
   </template>
 </div></main>
 <footer class="rodape">
   <div class="container rodape__topo">
-    <div class="app">
+    <aside class="app" aria-label="Aplicativo">
       <div class="app__texto"><strong>Baixe nosso<br><em>aplicativo!</em></strong>
         <a class="selo-loja" href="#">Disponível na<br><b>App Store</b></a></div>
       <img src="../img/app.svg" alt="Aplicativo Koala em um celular">
-    </div>
+    </aside>
     <nav class="rodape__cols" aria-label="Mapa do site">
       <div><h2 class="rodape__tit">Koala</h2><ul>
         <li><a href="sobre.html">Quem somos</a></li>
@@ -161,8 +161,8 @@
         <ul><li class="sub">2ª a 6ª feira, das 07h às 21h.</li>
         <li><a class="botao" href="contato.html">Fale conosco</a></li></ul></div>
     </nav>
-    <div class="redes"><h2 class="rodape__tit">Siga a gente</h2>
-      <a href="#"><b>f</b> Facebook</a><a href="#"><b>X</b> X</a><a href="#"><b>▶</b> YouTube</a><a href="#"><b>◎</b> Instagram</a></div>
+    <nav class="redes" aria-label="Redes sociais"><h2 class="rodape__tit">Siga a gente</h2>
+      <a href="#"><b>f</b> Facebook</a><a href="#"><b>X</b> X</a><a href="#"><b>▶</b> YouTube</a><a href="#"><b>◎</b> Instagram</a></nav>
   </div>
   <div class="rodape__base"><div class="container"><span>© 2026 Mercado Koala. Trabalho acadêmico.</span>
     <span><a href="catalogo.html">Catálogo de componentes</a> · <a href="politica.html">Política de privacidade</a></span></div></div>

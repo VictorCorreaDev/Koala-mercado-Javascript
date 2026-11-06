@@ -27,7 +27,7 @@ main { flex: 1; padding: var(--espaco-10) 0 var(--espaco-16); }
 .nav a[aria-current="page"] { box-shadow: inset 0 -3px 0 var(--cor-acento); }
 .contador { background: var(--cor-acento); color: var(--cor-sobre-acento); border-radius: var(--raio); padding: 2px var(--espaco-2); font-size: var(--fonte-sm); }
 .contador[hidden] { display: none; }
-.menu { position: relative; }
+.menu { position: relative; z-index: 1; } /* menu aberto fica na frente da logo */
 .menu-lista { position: absolute; top: calc(100% + var(--espaco-2)); left: 0; width: 250px; max-height: 70vh; overflow: auto; background: var(--cor-superficie); color: var(--cor-texto); border-radius: var(--raio); box-shadow: 0 4px 12px var(--cor-sombra); padding: var(--espaco-1); display: none; list-style: none; margin: 0; }
 .menu.aberto .menu-lista { display: block; }
 .menu-lista a { display: block; padding: var(--espaco-2) var(--espaco-3); border-radius: var(--raio); }
@@ -99,6 +99,7 @@ main { flex: 1; padding: var(--espaco-10) 0 var(--espaco-16); }
 
 /* seções */
 section { margin-bottom: var(--espaco-10); }
+section.grade-produtos, section.painel { margin-bottom: 0; } /* blocos que eram div: sem espaço extra */
 .secao-topo { display: flex; justify-content: space-between; align-items: end; gap: var(--espaco-3); flex-wrap: wrap; margin-bottom: var(--espaco-4); color: var(--cor-texto-fundo); }
 .secao-topo a { font-weight: 700; text-decoration: underline; }
 .cronometro b { background: var(--cor-superficie); color: var(--cor-texto); padding: var(--espaco-1) var(--espaco-2); border-radius: var(--raio); }
