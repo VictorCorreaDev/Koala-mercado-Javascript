@@ -28,7 +28,7 @@ jobs:
       - name: Fazer upload do site
         uses: actions/upload-pages-artifact@v3
         with:
-          path: loja-koala
+          path: .
       - name: Publicar no Pages
         id: deployment
         uses: actions/deploy-pages@v4

@@ -1,19 +1,22 @@
+// Endereço das fotos a partir da pasta do site (funciona no index.html e em loja-koala/).
+const FOTOS = new URL("../img/fotos/", document.currentScript.src).href;
+
 // Dados do catálogo. Cada produto: [id, categoria, nome, preço, preço antigo (opcional), unidade]
 window.CATS = [
-  { slug: "acougue", name: "Açougue", img: "img/fotos/acougue.jpg" },
-  { slug: "bebidas", name: "Bebidas", img: "img/fotos/bebidas.jpg" },
-  { slug: "biscoitos", name: "Biscoitos", img: "img/fotos/biscoitos.jpg" },
-  { slug: "bebe", name: "Cantinho Do Bebê", img: "img/fotos/bebe.jpg" },
-  { slug: "carnes-salgadas", name: "Carnes Salgadas", img: "img/fotos/carnes-salgadas.jpg" },
-  { slug: "cereais", name: "Cereais E Farináceos", img: "img/fotos/cereais.jpg" },
-  { slug: "chocolates", name: "Chocolates E Bombons", img: "img/fotos/chocolates.jpg" },
-  { slug: "conservas", name: "Conservas", img: "img/fotos/conservas.jpg" },
-  { slug: "embutidos", name: "Embutidos", img: "img/fotos/embutidos.jpg" },
-  { slug: "frios", name: "Frios E Laticínios", img: "img/fotos/frios.jpg" },
-  { slug: "higiene", name: "Higiene Pessoal", img: "img/fotos/higiene.jpg" },
-  { slug: "limpeza", name: "Limpeza", img: "img/fotos/limpeza.jpg" },
-  { slug: "massas", name: "Massas", img: "img/fotos/massas.jpg" },
-  { slug: "matinais", name: "Matinais E Padaria", img: "img/fotos/matinais.jpg" },
+  { slug: "acougue", name: "Açougue", img: FOTOS + "acougue.jpg" },
+  { slug: "bebidas", name: "Bebidas", img: FOTOS + "bebidas.jpg" },
+  { slug: "biscoitos", name: "Biscoitos", img: FOTOS + "biscoitos.jpg" },
+  { slug: "bebe", name: "Cantinho Do Bebê", img: FOTOS + "bebe.jpg" },
+  { slug: "carnes-salgadas", name: "Carnes Salgadas", img: FOTOS + "carnes-salgadas.jpg" },
+  { slug: "cereais", name: "Cereais E Farináceos", img: FOTOS + "cereais.jpg" },
+  { slug: "chocolates", name: "Chocolates E Bombons", img: FOTOS + "chocolates.jpg" },
+  { slug: "conservas", name: "Conservas", img: FOTOS + "conservas.jpg" },
+  { slug: "embutidos", name: "Embutidos", img: FOTOS + "embutidos.jpg" },
+  { slug: "frios", name: "Frios E Laticínios", img: FOTOS + "frios.jpg" },
+  { slug: "higiene", name: "Higiene Pessoal", img: FOTOS + "higiene.jpg" },
+  { slug: "limpeza", name: "Limpeza", img: FOTOS + "limpeza.jpg" },
+  { slug: "massas", name: "Massas", img: FOTOS + "massas.jpg" },
+  { slug: "matinais", name: "Matinais E Padaria", img: FOTOS + "matinais.jpg" },
 ];
 
 const RAW = [
