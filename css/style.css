@@ -785,3 +785,196 @@ input:disabled { background: var(--cinza-claro); cursor: not-allowed; }
   .slide { padding: 1.5rem 3.2rem 3rem; }
   .carrossel-seta { width: 2.2rem; height: 2.2rem; }
 }
+
+/* ==========================================================
+   Acessibilidade (WCAG 2.2 AA)
+   ========================================================== */
+
+/* Texto só para leitores de tela */
+.so-leitor {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.obrigatorio { color: #a93226; font-weight: 700; }
+
+/* Link "pular para o conteúdo" (aparece ao receber foco) */
+.pular-conteudo {
+  position: absolute;
+  top: 0;
+  left: 1rem;
+  z-index: 1000;
+  padding: .7rem 1.1rem;
+  font-weight: 700;
+  color: var(--branco);
+  background: #12384f;
+  border-radius: 0 0 8px 8px;
+  transform: translateY(-120%);
+}
+.pular-conteudo:focus { transform: none; color: var(--branco); }
+main:focus { outline: none; }
+
+/* Foco sempre visível, inclusive em campos e botões */
+:focus-visible {
+  outline: 3px solid #12384f;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px #ffffff;
+}
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #12384f;
+  outline-offset: 1px;
+}
+body > nav .nav-link:focus-visible { outline-offset: -3px; }
+
+/* Alvos de toque/clique com no mínimo 24px (e 44px nos controles principais) */
+button, .nav-link, .slide-botao, .lista-orcar { min-height: 44px; }
+.btn-add, .lista-remover { min-width: 28px; min-height: 28px; }
+.carrossel-pontos button { position: relative; min-height: 0; }
+.carrossel-pontos button::after { content: ""; position: absolute; inset: -.6rem -.35rem; }
+
+/* Campos inválidos: borda + ícone/texto, nunca só a cor */
+input.invalido, select.invalido, textarea.invalido { border-width: 2px; }
+.erro-campo { display: block; margin-top: .25rem; color: #7a2318; font-weight: 700; font-size: .9rem; }
+.erro-campo::before { content: "⚠ "; }
+.aviso-form ul { margin: .4rem 0 0; padding-left: 1.2rem; }
+.aviso-form a { color: inherit; }
+
+/* Pausar carrossel */
+.carrossel-pausa {
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+  z-index: 2;
+  margin: 0;
+  padding: .3rem .9rem;
+  font-size: .85rem;
+  color: #12384f;
+  background: rgba(255, 255, 255, .9);
+  border: 1px solid #12384f;
+}
+.carrossel-pausa:hover { background: var(--branco); }
+
+/* FAQ: botão dentro do título (mantém a semântica de título) */
+.faq-pergunta { display: block; }
+.faq-botao {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  margin: 0;
+  padding: .4rem 0;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  color: inherit;
+  background: transparent;
+  border-radius: 6px;
+}
+.faq-botao:hover { background: transparent; text-decoration: underline; }
+.faq-botao::after { content: "＋"; color: var(--azul-escuro); font-weight: 800; }
+.faq-botao[aria-expanded="true"]::after { content: "−"; }
+.faq-pergunta::after { content: none !important; }
+
+/* Barra de acessibilidade (tamanho da letra e contraste) */
+.barra-acessibilidade {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .4rem;
+  padding: .35rem max(1rem, calc((100% - 1000px) / 2));
+  background: #12384f;
+  color: var(--branco);
+  font-size: .85rem;
+}
+.barra-acessibilidade span { margin-right: .3rem; }
+.barra-acessibilidade button {
+  margin: 0;
+  padding: .2rem .8rem;
+  min-height: 36px;
+  font-size: .85rem;
+  color: #12384f;
+  background: var(--branco);
+  border: 2px solid var(--branco);
+}
+.barra-acessibilidade button:hover { background: var(--azul-claro); }
+.barra-acessibilidade button[aria-pressed="true"] { color: var(--branco); background: #12384f; border-color: var(--branco); }
+.barra-acessibilidade :focus-visible { outline-color: var(--branco); box-shadow: none; }
+
+/* Tamanho da letra ajustável pelo usuário */
+html { font-size: 100%; }
+html[data-fonte="1"] { font-size: 112.5%; }
+html[data-fonte="2"] { font-size: 125%; }
+html[data-fonte="3"] { font-size: 150%; }
+
+/* Modo de alto contraste */
+html[data-contraste="alto"] {
+  --azul-claro: #ffffff;
+  --azul-medio: #000000;
+  --azul-escuro: #00257a;
+  --cinza-claro: #ffffff;
+  --cinza-medio: #000000;
+  --cinza-escuro: #000000;
+  --texto: #000000;
+  --sombra: none;
+}
+html[data-contraste="alto"] body { background: #ffffff; }
+html[data-contraste="alto"] body > header,
+html[data-contraste="alto"] body > nav { background: #ffffff; border-color: #000000; }
+html[data-contraste="alto"] body > footer { background: #ffffff; border-top: 4px solid #000000; }
+html[data-contraste="alto"] a { color: #00257a; text-decoration: underline; }
+html[data-contraste="alto"] h1,
+html[data-contraste="alto"] h2,
+html[data-contraste="alto"] h3 { color: #000000; }
+html[data-contraste="alto"] main section,
+html[data-contraste="alto"] main article { border: 2px solid #000000; }
+html[data-contraste="alto"] .slide { background: #ffffff !important; color: #000000; border-bottom: 2px solid #000000; }
+html[data-contraste="alto"] .slide h2 { color: #000000; }
+html[data-contraste="alto"] .faixa-beneficios { border: 2px solid #000000 !important; }
+html[data-contraste="alto"] .faixa-beneficios li { color: #000000; }
+html[data-contraste="alto"] body > nav .nav-link { color: #000000; }
+html[data-contraste="alto"] body > nav .nav-link:hover,
+html[data-contraste="alto"] body > nav .nav-link[aria-current="page"] { background: #000000; color: #ffffff; }
+html[data-contraste="alto"] button,
+html[data-contraste="alto"] .slide-botao,
+html[data-contraste="alto"] .lista-orcar,
+html[data-contraste="alto"] .slide-etiqueta { color: #ffffff; background: #000000; border: 2px solid #000000; }
+html[data-contraste="alto"] .btn-add,
+html[data-contraste="alto"] .lista-remover { color: #000000; background: #ffffff; border: 2px solid #000000; }
+html[data-contraste="alto"] .btn-add.marcado { color: #ffffff; background: #000000; }
+html[data-contraste="alto"] .status-loja { color: #000000; background: #ffffff; border: 2px solid #000000; }
+html[data-contraste="alto"] .dica-dia { background: #ffffff !important; }
+html[data-contraste="alto"] thead th { background: #000000; color: #ffffff; }
+html[data-contraste="alto"] tbody tr:nth-child(even) { background: #ffffff; }
+html[data-contraste="alto"] input,
+html[data-contraste="alto"] select,
+html[data-contraste="alto"] textarea { border: 2px solid #000000; }
+html[data-contraste="alto"] .barra-acessibilidade { background: #000000; }
+html[data-contraste="alto"] :focus-visible { outline-color: #ff6600; box-shadow: 0 0 0 2px #000000; }
+
+/* Respeita "reduzir movimento" */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  main section:has(> article) article:hover,
+  .atalhos-categorias a:hover { transform: none; }
+}
+
+/* Modo de cores forçadas do Windows */
+@media (forced-colors: active) {
+  .carrossel-pontos button.ativo { outline: 2px solid Highlight; }
+  .status-loja, .aviso-form { border: 1px solid CanvasText; }
+}
