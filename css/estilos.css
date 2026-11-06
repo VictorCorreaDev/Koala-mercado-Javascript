@@ -153,14 +153,14 @@ section.grade-produtos, section.painel { margin-bottom: 0; } /* blocos que eram 
 
 /* rodapé (referência: rodapé do Guanabara) */
 .rodape { margin-top: auto; background: var(--cor-rodape); color: var(--cor-rodape-texto); }
-.rodape__topo { display: flex; gap: var(--espaco-6); align-items: stretch; padding: var(--espaco-10) var(--espaco-4) 0; }
-.app { display: flex; gap: var(--espaco-4); align-items: flex-end; }
+.rodape__topo { display: flex; flex-wrap: wrap; max-width: 1200px; gap: var(--espaco-6); align-items: stretch; padding: var(--espaco-10) var(--espaco-4) 0; }
+.app { display: flex; flex: none; gap: var(--espaco-4); align-items: flex-end; }
 .app__texto { align-self: center; }
 .app__texto strong { display: block; font-size: var(--fonte-lg); line-height: 1; text-transform: uppercase; }
 .app__texto em { font-style: normal; color: var(--cor-rodape-destaque); }
 .selo-loja { display: inline-block; margin-top: var(--espaco-3); background: var(--cor-preto); color: var(--cor-rodape-texto); padding: var(--espaco-2) var(--espaco-3); border: 1px solid var(--cor-rodape-texto); border-radius: var(--raio); font-size: var(--fonte-sm); line-height: 1.1; }
-.app img { width: 150px; margin-bottom: calc(var(--espaco-4) * -1); }
-.rodape__cols { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--espaco-6); flex: 1; padding-bottom: var(--espaco-6); }
+.app img { width: 120px; margin-bottom: calc(var(--espaco-4) * -1); }
+.rodape__cols { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--espaco-6); flex: 1 1 560px; min-width: 0; padding-bottom: var(--espaco-6); }
 .rodape h4, .rodape .rodape__tit { margin: 0 0 var(--espaco-3); text-transform: uppercase; font-size: var(--fonte-base); }
 .rodape ul { list-style: none; margin: 0 0 var(--espaco-4); padding: 0; display: grid; gap: var(--espaco-1); }
 .rodape li > a:hover { text-decoration: underline; }
@@ -168,7 +168,7 @@ section.grade-produtos, section.painel { margin-bottom: 0; } /* blocos que eram 
 .rodape address { font-style: normal; margin-bottom: var(--espaco-2); }
 .rodape .tel { color: var(--cor-rodape-destaque); font-weight: 700; font-size: var(--fonte-md); }
 .rodape .botao { padding: var(--espaco-1) var(--espaco-3); background: var(--cor-acento); border-color: var(--cor-acento); color: var(--cor-sobre-acento); }
-.redes { border-left: 1px solid var(--cor-rodape-texto); padding-left: var(--espaco-6); min-width: 160px; }
+.redes { flex: none; border-left: 1px solid var(--cor-rodape-texto); padding-left: var(--espaco-6); min-width: 160px; }
 .redes .rodape__tit { color: var(--cor-rodape-destaque); }
 .redes a { display: flex; align-items: center; gap: var(--espaco-2); margin-bottom: var(--espaco-2); }
 .redes b { width: 28px; height: 28px; display: grid; place-items: center; background: var(--cor-rodape-texto); color: var(--cor-rodape); border-radius: var(--raio); font-size: var(--fonte-sm); }
