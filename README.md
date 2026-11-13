@@ -6,6 +6,7 @@ Projeto da disciplina de **Desenvolvimento Frontend para Web** (A2 · 2026.2), P
 
 🔗 **Site no ar (Vercel):** https://koala-supermercados.vercel.app/
 📦 **Repositório:** https://github.com/veronisky/Koala-mercado-Javascript
+📊 **Apresentação (slides):** [slide/Apresentacao-Mercado-Koala-revisada-2.pptx](slide/Apresentacao-Mercado-Koala-revisada-2.pptx)
 
 ![Página inicial da Koala Supermercados](docs/prints/01-inicio.png)
 
@@ -215,6 +216,7 @@ Koala-mercado-Javascript/
 │   └── produtos/               # uma foto para cada um dos 56 produtos
 ├── audio/                      # áudio de apresentação
 ├── video/                      # vídeo de apresentação
+├── slide/                      # apresentação do projeto (.pptx)
 ├── docs/prints/                # imagens usadas neste README
 └── .github/workflows/pages.yml # publicação opcional no GitHub Pages (o site principal está na Vercel)
 ```
